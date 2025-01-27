@@ -1,0 +1,295 @@
+{
+  "resourceType": "Bundle",
+  "id": "aabccfa4-5a9c-40e0-820e-23337d0deb49",
+  "meta": {
+    "lastUpdated": "2024-12-19T11:50:56.373+01:00"
+  },
+  "type": "searchset",
+  "total": 6,
+  "link": [
+    {
+      "relation": "self",
+      "url": "localhost:8090/fhir/Flag?_profile=http%3A%2F%2Fnictiz.nl%2Ffhir%2FStructureDefinition%2Fzib-Flag&patient.identifier=http%3A%2F%2Ffhir.nl%2Ffhir%2FNamingSystem%2Fbsn%7C077461848"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "localhost:8090/fhir/Flag/TE1002.Alert.24",
+      "resource": {
+        "resourceType": "Flag",
+        "id": "TE1002.Alert.24",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-Alert"
+          ]
+        },
+        "status": "inactive",
+        "category": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.1",
+              "code": "74018-3",
+              "display": "Waarschuwing"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.5.1008",
+              "code": "OTH",
+              "display": "Vuurwapengevaarlijk"
+            }
+          ],
+          "text": "Vuurwapengevaarlijk"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2022-01-04",
+          "end": "2024-10-06"
+        },
+        "author": {
+          "reference": "Practitioner/TE1002.Practitioner.10",
+          "display": "dhr.  A van Stratie"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Flag/TE1002.Alert.49",
+      "resource": {
+        "resourceType": "Flag",
+        "id": "TE1002.Alert.49",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-Alert"
+          ]
+        },
+        "status": "active",
+        "category": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.1",
+              "code": "74018-3",
+              "display": "Waarschuwing"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.96",
+              "code": "415360003",
+              "display": "sars-cov"
+            }
+          ],
+          "text": "Covid"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2022-01-04"
+        },
+        "author": {
+          "reference": "Practitioner/TE1002.Practitioner.10",
+          "display": "dhr.  A van Stratie"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Flag/TE1002.Alert.50",
+      "resource": {
+        "resourceType": "Flag",
+        "id": "TE1002.Alert.50",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-Alert"
+          ]
+        },
+        "status": "active",
+        "category": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.1",
+              "code": "74018-3",
+              "display": "Waarschuwing"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.96",
+              "code": "432415000",
+              "display": "Drager MRSA"
+            }
+          ],
+          "text": "Drager MRSA"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2022-01-04",
+          "end": "2024-12-31"
+        },
+        "author": {
+          "reference": "Practitioner/TE1002.Practitioner.10",
+          "display": "dhr.  A van Stratie"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Flag/TE1002.Alert.211",
+      "resource": {
+        "resourceType": "Flag",
+        "id": "TE1002.Alert.211",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-Alert"
+          ]
+        },
+        "status": "active",
+        "category": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.1",
+              "code": "74018-3",
+              "display": "Waarschuwing"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.5.1008",
+              "code": "OTH",
+              "display": "sars-cov"
+            }
+          ],
+          "text": "sars-cov"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2022-01-04"
+        },
+        "author": {
+          "reference": "Practitioner/TE1002.Practitioner.10",
+          "display": "dhr.  A van Stratie"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Flag/TE1002.Alert.212",
+      "resource": {
+        "resourceType": "Flag",
+        "id": "TE1002.Alert.212",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-Alert"
+          ]
+        },
+        "status": "active",
+        "category": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.1",
+              "code": "74018-3",
+              "display": "Waarschuwing"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.5.1008",
+              "code": "OTH",
+              "display": "Vuurwapengevaarlijk"
+            }
+          ],
+          "text": "Vuurwapengevaarlijk"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2022-01-04"
+        },
+        "author": {
+          "reference": "Practitioner/TE1002.Practitioner.10",
+          "display": "dhr.  A van Stratie"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Flag/TE1002.Alert.213",
+      "resource": {
+        "resourceType": "Flag",
+        "id": "TE1002.Alert.213",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-Alert"
+          ]
+        },
+        "status": "active",
+        "category": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.1",
+              "code": "74018-3",
+              "display": "Waarschuwing"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.96",
+              "code": "432415000",
+              "display": "Drager MRSA"
+            }
+          ],
+          "text": "Drager MRSA"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2022-01-04"
+        },
+        "author": {
+          "reference": "Practitioner/TE1002.Practitioner.10",
+          "display": "dhr.  A van Stratie"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}

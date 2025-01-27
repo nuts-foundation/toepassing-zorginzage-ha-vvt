@@ -1,0 +1,1915 @@
+{
+  "resourceType": "Bundle",
+  "id": "6a33d645-3824-455e-b77f-721fad0fcb14",
+  "meta": {
+    "lastUpdated": "2024-12-19T11:54:04.137+01:00"
+  },
+  "type": "searchset",
+  "total": 50,
+  "link": [
+    {
+      "relation": "self",
+      "url": "localhost:8090/fhir/Observation?_profile=https%3A%2F%2Fnuts.nl%2Ffhir%2FStructureDefinition%2Fnl-core-nursingreport&patient.identifier=http%3A%2F%2Ffhir.nl%2Ffhir%2FNamingSystem%2Fbsn%7C077461848"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.99393",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.99393",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-11-22T09:48:02+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Nikeuw"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.99390",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.99390",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-11-22T09:40:58+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Het gaat vandaag heel erg goed."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.99188",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.99188",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-11-19T12:41:41+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Testrapportage aangepast"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.99110",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.99110",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-11-15T15:20:10+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": " Test test test test test testen testen. test1234567"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.98074",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.98074",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-10-17T10:35:00+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.10",
+            "display": "dhr.  A van Stratie"
+          }
+        ],
+        "valueString": "registratie van afspraak"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.98073",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.98073",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-10-17T07:35:00+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.10",
+            "display": "dhr.  A van Stratie"
+          }
+        ],
+        "valueString": "test voor tekst"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.98061",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.98061",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-10-16T15:11:59+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.7206",
+            "display": "M. Rasenberg"
+          }
+        ],
+        "valueString": "Verpleegkundige rapportage"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.98072",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.98072",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-10-16T11:05:00+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.10",
+            "display": "dhr.  A van Stratie"
+          }
+        ],
+        "valueString": "wassen onder de douche"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.97535",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.97535",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-09-17T15:15:59+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.96278",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.96278",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-06-06T15:33:57+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Test voor wh"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.96264",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.96264",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-06-06T14:47:00+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "asdfasdf"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.96246",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.96246",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-06-06T13:46:24+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Testrapportage voor Ysis 6/6/24\n\nPoging 1"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.96165",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.96165",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-06-04T10:33:47+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Testrapportage voor Ysis 4/6"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.95989",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.95989",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-05-24T14:21:32+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Nog een test rapportage voor Ysis."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.95969",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.95969",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-05-24T11:27:47+02:00",
+        "performer": [
+          {
+            "display": "Cindy Segers (Infoland)"
+          }
+        ],
+        "valueString": "01294 \r\n Afdeling A3 \ntest samenvatting"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.95944",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.95944",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-05-23T15:24:18+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Test voor Ysis"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.95633",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.95633",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-05-06T08:56:03+02:00",
+        "performer": [
+          {
+            "display": "CS_actienemer"
+          }
+        ],
+        "valueString": "01012 \r\n Afdeling A2 \ntest samenvatting"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.94655",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.94655",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-03-05T15:37:42+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.10",
+            "display": "dhr.  A van Stratie"
+          }
+        ],
+        "valueString": "Hallo"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.94643",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.94643",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-03-05T08:51:02+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.10",
+            "display": "dhr.  A van Stratie"
+          }
+        ],
+        "valueString": "asdads"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.94334",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.94334",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-02-15T10:23:27+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93771",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93771",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-01-22T11:26:40+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "CCCCCCd"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93767",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93767",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-01-22T11:19:32+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Tttttttt"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93766",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93766",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-01-22T11:17:55+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "CCCCCCC"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93764",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93764",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-01-22T11:13:06+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "RRRRRRzzz"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93760",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93760",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-01-22T11:06:40+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Abcdef"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93759",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93759",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-01-22T11:04:54+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Test2"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93591",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93591",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-01-09T16:23:49+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Vandaag heeft Cliënt de uitslag röntgenfoto ontvangen via de revalidatie-arts: De breuk van de voet is hersteld, er is geen standafwijking geconstateerd. En zo goed als geen artrose. Wel zijn de botten kalkarm, waardoor de botdichtheid iets is afgenomen. Dit heeft merkbare gevolgen voor de belastbaarheid van de voet. Zodoende blijft het advies: aangepaste orthopedische schoeisel met als doel om de pijnklachten af te laten nemen. De afspraak op 24 oktober a.s. met de schoenmaker en arts blijft staan. Cliënt wacht nog op de aangepaste schoenen. Cliënt is tevreden met de uitslag."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93590",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93590",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-01-09T16:23:23+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Vandaag heeft Cliënt de uitslag röntgenfoto ontvangen via de revalidatie-arts: De breuk van de voet is hersteld, er is geen standafwijking geconstateerd. En zo goed als geen artrose. Wel zijn de botten kalkarm, waardoor de botdichtheid iets is afgenomen. Dit heeft merkbare gevolgen voor de belastbaarheid van de voet. Zodoende blijft het advies: aangepaste orthopedische schoeisel met als doel om de pijnklachten af te laten nemen. De afspraak op 24 oktober a.s. met de schoenmaker en arts blijft staan. Cliënt wacht nog op de aangepaste schoenen. Cliënt is tevreden met de uitslag."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93589",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93589",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-01-09T16:23:02+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Vrijdag een CM gehad met Cliënt. M gaf aan dat het redelijk met hem gaat. M heeft nog steeds veel last omgevingsgeluiden en zijn voet."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.93314",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.93314",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-12-19T12:06:15+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Test3"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.92537",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.92537",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-11-21T12:12:12+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.10",
+            "display": "dhr.  A van Stratie"
+          }
+        ],
+        "valueString": "test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.91882",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.91882",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-08-28T08:25:00+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "abcdef"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.91492",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.91492",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-08-04T09:49:12+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.10",
+            "display": "dhr.  A van Stratie"
+          }
+        ],
+        "valueString": "test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.91430",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.91430",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-07-31T15:27:05+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.10",
+            "display": "dhr.  A van Stratie"
+          }
+        ],
+        "valueString": "Test 109"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.91092",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.91092",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-07-17T10:59:15+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Hallo dit is een rapportage."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.90607",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.90607",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-06-26T13:13:31+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1211",
+            "display": "dhr. J E dïng"
+          }
+        ],
+        "valueString": "Testrapportage Ons -&gt; Ysis"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.90552",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.90552",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-06-15T14:12:20+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.37141",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.37141",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-04-11T14:00:52+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.17",
+            "display": "dhr. J. Mooij"
+          }
+        ],
+        "valueString": "met een actie voor"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.37140",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.37140",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-04-11T14:00:19+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.17",
+            "display": "dhr. J. Mooij"
+          }
+        ],
+        "valueString": "Deze wordt zichtbaar in Ysis"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36980",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36980",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-04-03T09:24:57+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Abc"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36979",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36979",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-04-03T09:22:07+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36978",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36978",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-04-03T09:20:51+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36966",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36966",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-31T16:24:59+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36934",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36934",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-31T10:18:37+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Abcdefghzzzz"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36926",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36926",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-30T16:10:35+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Edit test 4"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36919",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36919",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-30T15:56:32+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Edit test 2"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36916",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36916",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-30T15:53:21+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Abc"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36914",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36914",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-30T15:49:14+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueString": "Edit test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36894",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36894",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-30T14:55:14+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.681",
+            "display": "dhr. cc careconnections"
+          }
+        ],
+        "valueString": "Doel"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.nr.36891",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.nr.36891",
+        "meta": {
+          "profile": [
+            "https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport"
+          ]
+        },
+        "status": "registered",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107",
+              "display": "Rapportage"
+            }
+          ],
+          "text": "Rapportage"
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-30T14:34:00+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.681",
+            "display": "dhr. cc careconnections"
+          }
+        ],
+        "valueString": "Test 2"
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}

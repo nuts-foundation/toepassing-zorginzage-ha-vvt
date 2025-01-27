@@ -1,0 +1,432 @@
+{
+  "resourceType": "Bundle",
+  "id": "3d2dd216-2583-40a5-b014-ffc4848fcff4",
+  "meta": {
+    "lastUpdated": "2024-12-19T11:43:04.668+01:00"
+  },
+  "type": "searchset",
+  "total": 8,
+  "link": [
+    {
+      "relation": "self",
+      "url": "localhost:8090/fhir/AllergyIntolerance?patient.identifier=http%3A%2F%2Ffhir.nl%2Ffhir%2FNamingSystem%2Fbsn%7C077461848"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "localhost:8090/fhir/AllergyIntolerance/TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1823",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1823",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance"
+          ]
+        },
+        "clinicalStatus": "active",
+        "_clinicalStatus": {
+          "extension": [
+            {
+              "url": "http://nictiz.nl/fhir/StructureDefinition/code-specification",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/ActStatus",
+                    "code": "active",
+                    "display": "Actief"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "verificationStatus": "confirmed",
+        "criticality": "high",
+        "_criticality": {
+          "extension": [
+            {
+              "url": "http://nictiz.nl/fhir/StructureDefinition/code-specification",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "24484000",
+                    "display": "Ernstig"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "code": {
+          "text": "Stofnaam 1"
+        },
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "onsetDateTime": "2016-04-02",
+        "note": [
+          {
+            "text": "Allergie: Toelichting bij vastlegging"
+          }
+        ],
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/NullFlavor",
+                    "code": "OTH",
+                    "display": "Overig"
+                  }
+                ],
+                "text": "Ademhalingsproblemen"
+              }
+            ]
+          },
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/NullFlavor",
+                    "code": "OTH",
+                    "display": "Overig"
+                  }
+                ],
+                "text": "Hoofdpijn"
+              }
+            ]
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/AllergyIntolerance/TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1825",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1825",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance"
+          ]
+        },
+        "clinicalStatus": "active",
+        "_clinicalStatus": {
+          "extension": [
+            {
+              "url": "http://nictiz.nl/fhir/StructureDefinition/code-specification",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/ActStatus",
+                    "code": "active",
+                    "display": "Actief"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "verificationStatus": "unconfirmed",
+        "criticality": "unable-to-assess",
+        "code": {
+          "text": "Stofnaam 3"
+        },
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "note": [
+          {
+            "text": "Allergie"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/AllergyIntolerance/TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1826",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1826",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance"
+          ]
+        },
+        "clinicalStatus": "active",
+        "_clinicalStatus": {
+          "extension": [
+            {
+              "url": "http://nictiz.nl/fhir/StructureDefinition/code-specification",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/ActStatus",
+                    "code": "active",
+                    "display": "Actief"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "verificationStatus": "unconfirmed",
+        "criticality": "unable-to-assess",
+        "code": {
+          "text": "Stofnaam 7"
+        },
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "note": [
+          {
+            "text": "Allergie"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/AllergyIntolerance/TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1828",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1828",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance"
+          ]
+        },
+        "clinicalStatus": "active",
+        "_clinicalStatus": {
+          "extension": [
+            {
+              "url": "http://nictiz.nl/fhir/StructureDefinition/code-specification",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/ActStatus",
+                    "code": "active",
+                    "display": "Actief"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "verificationStatus": "unconfirmed",
+        "criticality": "unable-to-assess",
+        "code": {
+          "text": "Stofnaam 1"
+        },
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "note": [
+          {
+            "text": "Allergie"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/AllergyIntolerance/TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1829",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1829",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance"
+          ]
+        },
+        "clinicalStatus": "active",
+        "_clinicalStatus": {
+          "extension": [
+            {
+              "url": "http://nictiz.nl/fhir/StructureDefinition/code-specification",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/ActStatus",
+                    "code": "active",
+                    "display": "Actief"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "verificationStatus": "unconfirmed",
+        "criticality": "unable-to-assess",
+        "code": {
+          "text": "Stofnaam 2"
+        },
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "note": [
+          {
+            "text": "Allergie"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/AllergyIntolerance/TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1830",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1830",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance"
+          ]
+        },
+        "clinicalStatus": "active",
+        "_clinicalStatus": {
+          "extension": [
+            {
+              "url": "http://nictiz.nl/fhir/StructureDefinition/code-specification",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/ActStatus",
+                    "code": "active",
+                    "display": "Actief"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "verificationStatus": "unconfirmed",
+        "criticality": "unable-to-assess",
+        "code": {
+          "text": "Stofnaam 3"
+        },
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "note": [
+          {
+            "text": "Allergie"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/AllergyIntolerance/TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1831",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1831",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance"
+          ]
+        },
+        "clinicalStatus": "active",
+        "_clinicalStatus": {
+          "extension": [
+            {
+              "url": "http://nictiz.nl/fhir/StructureDefinition/code-specification",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/ActStatus",
+                    "code": "active",
+                    "display": "Actief"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "verificationStatus": "unconfirmed",
+        "criticality": "unable-to-assess",
+        "code": {
+          "text": "Stofnaam 7"
+        },
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "note": [
+          {
+            "text": "Allergie"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/AllergyIntolerance/TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1824",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "TE1002.po.al.500f9b5e-9248-4c0b-b96d-3bb75d3148ce.1824",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance"
+          ]
+        },
+        "clinicalStatus": "active",
+        "_clinicalStatus": {
+          "extension": [
+            {
+              "url": "http://nictiz.nl/fhir/StructureDefinition/code-specification",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/ActStatus",
+                    "code": "active",
+                    "display": "Actief"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "verificationStatus": "unconfirmed",
+        "criticality": "unable-to-assess",
+        "code": {
+          "text": "Stofnaam 2"
+        },
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "note": [
+          {
+            "text": "Overgevoeligheid: gevoelig"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
