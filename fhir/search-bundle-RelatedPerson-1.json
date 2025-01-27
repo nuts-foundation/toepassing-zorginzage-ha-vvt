@@ -1,0 +1,266 @@
+{
+  "resourceType": "Bundle",
+  "id": "382ecbf7-9eec-44a7-a3a0-f4f6f90268ee",
+  "meta": {
+    "lastUpdated": "2024-12-19T11:27:54.920+01:00"
+  },
+  "type": "searchset",
+  "total": 3,
+  "link": [
+    {
+      "relation": "self",
+      "url": "localhost:8090/fhir/RelatedPerson?patient.identifier=http%3A%2F%2Ffhir.nl%2Ffhir%2FNamingSystem%2Fbsn%7C077461848"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "localhost:8090/fhir/RelatedPerson/TE1002.ClientContactRelation.11216",
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "TE1002.ClientContactRelation.11216",
+        "meta": {
+          "profile": [
+            "http://fhir.nl/fhir/StructureDefinition/nl-core-relatedperson"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://fhir.nl/fhir/StructureDefinition/nl-core-relatedperson-role",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.22.472",
+                  "code": "1",
+                  "display": "Eerste relatie / contactpersoon"
+                }
+              ],
+              "text": "Eerste relatie / contactpersoon"
+            }
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "name": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/humanname-assembly-order",
+                "valueCode": "NL1"
+              }
+            ],
+            "text": "Henk Piet",
+            "family": "Piet",
+            "_family": {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-name",
+                  "valueString": "Piet"
+                }
+              ]
+            },
+            "given": [
+              "Henk",
+              "H."
+            ],
+            "_given": [
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode": "BR"
+                  }
+                ]
+              },
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode": "IN"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "email"
+          }
+        ],
+        "gender": "male"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/RelatedPerson/TE1002.ClientContactRelation.10965",
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "TE1002.ClientContactRelation.10965",
+        "meta": {
+          "profile": [
+            "http://fhir.nl/fhir/StructureDefinition/nl-core-relatedperson"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://fhir.nl/fhir/StructureDefinition/nl-core-relatedperson-role",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.22.472",
+                  "code": "1",
+                  "display": "Eerste relatie / contactpersoon"
+                }
+              ],
+              "text": "Eerste relatie / contactpersoon"
+            }
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "name": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/humanname-assembly-order",
+                "valueCode": "NL1"
+              }
+            ],
+            "text": "Tvoornaam ten Tachternaam",
+            "family": "ten Tachternaam",
+            "_family": {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                  "valueString": "ten"
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-name",
+                  "valueString": "Tachternaam"
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-partner-prefix",
+                  "valueString": "te"
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-partner-name",
+                  "valueString": "tpartnernaam"
+                }
+              ]
+            },
+            "given": [
+              "Tvoornaam",
+              "R"
+            ],
+            "_given": [
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode": "BR"
+                  }
+                ]
+              },
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode": "IN"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "email"
+          }
+        ],
+        "gender": "male"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/RelatedPerson/TE1002.ClientContactRelation.10996",
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "TE1002.ClientContactRelation.10996",
+        "meta": {
+          "profile": [
+            "http://fhir.nl/fhir/StructureDefinition/nl-core-relatedperson"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://fhir.nl/fhir/StructureDefinition/nl-core-relatedperson-role",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.22.472",
+                  "code": "9",
+                  "display": "Anders"
+                }
+              ],
+              "text": "Kennis"
+            }
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "name": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/humanname-assembly-order",
+                "valueCode": "NL1"
+              }
+            ],
+            "text": "hallo ok",
+            "family": "ok",
+            "_family": {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-name",
+                  "valueString": "ok"
+                }
+              ]
+            },
+            "given": [
+              "hallo"
+            ],
+            "_given": [
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode": "BR"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "email"
+          }
+        ],
+        "gender": "male"
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}

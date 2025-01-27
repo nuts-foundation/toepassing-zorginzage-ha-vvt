@@ -1,0 +1,1044 @@
+{
+  "resourceType": "Bundle",
+  "id": "eb66b93d-873f-425f-8185-ec7f90c8b660",
+  "meta": {
+    "lastUpdated": "2024-12-19T11:45:33.157+01:00"
+  },
+  "type": "searchset",
+  "total": 12,
+  "link": [
+    {
+      "relation": "self",
+      "url": "localhost:8090/fhir/Consent?category=http%3A%2F%2Fsnomed.info%2Fsct%7C11291000146105&patient.identifier=http%3A%2F%2Ffhir.nl%2Ffhir%2FNamingSystem%2Fbsn%7C077461848"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11341000146107",
+                "display": "Living will and advance directive record (record artifact)"
+              }
+            ]
+          },
+          {
+            "coding": [
+              {
+                "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.14.1",
+                "code": "NR",
+                "display": "Niet reanimeren verklaring"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "dateTime": "2024-10-09",
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Treatment",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1",
+                  "code": "89666000",
+                  "display": "Cardiopulmonaire resuscitatie"
+                }
+              ],
+              "text": "Reanimeren"
+            }
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Verification",
+            "extension": [
+              {
+                "url": "Verified",
+                "valueBoolean": true
+              },
+              {
+                "url": "VerifiedWith",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "116154003",
+                      "display": "Patient"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "VerificationDate",
+                "valueDateTime": "2024-10-09"
+              }
+            ]
+          }
+        ],
+        "modifierExtension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-TreatmentPermitted",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4",
+                  "code": "NEE",
+                  "display": "Behandeling niet toegestaan en/of wenselijk"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11291000146105",
+                "display": "Treatment instructions (record artifact)"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2024-10-09"
+        },
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Treatment",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1",
+                  "code": "OTH",
+                  "display": "Overige behandelingen"
+                }
+              ],
+              "text": "Orgaan donatie"
+            }
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Verification",
+            "extension": [
+              {
+                "url": "Verified",
+                "valueBoolean": true
+              },
+              {
+                "url": "VerifiedWith",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "116154003",
+                      "display": "Patient"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "VerificationDate",
+                "valueDateTime": "2024-10-09"
+              }
+            ]
+          }
+        ],
+        "modifierExtension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-TreatmentPermitted",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11291000146105",
+                "display": "Treatment instructions (record artifact)"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2024-10-09"
+        },
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Treatment",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1",
+                  "code": "281789004",
+                  "display": "Toediening van antibiotica"
+                }
+              ],
+              "text": "Antibiotica"
+            }
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Verification",
+            "extension": [
+              {
+                "url": "Verified",
+                "valueBoolean": true
+              },
+              {
+                "url": "VerifiedWith",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "116154003",
+                      "display": "Patient"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "VerificationDate",
+                "valueDateTime": "2024-10-09"
+              }
+            ]
+          }
+        ],
+        "modifierExtension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-TreatmentPermitted",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4",
+                  "code": "JA",
+                  "display": "Behandeling is toegestaan en/of wenselijk."
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11291000146105",
+                "display": "Treatment instructions (record artifact)"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2024-10-09"
+        },
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11341000146107",
+                "display": "Living will and advance directive record (record artifact)"
+              }
+            ]
+          },
+          {
+            "coding": [
+              {
+                "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.14.1",
+                "code": "NR",
+                "display": "Niet reanimeren verklaring"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "dateTime": "2024-10-09",
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Treatment",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1",
+                  "code": "OTH",
+                  "display": "Overige behandelingen"
+                }
+              ],
+              "text": "Cardiopulmonary resuscitation"
+            }
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Verification",
+            "extension": [
+              {
+                "url": "Verified",
+                "valueBoolean": true
+              },
+              {
+                "url": "VerifiedWith",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "116154003",
+                      "display": "Patient"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "VerificationDate",
+                "valueDateTime": "2024-10-09"
+              }
+            ]
+          }
+        ],
+        "modifierExtension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-TreatmentPermitted",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4",
+                  "code": "NEE",
+                  "display": "Behandeling niet toegestaan en/of wenselijk"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11291000146105",
+                "display": "Treatment instructions (record artifact)"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2024-10-09"
+        },
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Treatment",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1",
+                  "code": "40617009",
+                  "display": "Kunstmatige beademing"
+                }
+              ],
+              "text": "Beademen"
+            }
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Verification",
+            "extension": [
+              {
+                "url": "Verified",
+                "valueBoolean": true
+              },
+              {
+                "url": "VerifiedWith",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "116154003",
+                      "display": "Patient"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "VerificationDate",
+                "valueDateTime": "2024-10-09"
+              }
+            ]
+          }
+        ],
+        "modifierExtension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-TreatmentPermitted",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4",
+                  "code": "JA",
+                  "display": "Behandeling is toegestaan en/of wenselijk."
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11291000146105",
+                "display": "Treatment instructions (record artifact)"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2024-10-09"
+        },
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Treatment",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1",
+                  "code": "OTH",
+                  "display": "Overige behandelingen"
+                }
+              ],
+              "text": "Euthanasieverklaring"
+            }
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Verification",
+            "extension": [
+              {
+                "url": "Verified",
+                "valueBoolean": true
+              },
+              {
+                "url": "VerifiedWith",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "116154003",
+                      "display": "Patient"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "VerificationDate",
+                "valueDateTime": "2024-10-09"
+              }
+            ]
+          }
+        ],
+        "modifierExtension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-TreatmentPermitted",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4",
+                  "code": "NEE",
+                  "display": "Behandeling niet toegestaan en/of wenselijk"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11291000146105",
+                "display": "Treatment instructions (record artifact)"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2024-10-09"
+        },
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Treatment",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1",
+                  "code": "OTH",
+                  "display": "Overige behandelingen"
+                }
+              ],
+              "text": "Hypodermoclysis"
+            }
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Verification",
+            "extension": [
+              {
+                "url": "Verified",
+                "valueBoolean": true
+              },
+              {
+                "url": "VerifiedWith",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "116154003",
+                      "display": "Patient"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "VerificationDate",
+                "valueDateTime": "2024-10-09"
+              }
+            ]
+          }
+        ],
+        "modifierExtension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-TreatmentPermitted",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4",
+                  "code": "JA",
+                  "display": "Behandeling is toegestaan en/of wenselijk."
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11291000146105",
+                "display": "Treatment instructions (record artifact)"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2024-10-09"
+        },
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Treatment",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1",
+                  "code": "OTH",
+                  "display": "Overige behandelingen"
+                }
+              ],
+              "text": "Resuscitation"
+            }
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Verification",
+            "extension": [
+              {
+                "url": "Verified",
+                "valueBoolean": true
+              },
+              {
+                "url": "VerifiedWith",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "116154003",
+                      "display": "Patient"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "VerificationDate",
+                "valueDateTime": "2024-10-09"
+              }
+            ]
+          }
+        ],
+        "modifierExtension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-TreatmentPermitted",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4",
+                  "code": "JA",
+                  "display": "Behandeling is toegestaan en/of wenselijk."
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11291000146105",
+                "display": "Treatment instructions (record artifact)"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2024-10-09"
+        },
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11341000146107",
+                "display": "Living will and advance directive record (record artifact)"
+              }
+            ]
+          },
+          {
+            "coding": [
+              {
+                "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.14.1",
+                "code": "NR",
+                "display": "Niet reanimeren verklaring"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "dateTime": "2024-10-09",
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Consent/Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "Context.f8d57e79-ad05-4991-a712-89b0d50b411e.0",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/Comment",
+            "valueString": "Toelichting bij vastgelegde behandelafspraak"
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Treatment",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1",
+                  "code": "OTH",
+                  "display": "Overige behandelingen"
+                }
+              ],
+              "text": "Reanimatie"
+            }
+          },
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-Verification",
+            "extension": [
+              {
+                "url": "Verified",
+                "valueBoolean": true
+              },
+              {
+                "url": "VerifiedWith",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "116154003",
+                      "display": "Patient"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "VerificationDate",
+                "valueDateTime": "2024-10-09"
+              }
+            ]
+          }
+        ],
+        "modifierExtension": [
+          {
+            "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective-TreatmentPermitted",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4",
+                  "code": "NEE",
+                  "display": "Behandeling niet toegestaan en/of wenselijk"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11291000146105",
+                "display": "Treatment instructions (record artifact)"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "period": {
+          "start": "2024-10-09"
+        },
+        "policy": [
+          {
+            "uri": "http://wetten.overheid.nl/"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
