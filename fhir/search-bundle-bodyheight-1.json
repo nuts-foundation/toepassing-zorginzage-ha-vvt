@@ -1,0 +1,661 @@
+{
+  "resourceType": "Bundle",
+  "id": "786ca99f-24d3-462c-b30f-74780be8ae82",
+  "meta": {
+    "lastUpdated": "2024-12-19T11:37:08.137+01:00"
+  },
+  "type": "searchset",
+  "total": 12,
+  "link": [
+    {
+      "relation": "self",
+      "url": "localhost:8090/fhir/Observation?_profile=http%3A%2F%2Fnictiz.nl%2Ffhir%2FStructureDefinition%2Fzib-BodyHeight&subject.identifier=http%3A%2F%2Ffhir.nl%2Ffhir%2FNamingSystem%2Fbsn%7C077461848"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.97872",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.97872",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2024-10-07T14:40:36+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.7206",
+            "display": "M. Rasenberg"
+          }
+        ],
+        "valueQuantity": {
+          "value": 130,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "comment": "Mevrouw rook vanmiddag naar alocohol, blijkbaar weet ze toch aan drank te komen. Kamer nalopen op verborgen drank.Mevrouw rook vanmiddag naar alocohol, blijkbaar weet ze toch aan drank te komen. Kamer nalopen op verborgen drank.Mevrouw rook vanmiddag naar alocohol, blijkbaar weet ze toch aan drank te komen. Kamer nalopen op verborgen drank."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.36981",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.36981",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-04-03T13:15:14+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueQuantity": {
+          "value": 120,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.36870",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.36870",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-29T15:56:02+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueQuantity": {
+          "value": 120,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.36869",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.36869",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-29T15:55:52+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.2384",
+            "display": "dhr. R.R. Schipper"
+          }
+        ],
+        "valueQuantity": {
+          "value": 120,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.36707",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.36707",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-24T07:28:25+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1402",
+            "display": "Brandsema2"
+          }
+        ],
+        "valueQuantity": {
+          "value": 120,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "comment": "Mevrouw rook vanmiddag naar alocohol, blijkbaar weet ze toch aan drank te komen. Kamer nalopen op verborgen drank."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.36706",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.36706",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-23T07:28:25+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1402",
+            "display": "Brandsema2"
+          }
+        ],
+        "valueQuantity": {
+          "value": 120,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "comment": "Mevrouw rook vanmiddag naar alocohol, blijkbaar weet ze toch aan drank te komen. Kamer nalopen op verborgen drank."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.36708",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.36708",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-22T07:28:25+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1402",
+            "display": "Brandsema2"
+          }
+        ],
+        "valueQuantity": {
+          "value": 120,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "comment": "Mevrouw rook vanmiddag naar alocohol, blijkbaar weet ze toch aan drank te komen. Kamer nalopen op verborgen drank."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.36709",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.36709",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-21T07:28:25+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1402",
+            "display": "Brandsema2"
+          }
+        ],
+        "valueQuantity": {
+          "value": 120,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "comment": "Mevrouw rook vanmiddag naar alocohol, blijkbaar weet ze toch aan drank te komen. Kamer nalopen op verborgen drank."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.36710",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.36710",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2023-03-20T07:28:25+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.1402",
+            "display": "Brandsema2"
+          }
+        ],
+        "valueQuantity": {
+          "value": 120,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "comment": "Mevrouw rook vanmiddag naar alocohol, blijkbaar weet ze toch aan drank te komen. Kamer nalopen op verborgen drank."
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.33409",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.33409",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2022-11-16T10:51:44+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.10",
+            "display": "dhr.  A van Stratie"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "comment": "test"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.26192",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.26192",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2021-11-16T16:54:00+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.388",
+            "display": "dhr. E Huizinga"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "comment": "111111111"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.re.bh.25141",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.re.bh.25141",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.500f9b5e-9248-4c0b-b96d-3bb75d3148ce",
+          "display": "mevr. J.K. Böçker1"
+        },
+        "effectiveDateTime": "2021-06-04T11:39:52+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.250",
+            "display": "dhr. E van Raak"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}

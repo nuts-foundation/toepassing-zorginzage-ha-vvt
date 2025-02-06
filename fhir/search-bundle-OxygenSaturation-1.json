@@ -1,0 +1,71 @@
+{
+  "resourceType": "Bundle",
+  "id": "55103d02-c004-4a66-ade6-3c834d7446b6",
+  "meta": {
+    "lastUpdated": "2024-12-19T11:26:48.926+01:00"
+  },
+  "type": "searchset",
+  "total": 1,
+  "link": [
+    {
+      "relation": "self",
+      "url": "localhost:8090/fhir/Observation?_profile=http%3A%2F%2Fnictiz.nl%2Ffhir%2FStructureDefinition%2Fzib-OxygenSaturation&subject.identifier=http%3A%2F%2Ffhir.nl%2Ffhir%2FNamingSystem%2Fbsn%7C999911478"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "localhost:8090/fhir/Observation/TE1002.Report.97432",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "TE1002.Report.97432",
+        "meta": {
+          "profile": [
+            "http://nictiz.nl/fhir/StructureDefinition/zib-OxygenSaturation"
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Client.2007d6b3-8adc-469f-aeec-eeef06742351",
+          "display": "dhr. A XXX_Bals"
+        },
+        "effectiveDateTime": "2024-09-11T11:35:37+02:00",
+        "performer": [
+          {
+            "reference": "Practitioner/TE1002.Practitioner.7206",
+            "display": "M. Rasenberg"
+          }
+        ],
+        "valueQuantity": {
+          "value": 78,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "comment": "Aan de lage kant"
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
