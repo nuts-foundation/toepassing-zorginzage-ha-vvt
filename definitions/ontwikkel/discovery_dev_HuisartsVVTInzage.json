@@ -1,0 +1,127 @@
+{
+  "id": "dev:HuisartsVVTInzage",
+  "endpoint": "http://localhost:9091/discovery/dev:HuisartsVVTInzage",
+  "presentation_max_validity": 3600,
+  "presentation_definition": {
+    "id": "dev:HuisartsVVTInzage",
+    "format": {
+      "ldp_vc": {
+        "proof_type": [
+          "JsonWebSignature2020"
+        ]
+      },
+      "jwt_vc": {
+        "alg": [
+          "PS256"
+        ]
+      },
+      "ldp_vp": {
+        "proof_type": [
+          "JsonWebSignature2020"
+        ]
+      },
+      "jwt_vp": {
+        "alg": [
+          "ES256"
+        ]
+      }
+    },
+    "input_descriptors": [
+      {
+        "id": "id_uzicert_uracredential",
+        "name": "Care organization identity from CIBG-issued UZI-server certificate",
+        "purpose": "Finding a care organization for authorizing access to medical metadata.",
+        "constraints": {
+          "fields": [
+            {
+              "path": [
+                "$.vc.type",
+                "$.type"
+              ],
+              "filter": {
+                "type": "string",
+                "const": "X509Credential"
+              }
+            },
+            {
+              "path": [
+                "$.issuer"
+              ],
+              "purpose": "Whe can only accept credentials from a trusted issuer",
+              "filter": {
+                "type": "string",
+                "pattern": "^did:x509:0:sha256:GwlhBZuEFlSHXSRUXQuTs3_YpQxAahColwJJj35US1A[\\w\\-.:%]*$"
+              }
+            },
+            {
+              "id": "organization_name",
+              "path": [
+                "$.credentialSubject[0].subject.O"
+              ],
+              "filter": {
+                "type": "string"
+              }
+            },
+            {
+              "id": "organization_ura",
+              "path": [
+                "$.credentialSubject[0].san.otherName"
+              ],
+              "filter": {
+                "type": "string",
+                "pattern": "^[0-9.]+-\\d+-\\d+-S-(\\d+)-00\\.000-\\d+$"
+              }
+            },
+            {
+              "id": "organization_city",
+              "path": [
+                "$.credentialSubject[0].subject.L"
+              ],
+              "filter": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "id_registration_parameters_credential",
+        "name": "Registration parameters",
+        "purpose": "Finding endpoints registered by the care organization.",
+        "constraints": {
+          "fields": [
+            {
+              "path": [
+                "$.type"
+              ],
+              "filter": {
+                "type": "string",
+                "const": "DiscoveryRegistrationCredential"
+              }
+            },
+            {
+              "id": "authorization_server_url",
+              "purpose": "Used by clients to request OAuth2 access tokens.",
+              "path": [
+                "$.credentialSubject.authServerURL"
+              ],
+              "filter": {
+                "type": "string"
+              }
+            },
+            {
+              "id": "fhir_base_url",
+              "purpose": "Base URL of the Care Plan Contributor's FHIR API provided by the SCP-node.",
+              "path": [
+                "$.credentialSubject.fhirBaseURL"
+              ],
+              "filter": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
