@@ -19,7 +19,6 @@ Voor het ophalen van de Patiënt geldt:
 POST /fhir/Patient/_search
 - Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
 - Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
-  - url encoded, dus: `identifier=http%3A%2F%2Ffhir.nl%2Ffhir%2FNamingSystem%2Fbsn%7C{bsn}`
 - Optionele parameters:
   - `_include=Patient:general-practitioner`
   - `_include:iterate=PractitionerRole:organization`
