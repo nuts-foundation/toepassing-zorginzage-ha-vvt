@@ -1,0 +1,34 @@
+@startuml
+
+hide footbox
+
+Client -> Discovery: **1. ** Search for source
+Discovery --> Client: Source(s)
+
+|||
+
+Client -> Client: **2. ** OAuth flow
+
+|||
+
+Client -> Source: **3. ** Request access token
+Source --> Client: Access token
+
+|||
+
+note right of Client: Search based on bsn
+Client -> Source: **4. ** POST /fhir/Patient/_search
+Source -> Source: **5. ** Authorization
+Source --> Client: Patient Fhir resource (with id)
+
+|||
+
+note right of Client: Other resources are gathered based on patient id
+loop For each resource except Patient
+    Client -> Source: **6. ** GET /fhir/{resource}?patient={id}
+    Source -> Source: **7. ** Authorization
+    Source --> Client: Fhir Resource
+end loop
+
+@enduml
+
