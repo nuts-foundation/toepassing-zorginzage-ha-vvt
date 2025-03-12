@@ -29,7 +29,8 @@
     "input_descriptors": [
       {
         "id": "id_uzicert_uracredential",
-        "name": "Care organization identity from CIBG-issued UZI-server certificate",
+        "name": "Care organization identity from CIBG-issued test UZI-server certificate",
+
         "purpose": "Finding a care organization for authorizing access to medical metadata.",
         "constraints": {
           "fields": [

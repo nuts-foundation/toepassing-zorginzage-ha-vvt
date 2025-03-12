@@ -47,7 +47,7 @@
                 "path": [
                   "$.issuer"
                 ],
-                "purpose": "Whe can only accept credentials from a trusted issuer",
+                "purpose": "We can only accept credentials from a trusted issuer",
                 "filter": {
                   "type": "string",
                   "pattern": "^did:x509:0:sha256:GwlhBZuEFlSHXSRUXQuTs3_YpQxAahColwJJj35US1A[\\w\\-.:%]*$"
