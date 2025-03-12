@@ -1,5 +1,7 @@
 # Scope
 # Governance
+Governance en deelname ligt binnen het project.
+
 # Functioneel Ontwerp
 Deze usecase ondersteunt het ophalen van informatie zoals vastgelegd door de (wijk)verpleging in de VVT om deze informatie beschikbaar te stellen aan de huisarts. Het proces werkt als volgt:
 
@@ -16,10 +18,40 @@ De verdere medisch inhoudelijke informatie wordt opgehaald op basis van FHIR (ZI
 
 Logging vindt in de gehele keten plaats.
 
+# Uitgangspunten
+De cliënt is reeds bekend/in zorg bij zowel de huisarts als bij de VVT instelling
+
+De client heeft consent afgegeven om data te delen met de huisarts
+
+Informatie kan opgehaald worden bij het bronsysteem en vastgelegd in het doelsysteem
+
+Er is een lijst beschikbaar van informatie die opgehaald kan worden
+
+De medewerkers blijven in hun eigen systeem werken. De leveranciers zijn zelf verantwoordelijk hoe zij de medewerker het beste willen/kunnen ondersteunen.
+
+Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie van de eOverdracht gebruikt: FHIR STU3.
+
+Het afhandelen van de cobsentvraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt
+
+Authenticatie vindt plaats op basis van een Verifiable Credential: het URA nummer van de organisatie waar de opvrager werkt en zoals vastgelegd in een UZI Servercertificaat.
+
+Autorisatie vindt plaats door een check te doen of het VC in lijn is met wat er is vastgelegd bij de patient in het bronsysteem
+
+Ten behoeve van logging wordt door het doelsysteem het MedewerkerID van de opvrager meegegeven. Deze informatie wordt bij de aanvraag vastgelegd.
+
+Logging vindt in de gehele keten plaats
+
+Shortcuts en Toekomstige ontwikkelingen:
+Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
+-Consent lokaal oplossen (ipv Mitz)
+-VC met UZI certificaat (nog geen goed authenticatiemiddel voor de gebruiker beschikbaar / DEZI)
+-Toekomstige ZIB's (nu niet beschikbaar in bronsystemen)
+-DPOB security (is aanvullende beveiliging die ook in andere usecase niet ingevuld)
+-UZI credentials (human readable namen) moet bij de bron opgelost worden
+
 ## Architectuur beschrijving
 
 ## Lokalisatie
-### Care Team specificatie
 
 ## Grondslag
 
@@ -35,8 +67,6 @@ Discovery Service
 ### Presentation Definition
 
 ## Autorisatie
-
-### Rego policy
 
 ## Informatie
 ### Lijst van ZIBs
@@ -62,5 +92,9 @@ met een parameter zoals een include extra gegevens meekomen.
 | Wilsverklaring                                                | GET    |           |       | /fhir/Consent?patient={patientId}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective                             | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954726](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954726) |
 | Allergie                                                      | GET    |           |       | /fhir/AllergyIntolerance?patient={patientId}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance                | [http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance](http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance)                                 |
 ## Foutafhandeling
+In deze fase concentreren we ons op beveiliging – juist in de pilot zal bekeken moeten worden of dit ook leidt tot voldoende gebruiksgemak. Informatie die publiekelijk beschikbaar is (bv inhoud van de usecase als zijnde 'deze resource valt buiten de usecase') zou toegevoegd mogen worden om nieuwe ontwikkelaars makkelijker te maken bij het testen
 
 ## Versiebeheer
+Wordt momenteel uitgewerkt in usecase ANW. Resultaat wordt hier opgenomen
+
+## Omgevingen
