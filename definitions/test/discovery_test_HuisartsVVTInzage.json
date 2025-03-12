@@ -54,6 +54,17 @@
                 "pattern": "^did:x509:0:sha256:GwlhBZuEFlSHXSRUXQuTs3_YpQxAahColwJJj35US1A[\\w\\-.:%]*$"
               }
             },
+            { 
+              "id": "organization_id", 
+              "path": [ 
+                "$.credentialSubject[0].id", 
+                "$.credentialSubject.id" 
+              ], 
+              "filter": { 
+                "type": "string", 
+                "pattern": "^did:web:.+$" 
+              } 
+            },
             {
               "id": "organization_name",
               "path": [
