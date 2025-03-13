@@ -75,6 +75,8 @@ One can be used as a [Java library](https://github.com/nuts-foundation/uzi-did-x
 <!-- ![sequence diagram ophalen data bij VVT](img/sequence-diagram-resource-request.svg) -->
 <img src="img/sequence-diagram-resource-request.svg" width="1500">
 
+TODO: write out actions for each (group of) steps
+
 ## Lokalisatie
 Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar er data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen. 
 

@@ -1,5 +1,6 @@
 @startuml
 hide footbox
+autonumber
 
 actor Admin
 participant CRM
