@@ -1,0 +1,42 @@
+@startuml
+hide footbox
+
+actor Admin
+participant CRM
+participant Nuts
+participant X509CredentialTool as tool
+
+
+group Opt: Create new subject
+    Admin -> CRM : New subject
+    CRM -> Nuts: POST /internal/vdr/v2/subject
+    CRM <-- Nuts: subjectID
+    Admin <-- CRM: subjectID
+end group
+
+group Opt: Add X509Credential to subject wallet
+    Admin -> CRM: Add X509Credential
+    CRM -> Nuts : List all DIDs of subject \nGET /internal/vdr/v2/subject/{subjectID}
+    CRM <-- Nuts : filter result for did:web:...
+    
+    |||
+
+    CRM -> CRM: Fetch UZI server cert+key for subject
+    CRM -> tool: Generate X509Credential for subject's did:web identifier
+    CRM <-- tool: X509Credential
+
+    |||
+
+    CRM -> Nuts : Upload X509Credential \nPOST /internal/vcr/v2/holder/{subjectID}/vc
+    CRM <-- Nuts: 204
+    Admin <-- CRM: 200
+end group
+
+group Register subject on discovery service
+    Admin -> CRM: Register subject on discovery service
+    CRM -> Nuts : POST/internal/discovery/v1/{serviceID}/{subjectID}
+    CRM <-- Nuts : 200
+    Admin <-- CRM: 200
+end group
+
+@enduml

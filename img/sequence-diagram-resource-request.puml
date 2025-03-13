@@ -1,0 +1,79 @@
+@startuml
+hide footbox
+autonumber
+skinparam BoxPadding 20
+
+box HIS
+actor User
+participant HIS
+participant Nuts as cn
+end box
+
+
+box VVT
+participant Nuts as sn
+participant Fhir
+end box
+User -> HIS : Log in
+HIS -> HIS : Create User session, \nUser info needed for NutsEmployeeCredential (step 7)
+
+== Later in User session ==
+
+User -> HIS : GP request information for Patient at VVT
+activate HIS
+    HIS -> HIS: Resolve Patient BSN, and VVT_URA for patient if it is known
+
+    HIS -> cn: Search for VVT in discovery \nGet /internal/discovery/v1/{serviceID}
+    activate cn
+        note right of cn: Exact search is up to the implementer. \nPossible options:\n - Return everything from the service and let User pick\n - Let Nuts-node filter on VVT_URA of the patient
+        cn --> HIS : Found VVT (authz_url, fhir_url)
+    deactivate cn
+
+    |||
+
+    HIS -> cn: Get access token \nPOST /internal/auth/v2/{subjectID}/request-service-access-token
+    activate cn
+        cn <--> sn : nuts-nodes handle access token request
+        note right of cn : uses X509Credential and NutsEmployeeCredential
+        cn --> HIS : Access token
+    deactivate cn
+
+    |||
+
+    note right of HIS: Search based on BSN
+    HIS -> Fhir: POST /fhir/Patient/_search
+    activate Fhir
+        Fhir -> sn : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
+        activate sn
+            Fhir <-- sn : valid token + GP_URA + USER{name,userRole,identifier}
+        deactivate sn
+        Fhir -> Fhir: Authorization
+        Fhir --> HIS: Patient Fhir resource (with id)
+    deactivate Fhir
+
+    ||| 
+
+    note right of HIS: Other resources are gathered based on patient id
+    loop For each resource except Patient
+        HIS -> Fhir: GET /fhir/{resource}?patent={id}
+        activate Fhir
+            Fhir -> sn : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
+            activate sn
+                Fhir <-- sn : valid token + GP_URA + USER{name,userRole,identifier}
+            deactivate sn
+            Fhir -> Fhir: Authorization
+            Fhir --> HIS: Fhir Resource
+        deactivate Fhir
+    end loop
+    User <- HIS : Display data
+deactivate HIS
+
+@enduml
+
+
+
+
+
+
+
+

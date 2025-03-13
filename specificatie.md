@@ -63,7 +63,17 @@ Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (o
 
 ## Architectuur beschrijving
 
-Sequence diagrammen invoegen door Gerard
+### Register a subject for the use-case
+<!-- ![sequence diagram for care organization management](img/sequence-diagram-use-case-registration.svg) -->
+<img src="img/sequence-diagram-use-case-registration.svg" width="700">
+
+**X509CredentialTool**: 
+There are currently 2 tools provided by the Nuts community to generate the X509Credential. 
+One can be used as a [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java), the other is [written in Go and provides a docker image](https://github.com/nuts-foundation/go-didx509-toolkit) to build the VC. Follow the instructions for the tools to complete steps 9-10.
+
+### Request data at VVT
+<!-- ![sequence diagram ophalen data bij VVT](img/sequence-diagram-resource-request.svg) -->
+<img src="img/sequence-diagram-resource-request.svg" width="1500">
 
 ## Lokalisatie
 Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar er data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen. 
@@ -107,14 +117,14 @@ controle die de systemen doen op de verifiable credentials. Die controle wordt o
 met een parameter zoals een include extra gegevens meekomen.
 
 | ZIB                                                           | Method | Sort      | Count | Endpoint                                                                                                                               | Profiel                                                                                                                                                              |
-|:--------------------------------------------------------------|--------|-----------|-------|:---------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :------------------------------------------------------------ | ------ | --------- | ----- | :------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Patiënt, Contactpersoon, Behandelaar(huisarts), Zorgaanbieder | GET    |           |       | /fhir/Patient?\_id={patientId}&\_include=Patient:general-practitioner&\_include:iterate=PractitionerRole:organization                  | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638) |
 | Bloeddruk                                                     | GET    | Date DESC | 5     | /fhir/Observation?patient={patientId}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate&\_sort=-date&\_count=5         | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954945](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954945) |
 | Lichaamstemperatuur                                           | GET    | Date DESC | 5     | /fhir/Observation?patient={patientId}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-BodyTemperature&\_sort=-date&\_count=5   | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954748](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954748) |
 | Lichaamslengte                                                | GET    | Date DESC | 5     | /fhir/Observation?patient={patientId}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight&\_sort=-date&\_count=5        | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954746](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954746) |
 | Lichaamsgewicht                                               | GET    | Date DESC | 5     | /fhir/Observation?patient={patientId}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-BodyWeight&\_sort=-date&\_count=5        | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954750](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954750) |
 | Respiration                                                   | GET    | Date DESC | 5     | /fhir/Observation?patient={patientId}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-Respiration&\_sort=-date&\_count=5       | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954947](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954947) |
-| Rapportage                                                    | GET    | Date DESC | 10    | /fhir/Observation?patient={patientId}&\_profile=https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport&\_sort=-date&\_count=10 | [https://simplifier.net/anw/nl-core-nursi ngreport](https://simplifier.net/anw/nl-core-nursingreport)                                                              |
+| Rapportage                                                    | GET    | Date DESC | 10    | /fhir/Observation?patient={patientId}&\_profile=https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport&\_sort=-date&\_count=10 | [https://simplifier.net/anw/nl-core-nursi ngreport](https://simplifier.net/anw/nl-core-nursingreport)                                                                |
 | Woonsituatie                                                  | GET    |           |       | /fhir/Observation?patient={patientId}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-LivingSituation                          | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954848](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954848) |
 | Alerts                                                        | GET    |           |       | /fhir/Flag?patient={patientId}}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-Alert                                          | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954733](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954733) |
 | Wilsverklaring                                                | GET    |           |       | /fhir/Consent?patient={patientId}&\_profile=http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective                             | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954726](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954726) |
