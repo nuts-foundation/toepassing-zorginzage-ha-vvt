@@ -15,15 +15,16 @@ Deze usecase ondersteunt het ophalen van informatie zoals vastgelegd door de (wi
 
 De huisarts wil informatie inzien in het bronsysteem (VVT). In het huisartsensysteem start de gebruiker de zoekopdracht. Gezocht wordt op een individuele patient. Gebaseerd op de informatie die door de VVT instellingen in de discoveryservice is vastgelegd in combinatie met het BSN van de patient wordt in het opvragende systeem een lijst getoond van instellingen waar potentieel informatie op te halen is voor de betreffende patient. De huisarts selecteert de juiste instelling. Op basis daarvan vindt een FHIR-request 'Patient' plaats naar het bronsysteem. Het bronsysteem beoordeelt deze op een aantal parameters:
 
-* Ken ik deze patient
-* Heeft deze patient een consent afgegeven
-* Klopt het Verifiable Credential van de aanvrager (geldig en gelijk aan hetgeen is vastgelegd bij de patient).
+* Ken ik deze patient?
+* Heeft deze patient een consent afgegeven?
+* Klopt het Verifiable Credential van de aanvrager (geldig en gelijk aan hetgeen is vastgelegd bij de patient)?
+* Is deze huisarts onderdeel van het zorgnetwerk van deze patient?
 
-Als middel wordt hiervoor wordt het URA nummer van de opvragende organisatie gebruikt. Deze informatie is door de (wijk)verpleging vastgelegd in het bronsysteem bij de patiënt. 
+Als middel wordt hiervoor het URA nummer van de opvragende organisatie gebruikt. Deze informatie is door de (wijk)verpleging vastgelegd in het bronsysteem bij de patiënt. 
 
 Indien er informatie beschikbaar is en deze vrijgegeven mag worden wordt het interne PatientID terugekoppeld aan het opvragende systeem. Hierin is ook de informatie opgenomen rondom de contactinformatie van de zorgverlener. Hiermee kan de vraag beantwoord worden 'wie moet ik bellen voor deze patient'.
 
-Op basis van dit PatientID kan verdere (medisch inhoudelijke) informatie opgevraagd worden. Er is een lijst beschikbaar van informatie die opgevraagd kan worden indien het bronsysteem deze informatie beschikbaar heeft. Deze bestaat uit rapportages en meetwaarden volgens een afgesproken stramien (in aantal / tijd). Zie hiervoor de paragraaf 'zorginhoudelijke informatie'.
+Op basis van dit PatientID kan verdere (medisch inhoudelijke) informatie opgevraagd worden. Er is een lijst beschikbaar van informatie die opgevraagd kan worden indien het bronsysteem deze informatie beschikbaar heeft. Deze bestaat uit rapportages en meetwaarden volgens een afgesproken stramien (in aantal / tijd). Zie hiervoor de 'Tabel met FHIR resources en queries' onder paragraaf 'Informatie'.
 
 De verdere medisch inhoudelijke informatie wordt opgehaald op basis van FHIR (ZIB's waar mogelijk). De informatie wordt in het doelsysteem getoond. Het doelsysteem is er verantwoordelijk voor de informatie in de juiste context te tonen (denk aan verschillen met eigen informatie). Indien gewenst kan informatie overgenomen worden / opgeslagen in het doelsysteem,
 
@@ -61,27 +62,30 @@ Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (o
 * UZI credentials (human readable namen) moet bij de bron opgelost worden
 * Lokalisatie (bij gebrek aan een generieke lokalisatiedienst)
 
-## Architectuur beschrijving
+## Architectuurbeschrijving
 
-### Register a subject for the use-case
+### Registreren voor de use-case
 <!-- ![sequence diagram for care organization management](img/sequence-diagram-use-case-registration.svg) -->
 <img src="img/sequence-diagram-use-case-registration.svg" width="700">
 
 **X509CredentialTool**: 
-There are currently 2 tools provided by the Nuts community to generate the X509Credential. 
-One can be used as a [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java), the other is [written in Go and provides a docker image](https://github.com/nuts-foundation/go-didx509-toolkit) to build the VC. Follow the instructions for the tools to complete steps 9-10.
+De Nuts community biedt op dit moment 2 tools aan om een X509Credential te genereren:
+- Een [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java)
+- Een [Go tool en docker image](https://github.com/nuts-foundation/go-didx509-toolkit)
 
-### Request data at VVT
+Beide tools geven instructies om stappen 9-10 uit te kunnen voeren.
+
+### Data ophalen bij de VVT
 <!-- ![sequence diagram ophalen data bij VVT](img/sequence-diagram-resource-request.svg) -->
 <img src="img/sequence-diagram-resource-request.svg" width="1500">
 
 TODO: write out actions for each (group of) steps
 
 ## Lokalisatie
-Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar er data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen. 
+Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen. 
 
 ## Grondslag
-Voor de behandelrelatie wordt uit gegaan dat als de huisarts is vastgelegd bij de patient in het VVT dossier, er sprake is van een behandelrelatie.
+Voor de behandelrelatie wordt ervan uitgegaan dat als de huisarts is vastgelegd bij de patient in het VVT dossier, er sprake is van een behandelrelatie.
 
 ### Consent specificatie
 Consent: de verantwoordelijkheid voor het vastleggen en checken van consent wordt ingevuld door het bronsysteem zelf.
@@ -92,10 +96,10 @@ Discovery Service
 ### Presentation Definition
 
 ## Authenticatie
-Om veilig gegevens te kunnen delen, tussen verschillende zorgaanbieders, is zorgaanbieder-overstijgende authenticatie van zorgorganisaties en zorgverleners essentieel. Vanuit de NEN wordt gewerkt aan een norm met betrekking tot identificatie en authenticatie. Op het moment dat deze norm gepubliceerd wordt zullen we de landelijke ontwikelingen mbt tot deze norm volgen. Om op korte termijn informatie uitwisseling mogelijk te maken, zal de authenticatie geborgd worden op de volgende manier:
+Om veilig gegevens te kunnen delen tussen verschillende zorgaanbieders, is zorgaanbieder-overstijgende authenticatie van zorgorganisaties en zorgverleners essentieel. Vanuit de NEN wordt gewerkt aan een norm met betrekking tot identificatie en authenticatie. Op het moment dat deze norm gepubliceerd wordt zullen we de landelijke ontwikelingen mbt tot deze norm volgen. Om op korte termijn informatie uitwisseling mogelijk te maken, zal de authenticatie geborgd worden op de volgende manier:
 
 ## Identificatie
-Om de raadplegende organisatie te identificeren wordt gebruik gemaakt van het UZI abonnenumummer ook wel bekend als het URA nummer. Als middel voor de authenticatie van dit nummer gebruiken we een verifiable credenial en de OpenID Foundation standaarden voor authenticatie.
+Om de raadplegende organisatie te identificeren wordt gebruik gemaakt van het UZI abonnenumummer ook wel bekend als het URA nummer. Als middel voor de authenticatie van dit nummer gebruiken we een verifiable credential en de OpenID Foundation standaarden voor authenticatie.
 
 Omdat het UZI register als authentieke bron zelf nog geen URA Credentials uitgeeft wordt dit credential afgeleid van een UZI Servercertificaat van de betreffende organisatie. We gebruiken hiervoor een nieuw credential NutsX509Credential waarvan de ontwikkeling hier te volgen is: https://github.com/nuts-foundation/nuts-node/issues/3582
 
@@ -106,7 +110,7 @@ Kaartje 10
 Kaartje 7
 
 ## MedewerkerID
-Uitgangspunt: Identificatie van de medewerker op basis van een (intern) MedewerkerID, gecombineerd met een VC gebaseerd op informatie binnen het UZI-servercertificatie is.
+Uitgangspunt: Identificatie van de medewerker op basis van een (intern) MedewerkerID, gecombineerd met een VC gebaseerd op informatie binnen het UZI-servercertificaat.
 
 
 ## Informatie
