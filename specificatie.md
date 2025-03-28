@@ -93,7 +93,31 @@ Consent: de verantwoordelijkheid voor het vastleggen en checken van consent word
 ## Adressering
 Discovery Service
 
-### Presentation Definition
+### Discovery Definition
+
+-- WIP Topicus start
+
+#### Input descriptors:
+- x509credential
+  - type = X509Credential
+  - uitgegeven door UZI (TODO welke?)
+  - Org ID moet DID:web zijn
+  - naam
+  - ura
+  - plaats
+- DiscoveryRegistrationCredential
+  - type = DiscoveryRegistrationCredential
+  - auth url
+  - fhir url
+
+#### How to
+Hoe aan te maken? Met API-call
+Selectie van CA uitgelegd
+
+#### Zoektermen
+Zoeken mogelijk op did:web, naam, plaats & URA
+
+-- WIP Topicus end
 
 ## Authenticatie
 Om veilig gegevens te kunnen delen tussen verschillende zorgaanbieders, is zorgaanbieder-overstijgende authenticatie van zorgorganisaties en zorgverleners essentieel. Vanuit de NEN wordt gewerkt aan een norm met betrekking tot identificatie en authenticatie. Op het moment dat deze norm gepubliceerd wordt zullen we de landelijke ontwikelingen mbt tot deze norm volgen. Om op korte termijn informatie uitwisseling mogelijk te maken, zal de authenticatie geborgd worden op de volgende manier:
@@ -104,7 +128,19 @@ Om de raadplegende organisatie te identificeren wordt gebruik gemaakt van het UZ
 Omdat het UZI register als authentieke bron zelf nog geen URA Credentials uitgeeft wordt dit credential afgeleid van een UZI Servercertificaat van de betreffende organisatie. We gebruiken hiervoor een nieuw credential NutsX509Credential waarvan de ontwikkeling hier te volgen is: https://github.com/nuts-foundation/nuts-node/issues/3582
 
 ### Presentation Definition
-Kaartje 10
+-- WIP Topicus start
+
+#### Input descriptors:
+- x509credential: see Discovery Definition <linkje mogelijk?>.
+- NutsEmployeeCredential
+	Naam
+	Rol
+	ID
+
+#### How to
+Hoe aan te maken?
+
+-- WIP Topicus end
 
 ## Autorisatie
 Voor fase 1 van de Huisartsinzage gaan wij uit van autorisatie op 4 niveaus:
