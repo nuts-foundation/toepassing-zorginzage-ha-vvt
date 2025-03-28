@@ -119,7 +119,7 @@ Om een resource van een patient op te kunnen halen moet het bronsysteem toestemm
 Voor de Huisartsinzage is een beperkte set aan Zibs beschikbaar. Deze zijn uitgewerkt in de lijst van ZIBs. Alleen deze Zibs kunnen opgehaald worden binnen de scope van de Huisartsinzage.
 
 #### Fhir query parameters
-Om te voorkomen dat er teveel informatie opgehaald kan worden (bijvoorbeeld middels het gebruik van `_include` parameters) wordt er ook autorisatie uitgevoerd op basis van de gebruikte query parameters. Hier wordt onderscheid gemaakt tussen verplichte parameters en toegestane parameters. Alle query parameters die gedefinieerd zijn in de set aan gebruikte Zibs (zie hieronder) zijn verplicht, met uitzondering van de `_include` parameters op de Patient resource. Het gebruik van andere query parameters is niet toegestaan.
+Om te voorkomen dat er teveel informatie opgehaald kan worden (bijvoorbeeld middels het gebruik van `_include` parameters) wordt er ook autorisatie uitgevoerd op basis van de gebruikte query parameters. Hier wordt onderscheid gemaakt tussen verplichte parameters en toegestane parameters. Alle query parameters die gedefinieerd zijn in de set aan gebruikte Zibs (zie hieronder) zijn verplicht. Het gebruik van andere query parameters is niet toegestaan.
 
 ## MedewerkerID
 Uitgangspunt: Identificatie van de medewerker op basis van een (intern) MedewerkerID, gecombineerd met een VC gebaseerd op informatie binnen het UZI-servercertificatie is.
