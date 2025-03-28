@@ -12,11 +12,6 @@
             "PS256"
           ]
         },
-        "ldp_vp": {
-          "proof_type": [
-            "JsonWebSignature2020"
-          ]
-        },
         "jwt_vp": {
           "alg": [
             "ES256"
