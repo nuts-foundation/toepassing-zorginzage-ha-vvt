@@ -30,7 +30,6 @@
             "fields": [
               {
                 "path": [
-                  "$.vc.type",
                   "$.type"
                 ],
                 "filter": {
@@ -95,7 +94,7 @@
         },
         {
           "id": "id_employee",
-          "name": "The user identity based on the self issued EmployeeCredential",
+          "name": "The user identity based on the self issued NutsEmployeeCredential",
           "constraints": {
             "fields": [
               {
@@ -104,7 +103,7 @@
                 ],
                 "filter": {
                   "type": "string",
-                  "const": "EmployeeCredential"
+                  "const": "NutsEmployeeCredential"
                 }
               },
               {
