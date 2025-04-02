@@ -170,6 +170,6 @@ Wordt momenteel uitgewerkt in usecase ANW. Resultaat wordt hier opgenomen
 De volgende omgevingen zijn beschikbaar in de OTAP omgeving:
 -Ontwikkel: lokaal bij de ontwikkelaars zelf
 -Test: Testomgeving waar met UZI testcertificaten gewerkt wordt
--Acceptatie: acceptatieomgeving
--Productie: productie omgeving
-Voor alle omgevingen is specifieke inrichting nodig, deze is hier te vinden: 
+-Acceptatie: acceptatieomgeving waar met zowel test als productie UZI certificaten gewerkt kan worden (Dit omdat de leveranciers verschillend om gaan met acceptatie en staging).
+-Productie: productie omgeving waar met productie UZI servercertificaten gewerkt wordt.
+
