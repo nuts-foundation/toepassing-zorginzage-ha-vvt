@@ -37,7 +37,7 @@ De verdere medisch inhoudelijke informatie wordt opgehaald op basis van FHIR (ZI
 - Het bronsysteem moet vastleggen en checken welke organisatie bij de informatie mag. Er kan niet op medewerker niveau of rol worden gecontroleerd. Verdere uitwerking in hoofdstuk autorisatie. 
 -Logging vindt in de gehele keten plaats
 
-Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
+Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch is. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
 - We sluiten niet aan op Mitz (maar gaan consent lokaal oplossen)
 - Er is geen goed authenticatiemiddel voor de gebruiker beschikbaar (DEZI) dus werken we met een VC waarbij de organisatie obv een UZI certificaat wordt geauthenticeerd
 - We implementeren niet alle mogelijke ZIB’s want die zijn niet beschikbaar in bronsystemen, maar hanteren een subset
