@@ -13,8 +13,8 @@ De Governance en besluitvorming rondom deelname is belegd bij de projectgroep Hu
 # Functioneel Ontwerp
 Deze usecase ondersteunt het ophalen van informatie zoals vastgelegd door de (wijk)verpleging in de VVT om deze informatie beschikbaar te stellen aan de huisarts. Het proces werkt als volgt:
 
-De huisarts wil informatie inzien in het bronsysteem (VVT). In het huisartsensysteem start de gebruiker de zoekopdracht. Gezocht wordt op een individuele patient. Gebaseerd op de informatie die door de VVT instellingen in de discoveryservice is vastgelegd in combinatie met het BSN van de patient wordt in het opvragende systeem een lijst getoond van instellingen waar potentieel informatie op te halen is voor de betreffende patient. De huisarts selecteert de juiste instelling. Op basis daarvan vindt een FHIR-request ‘Patient’ plaats naar het bronsysteem. Het bronsysteem beoordeelt deze op een aantal parameters:
-- Ken ik deze patient
+De huisarts wil informatie inzien in het bronsysteem (VVT). In het huisartsensysteem start de gebruiker de zoekopdracht. Gezocht wordt op een individuele patiënt. Gebaseerd op de informatie die door de VVT instellingen in de discoveryservice is vastgelegd in combinatie met het BSN van de patiënt wordt in het opvragende systeem een lijst getoond van instellingen waar potentieel informatie op te halen is voor de betreffende patiënt. De huisarts selecteert de juiste instelling. Op basis daarvan vindt een FHIR-request ‘Patient’ plaats naar het bronsysteem. Het bronsysteem beoordeelt deze op een aantal parameters:
+- Ken ik deze patiënt?
 - Heeft deze patiënt een consent afgegeven
 - Klopt het Verifiable Credential van de aanvrager (geldig en gelijk aan hetgeen is vastgelegd bij de patiënt).
 
