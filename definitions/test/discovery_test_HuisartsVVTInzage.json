@@ -1,9 +1,9 @@
 {
-  "id": "test:HuisartsVVTInzage",
-  "endpoint": "https://nuts.test-datakluis.shared.topicuszorg.nl/discovery/test:HuisartsVVTInzage",
+  "id": "HuisartsVVTInzage",
+  "endpoint": "https://nuts.test-datakluis.shared.topicuszorg.nl/discovery/HuisartsVVTInzage",
   "presentation_max_validity": 259200,
   "presentation_definition": {
-    "id": "test:HuisartsVVTInzage",
+    "id": "HuisartsVVTInzage",
     "format": {
       "ldp_vc": {
         "proof_type": [

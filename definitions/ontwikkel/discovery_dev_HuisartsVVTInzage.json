@@ -1,9 +1,9 @@
 {
-  "id": "dev:HuisartsVVTInzage",
-  "endpoint": "http://localhost:9091/discovery/dev:HuisartsVVTInzage",
+  "id": "HuisartsVVTInzage",
+  "endpoint": "http://localhost:9091/discovery/HuisartsVVTInzage",
   "presentation_max_validity": 3600,
   "presentation_definition": {
-    "id": "dev:HuisartsVVTInzage",
+    "id": "HuisartsVVTInzage",
     "format": {
       "ldp_vc": {
         "proof_type": [
