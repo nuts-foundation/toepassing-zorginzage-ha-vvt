@@ -120,7 +120,7 @@
             },
             {
               "id": "fhir_base_url",
-              "purpose": "Base URL of the Care Plan Contributor's FHIR API provided by the SCP-node.",
+              "purpose": "Base URL of the FHIR API.",
               "path": [
                 "$.credentialSubject.fhirBaseURL"
               ],
