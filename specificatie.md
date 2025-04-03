@@ -115,6 +115,12 @@ Hierbij is een veld toegevoegd aan de credentialSubject genaamd fhirBaseURL. Dez
 ## Authenticatie
 Om veilig gegevens te kunnen delen tussen verschillende zorgaanbieders, is zorgaanbieder-overstijgende authenticatie van zorgorganisaties en zorgverleners essentieel. Vanuit de NEN wordt gewerkt aan een norm met betrekking tot identificatie en authenticatie. Op het moment dat deze norm gepubliceerd wordt zullen we de landelijke ontwikelingen mbt tot deze norm volgen. Om op korte termijn informatie uitwisseling mogelijk te maken, zal de authenticatie geborgd worden op de volgende manier:
 
+### Server & Client authenticatie
+Voor server & client authenticatie is besloten om de volgende uitgangspunten te hanteren:
+- Testomgevingen maken gebruik van Test UZI-servercertificaten voor de X509Credentials & geldige certificaten voor TLS (publiekelijk vertrouwde & PKIOverheid) op de FHIR endpoints en als clientAuthenticatie
+- Acceptatieomgevingen maken gebruik van of test of productie UZI-servercertificaten voor de X509Credentials & PKIOverheid voor TLS op de FHIR endpoints en als clientAuthenticatie
+- Productieomgevingen maken enkel gebruik van productie UZI-servercertificaten voor de X509Credentials & PKIOverheid voor TLS op de FHIR endpoints en als clientAuthenticatie
+
 ## Identificatie
 Om de raadplegende organisatie te identificeren wordt gebruik gemaakt van het UZI abonnenumummer ook wel bekend als het URA nummer. Als middel voor de authenticatie van dit nummer gebruiken we een verifiable credential en de OpenID Foundation standaarden voor authenticatie.
 
