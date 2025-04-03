@@ -107,11 +107,15 @@ Omdat het UZI register als authentieke bron zelf nog geen URA Credentials uitgee
 Kaartje 10
 
 ## Autorisatie
-Voor fase 1 van de Huisartsinzage gaan wij uit van autorisatie op 4 niveaus:
+Voor fase 1 van de Huisartsinzage gaan wij uit van autorisatie op 5 niveaus:
+- Aanwezig op Discovery service
 - Behandelrelatie
 - Consent
 - Zib
 - Fhir query parameters
+
+#### Discovery service
+Om data bij een bronhouder op te halen, wordt de discovery service gebruikt om het adres te vinden. Hoewel het technisch mogelijk is om data op te halen bij een partij die niet (meer) aangemeld is bij de discovery service, is dit functioneel en qua beveiliging niet wenselijk. Daarom moet de bronhouder ook controleren of de partij waarvoor de aanvraag ingedient wordt nog steeds aangemeld is voor de toepassing op de discovery service.
 
 #### Behandelrelatie
 Om toegang te krijgen tot gegevens van een patient is het vereist dat er een behandelrelatie tussen de huisartspraktijk en de patient bekend is bij het bronsysteem. Deze controle wordt gedaan op basis van het URA-nummer waarmee een resource wordt opgehaald. Dit nummer is terug te vinden in het `organization_ura` veld van een token introspect op de Nuts node. Zie ook stap 11 in "Request data at VVT" onder de architectuurbeschrijving.
