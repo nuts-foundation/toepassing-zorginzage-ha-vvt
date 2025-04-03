@@ -95,29 +95,22 @@ Discovery Service
 
 ### Discovery Definition
 
--- WIP Topicus start
+Algemene uitleg over wat is een Service Discovery is te vinden op de [Nuts Wiki pagina Service Discovery](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery)
 
 #### Input descriptors:
-- x509credential
-  - type = X509Credential
-  - uitgegeven door UZI (TODO welke?)
-  - Org ID moet DID:web zijn
-  - naam
-  - ura
-  - plaats
-- DiscoveryRegistrationCredential
-  - type = DiscoveryRegistrationCredential
-  - auth url
-  - fhir url
+Qua benodigde credentials kennen wij 2 verschillende credentials, een X509Credential en een DiscoveryRegistrationCredential.
 
-#### How to
-Hoe aan te maken? Met API-call
-Selectie van CA uitgelegd
+##### X509Cerdential
+Dit betreft een X509Credential conform [Nuts RFC023](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023), ondertekend met een UZI-servercertificaat.
 
-#### Zoektermen
-Zoeken mogelijk op did:web, naam, plaats & URA
+Aanmaken kan bijv. met de [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main). Als uitgever is besloten om hier de chain op te nemen het dichtst bij de leaf-certificaat.
 
--- WIP Topicus end
+Gezocht kan worden op de naam van de DID, organisatie naam, plaats & URA.
+
+##### DiscoveryRegistrationCredential
+Dit betreft een DiscoveryRegistrationCredential conform de uitleg op de [Nuts Wiki pagina over Service Discovery](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration).
+
+Hierbij is een veld toegevoegd aan de credentialSubject genaamd fhirBaseURL. Deze kan gebruikt worden door gebruikers van de Discovery Service om te weten waar de daadwerkelijke FHIR data opgehaald kan worden.
 
 ## Authenticatie
 Om veilig gegevens te kunnen delen tussen verschillende zorgaanbieders, is zorgaanbieder-overstijgende authenticatie van zorgorganisaties en zorgverleners essentieel. Vanuit de NEN wordt gewerkt aan een norm met betrekking tot identificatie en authenticatie. Op het moment dat deze norm gepubliceerd wordt zullen we de landelijke ontwikelingen mbt tot deze norm volgen. Om op korte termijn informatie uitwisseling mogelijk te maken, zal de authenticatie geborgd worden op de volgende manier:
@@ -127,20 +120,16 @@ Om de raadplegende organisatie te identificeren wordt gebruik gemaakt van het UZ
 
 Omdat het UZI register als authentieke bron zelf nog geen URA Credentials uitgeeft wordt dit credential afgeleid van een UZI Servercertificaat van de betreffende organisatie. We gebruiken hiervoor een nieuw credential NutsX509Credential waarvan de ontwikkeling hier te volgen is: https://github.com/nuts-foundation/nuts-node/issues/3582
 
-### Presentation Definition
--- WIP Topicus start
+### Policy Definition
 
 #### Input descriptors:
-- x509credential: see Discovery Definition <linkje mogelijk?>.
-- NutsEmployeeCredential
-	Naam
-	Rol
-	ID
+Qua benodigde credentials kennen wij 2 verschillende credentials, een X509Credential en een NutsEmployeeCredential.
 
-#### How to
-Hoe aan te maken?
+##### X509Credential
+Zie de X509Credential onder Discovery Definition, deze is exact het zelfde.
 
--- WIP Topicus end
+##### NutsEmployeeCredential
+Zie de [Nuts Wiki pagina over Requesting Access](https://wiki.nuts.nl/books/implementing-a-nuts-use-case-Ssg/page/requesting-access) voor context.
 
 ## Autorisatie
 Voor fase 1 van de Huisartsinzage gaan wij uit van autorisatie op 4 niveaus:
