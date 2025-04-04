@@ -46,7 +46,9 @@ Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment n
 - Bij gebrek aan een generieke lokalisatiedienst wordt er een workaround toegepast waarbij handmatig wordt vastgelegd waar de patiënt in zorg is en waar dus informatie opgehaald kan worden
 
 
-## Architectuurbeschrijving
+## Architectuur beschrijving
+### Gebruik van Nuts
+Voor deze usecase wordt gebruikt gemaakt van de Nuts infrastructuur. Specifiek wordt gebruik gemaakt van de mogelijkheden die de V6.1 versie van Nuts biedt en daarmee dus ook van did:web. Voor de informatie specifiek over de Nuts-laag wordt verwezen naar de officiele documentatie: https://nuts-node.readthedocs.io/en/stable/   
 
 ### Registreren voor de use-case
 <!-- ![sequence diagram for care organization management](img/sequence-diagram-use-case-registration.svg) -->
@@ -91,11 +93,15 @@ Omdat het UZI register als authentieke bron zelf nog geen URA Credentials uitgee
 Kaartje 10
 
 ## Autorisatie
-Voor fase 1 van de Huisartsinzage gaan wij uit van autorisatie op 4 niveaus:
+Voor fase 1 van de Huisartsinzage gaan wij uit van autorisatie op 5 niveaus:
+- Aanwezig op Discovery service
 - Behandelrelatie
 - Consent
 - Zib
 - Fhir query parameters
+
+#### Discovery service
+Om data bij een bronhouder op te halen, wordt de discovery service gebruikt om het adres te vinden. Hoewel het technisch mogelijk is om data op te halen bij een partij die niet (meer) aangemeld is bij de discovery service, is dit functioneel en qua beveiliging niet wenselijk. Daarom moet de bronhouder ook controleren of de partij waarvoor de aanvraag ingedient wordt nog steeds aangemeld is voor de toepassing op de discovery service.
 
 #### Behandelrelatie
 Om toegang te krijgen tot gegevens van een patient is het vereist dat er een behandelrelatie tussen de huisartspraktijk en de patient bekend is bij het bronsysteem. Deze controle wordt gedaan op basis van het URA-nummer waarmee een resource wordt opgehaald. Dit nummer is terug te vinden in het `organization_ura` veld van een token introspect op de Nuts node. Zie ook stap 11 in "Request data at VVT" onder de architectuurbeschrijving.
@@ -140,9 +146,6 @@ Voor het ophalen van de Patiënt geldt:
 POST /fhir/Patient/_search
 - Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
 - Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
-- Optionele parameters:
-  - `_include=Patient:general-practitioner`
-  - `_include:iterate=PractitionerRole:organization`
 
 ## Foutafhandeling
 In deze fase concentreren we ons op beveiliging – juist in de pilot zal bekeken moeten worden of dit ook leidt tot voldoende gebruiksgemak. In de basis wordt dus alleen getoond DAT er een fout is en geen specifiekere informatie zoals 'patient niet gevonden'. Informatie die publiekelijk beschikbaar is (bv inhoud van de usecase als zijnde 'deze resource valt buiten de usecase') zou toegevoegd mogen worden om nieuwe ontwikkelaars makkelijker te maken bij het testen
@@ -154,6 +157,6 @@ Wordt momenteel uitgewerkt in usecase ANW. Resultaat wordt hier opgenomen
 De volgende omgevingen zijn beschikbaar in de OTAP omgeving:
 -Ontwikkel: lokaal bij de ontwikkelaars zelf
 -Test: Testomgeving waar met UZI testcertificaten gewerkt wordt
--Acceptatie: acceptatieomgeving
--Productie: productie omgeving
-Voor alle omgevingen is specifieke inrichting nodig, deze is hier te vinden: 
+-Acceptatie: acceptatieomgeving waar met zowel test als productie UZI certificaten gewerkt kan worden (Dit omdat de leveranciers verschillend om gaan met acceptatie en staging).
+-Productie: productie omgeving waar met productie UZI servercertificaten gewerkt wordt.
+
