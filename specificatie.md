@@ -55,14 +55,17 @@ Logging vindt in de gehele keten plaats
 
 Shortcuts en Toekomstige ontwikkelingen:
 Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
-* Consent lokaal oplossen (ipv Mitz)
-* met UZI certificaat (nog geen goed authenticatiemiddel voor de gebruiker beschikbaar / DEZI)
-* Toekomstige ZIB's (nu niet beschikbaar in bronsystemen)
-* DPOB security (is aanvullende beveiliging die ook in andere usecase niet ingevuld)
-* UZI credentials (human readable namen) moet bij de bron opgelost worden
-* Lokalisatie (bij gebrek aan een generieke lokalisatiedienst)
+* We sluiten niet aan op Mitz (maar gaan consent lokaal oplossen)
+* Er is op dit moment geen goed authenticatiemiddel voor de gebruiker beschikbaar (DEZI) dus werken we voor nu met een VC waarbij de organisatie obv een UZI certificaat wordt geauthenticeerd. De gebruiker wordt voor nu in een door de organisatie verklaard VC meegestuurd.
+* We implementeren niet alle mogelijke ZIB’s want die zijn niet beschikbaar in bronsystemen, maar hanteren een subset
+* We passen geen DPoP security toe (RFC9449)  want dit is aanvullende beveiliging die ook in andere usecase niet ingevuld wordt
+* We verrijken / corrigeren de informatie uit de UZI credentials niet (human readable namen), dit moet bij de bron opgelost worden
+* Bij gebrek aan een generieke lokalisatiedienst wordt er een workaround toegepast waarbij handmatig wordt vastgelegd waar de patient in zorg is en waar dus informatie opgehaald kan worden
 
-## Architectuurbeschrijving
+
+## Architectuur beschrijving
+### Gebruik van Nuts
+Voor deze usecase wordt gebruikt gemaakt van de Nuts infrastructuur. Specifiek wordt gebruik gemaakt van de mogelijkheden die de V6.1 versie van Nuts biedt en daarmee dus ook van did:web. Voor de informatie specifiek over de Nuts-laag wordt verwezen naar de officiele documentatie: https://nuts-node.readthedocs.io/en/stable/   
 
 ### Registreren voor de use-case
 <!-- ![sequence diagram for care organization management](img/sequence-diagram-use-case-registration.svg) -->
