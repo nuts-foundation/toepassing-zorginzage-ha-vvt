@@ -65,7 +65,7 @@ Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (o
 
 ## Architectuur beschrijving
 ### Gebruik van Nuts
-Voor deze usecase wordt gebruikt gemaakt van de Nuts infrastructuur. Specifiek wordt gebruik gemaakt van de mogelijkheden die de V6 versie van Nuts biedt en daarmee dus ook van did:web. Voor de informatie specifiek over de Nuts-laag wordt verwezen naar de officiele documentatie: https://nuts-node.readthedocs.io/en/stable/   
+Voor deze usecase wordt gebruikt gemaakt van de Nuts infrastructuur. Specifiek wordt gebruik gemaakt van de mogelijkheden die de V6.1 versie van Nuts biedt en daarmee dus ook van did:web. Voor de informatie specifiek over de Nuts-laag wordt verwezen naar de officiele documentatie: https://nuts-node.readthedocs.io/en/stable/   
 
 ### Registreren voor de use-case
 <!-- ![sequence diagram for care organization management](img/sequence-diagram-use-case-registration.svg) -->
