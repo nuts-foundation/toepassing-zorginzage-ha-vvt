@@ -103,7 +103,7 @@ Qua benodigde credentials kennen wij 2 verschillende credentials, een X509Creden
 ##### X509Cerdential
 Dit betreft een X509Credential conform [Nuts RFC023](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023), ondertekend met een UZI-servercertificaat.
 
-Aanmaken kan bijv. met de [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main). Als uitgever is besloten om hier de chain op te nemen het dichtst bij de leaf-certificaat.
+Aanmaken kan bijv. met de [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) of de [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/). Als uitgever is besloten om hier de chain op te nemen het dichtst bij de leaf-certificaat.
 
 Gezocht kan worden op de naam van de DID, organisatienaam, plaats & URA.
 
