@@ -26,8 +26,8 @@ De verdere medisch inhoudelijke informatie wordt opgehaald op basis van FHIR (ZI
 
 
 # Uitgangspunten
-- De patient is reeds bekend/in zorg bij zowel de huisarts als bij de VVT instelling
-- De patient heeft consent afgegeven om data te delen met de huisarts
+- De patiënt is reeds bekend/in zorg bij zowel de huisarts als bij de VVT instelling
+- De patiënt heeft consent afgegeven om data te delen met de huisarts
 - Informatie kan opgehaald worden bij het bronsysteem en getoond in het doelsysteem
  In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via deze koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die passend is in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Passend kan zijn als er bijvoorbeeld discrepatenties zijn deze tonen. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
 - De medewerkers blijven in hun eigen systeem werken. De leveranciers zijn zelf verantwoordelijk hoe zij de medewerker het beste willen/kunnen ondersteunen.
