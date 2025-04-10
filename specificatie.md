@@ -13,54 +13,37 @@ De Governance en besluitvorming rondom deelname is belegd bij de projectgroep Hu
 # Functioneel Ontwerp
 Deze usecase ondersteunt het ophalen van informatie zoals vastgelegd door de (wijk)verpleging in de VVT om deze informatie beschikbaar te stellen aan de huisarts. Het proces werkt als volgt:
 
-De huisarts wil informatie inzien in het bronsysteem (VVT). In het huisartsensysteem start de gebruiker de zoekopdracht. Gezocht wordt op een individuele patient. Gebaseerd op de informatie die door de VVT instellingen in de discoveryservice is vastgelegd in combinatie met het BSN van de patient wordt in het opvragende systeem een lijst getoond van instellingen waar potentieel informatie op te halen is voor de betreffende patient. De huisarts selecteert de juiste instelling. Op basis daarvan vindt een FHIR-request 'Patient' plaats naar het bronsysteem. Het bronsysteem beoordeelt deze op een aantal parameters:
+De huisarts wil informatie inzien in het bronsysteem (VVT). In het huisartsensysteem start de gebruiker de zoekopdracht. Gezocht wordt op een individuele patiënt. Gebaseerd op de informatie die door de VVT instellingen in de discoveryservice is vastgelegd in combinatie met het BSN van de patiënt wordt in het opvragende systeem een lijst getoond van instellingen waar potentieel informatie op te halen is voor de betreffende patiënt. De huisarts selecteert de juiste instelling. Op basis daarvan vindt een FHIR-request ‘Patient’ plaats naar het bronsysteem. Het bronsysteem beoordeelt deze op een aantal parameters:
+- Ken ik deze patiënt?
+- Heeft deze patiënt een consent afgegeven?
+- Klopt het Verifiable Credential van de aanvrager (geldig en gelijk aan hetgeen is vastgelegd bij de patiënt)?
 
-* Ken ik deze patient?
-* Heeft deze patient een consent afgegeven?
-* Klopt het Verifiable Credential van de aanvrager (geldig en gelijk aan hetgeen is vastgelegd bij de patient)?
-* Is deze huisarts onderdeel van het zorgnetwerk van deze patient?
+Als middel wordt hiervoor wordt het URA nummer van de opvragende organisatie gebruikt. Deze informatie is door de (wijk)verpleging vastgelegd in het bronsysteem bij de patiënt.
+Indien er informatie beschikbaar is en deze vrijgegeven mag worden wordt het interne PatientID terugekoppeld aan het opvragende systeem. Hierin is ook de informatie opgenomen rondom de contactinformatie van de zorgverlener. Hiermee kan de vraag beantwoord worden ‘wie moet ik bellen voor deze patiënt'.
+Op basis van dit PatientID kan verdere (medisch inhoudelijke) informatie opgevraagd worden. Er is een lijst beschikbaar van informatie die opgevraagd kan worden indien het bronsysteem deze informatie beschikbaar heeft. Deze bestaat uit rapportages en meetwaarden volgens een afgesproken stramien (in aantal / tijd). Zie hiervoor de paragraaf ‘zorginhoudelijke informatie’.
 
-Als middel wordt hiervoor het URA nummer van de opvragende organisatie gebruikt. Deze informatie is door de (wijk)verpleging vastgelegd in het bronsysteem bij de patiënt. 
+De verdere medisch inhoudelijke informatie wordt opgehaald op basis van FHIR (ZIB’s waar mogelijk). De informatie wordt in het doelsysteem getoond. Het doelsysteem is er verantwoordelijk voor de informatie in de juiste context te tonen (denk aan verschillen met eigen informatie). Logging vindt in de gehele keten plaats.
 
-Indien er informatie beschikbaar is en deze vrijgegeven mag worden wordt het interne PatientID terugekoppeld aan het opvragende systeem. Hierin is ook de informatie opgenomen rondom de contactinformatie van de zorgverlener. Hiermee kan de vraag beantwoord worden 'wie moet ik bellen voor deze patient'.
-
-Op basis van dit PatientID kan verdere (medisch inhoudelijke) informatie opgevraagd worden. Er is een lijst beschikbaar van informatie die opgevraagd kan worden indien het bronsysteem deze informatie beschikbaar heeft. Deze bestaat uit rapportages en meetwaarden volgens een afgesproken stramien (in aantal / tijd). Zie hiervoor de 'Tabel met FHIR resources en queries' onder paragraaf 'Informatie'.
-
-De verdere medisch inhoudelijke informatie wordt opgehaald op basis van FHIR (ZIB's waar mogelijk). De informatie wordt in het doelsysteem getoond. Het doelsysteem is er verantwoordelijk voor de informatie in de juiste context te tonen (denk aan verschillen met eigen informatie). Indien gewenst kan informatie overgenomen worden / opgeslagen in het doelsysteem,
-
-Logging vindt in de gehele keten plaats.
 
 # Uitgangspunten
-De cliënt is reeds bekend/in zorg bij zowel de huisarts als bij de VVT instelling
+- De patiënt is reeds bekend/in zorg bij zowel de huisarts als bij de VVT instelling
+- De patiënt heeft consent afgegeven om data te delen met de huisarts
+- Informatie kan opgehaald worden bij het bronsysteem en getoond in het doelsysteem
+ In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via deze koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die passend is in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Passend kan zijn als er bijvoorbeeld discrepatenties zijn deze tonen. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
+- De medewerkers blijven in hun eigen systeem werken. De leveranciers zijn zelf verantwoordelijk hoe zij de medewerker het beste willen/kunnen ondersteunen.
+- Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie STU3 gebruikt.
+- Het afhandelen van de consent vraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt
+- Authenticatie vindt plaats op basis van een Verifiable Credential: het URA nummer van de organisatie waar de opvrager werkt en zoals vastgelegd in een UZI Servercertificaat.
+- Het bronsysteem moet vastleggen en checken welke organisatie bij de informatie mag. Er kan niet op medewerker niveau of rol worden gecontroleerd. Verdere uitwerking in hoofdstuk autorisatie. 
+-Logging vindt in de gehele keten plaats
 
-De client heeft consent afgegeven om data te delen met de huisarts
-
-Informatie kan opgehaald worden bij het bronsysteem en vastgelegd in het doelsysteem
-
-Er is een lijst beschikbaar van informatie die opgehaald kan worden
-
-De medewerkers blijven in hun eigen systeem werken. De leveranciers zijn zelf verantwoordelijk hoe zij de medewerker het beste willen/kunnen ondersteunen.
-
-Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie van de eOverdracht gebruikt: FHIR STU3.
-
-Het afhandelen van de cobsentvraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt
-
-Authenticatie vindt plaats op basis van een Verifiable Credential: het URA nummer van de organisatie waar de opvrager werkt en zoals vastgelegd in een UZI Servercertificaat.
-
-Autorisatie vindt plaats door een check te doen of het VC in lijn is met wat er is vastgelegd bij de patient in het bronsysteem
-
-Ten behoeve van logging wordt door het doelsysteem het MedewerkerID van de opvrager meegegeven. Deze informatie wordt bij de aanvraag vastgelegd.
-
-Logging vindt in de gehele keten plaats
-
-Shortcuts en Toekomstige ontwikkelingen:
-Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
-* We sluiten niet aan op Mitz (maar gaan consent lokaal oplossen)
-* Er is op dit moment geen goed authenticatiemiddel voor de gebruiker beschikbaar (DEZI) dus werken we voor nu met een VC waarbij de organisatie obv een UZI certificaat wordt geauthenticeerd. De gebruiker wordt voor nu in een door de organisatie verklaard VC meegestuurd.
-* We implementeren niet alle mogelijke ZIB’s want die zijn niet beschikbaar in bronsystemen, maar hanteren een subset
-* We passen geen DPoP security toe (RFC9449)  want dit is aanvullende beveiliging die ook in andere usecase niet ingevuld wordt
-* We verrijken / corrigeren de informatie uit de UZI credentials niet (human readable namen), dit moet bij de bron opgelost worden
-* Bij gebrek aan een generieke lokalisatiedienst wordt er een workaround toegepast waarbij handmatig wordt vastgelegd waar de patient in zorg is en waar dus informatie opgehaald kan worden
+Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch is. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
+- We sluiten niet aan op Mitz (maar gaan consent lokaal oplossen)
+- Er is geen goed authenticatiemiddel voor de gebruiker beschikbaar (DEZI) dus werken we met een VC waarbij de organisatie obv een UZI certificaat wordt geauthenticeerd
+- We implementeren niet alle mogelijke ZIB’s want die zijn niet beschikbaar in bronsystemen, maar hanteren een subset
+- dPOP wordt pas in een later stadium toegevoegd, voor nu maakt dit geen onderdeel uit van de usecase
+- We verrijken / corrigeren de informatie uit de UZI credentials niet (human readable namen), dit moet bij de bron opgelost worden
+- Bij gebrek aan een generieke lokalisatiedienst wordt er een workaround toegepast waarbij handmatig wordt vastgelegd waar de patiënt in zorg is en waar dus informatie opgehaald kan worden
 
 
 ## Architectuur beschrijving
