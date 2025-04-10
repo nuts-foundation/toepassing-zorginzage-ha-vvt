@@ -105,7 +105,7 @@ Dit betreft een X509Credential conform [Nuts RFC023](https://wiki.nuts.nl/books/
 
 Aanmaken kan bijv. met de [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main). Als uitgever is besloten om hier de chain op te nemen het dichtst bij de leaf-certificaat.
 
-Gezocht kan worden op de naam van de DID, organisatie naam, plaats & URA.
+Gezocht kan worden op de naam van de DID, organisatienaam, plaats & URA.
 
 ##### DiscoveryRegistrationCredential
 Dit betreft een DiscoveryRegistrationCredential conform de uitleg op de [Nuts Wiki pagina over Service Discovery](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration).
