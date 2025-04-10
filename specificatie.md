@@ -79,18 +79,49 @@ Consent: de verantwoordelijkheid voor het vastleggen en checken van consent word
 ## Adressering
 Discovery Service
 
-### Presentation Definition
+### Discovery Definition
+
+Algemene uitleg over wat is een Service Discovery is te vinden op de [Nuts Wiki pagina Service Discovery](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery)
+
+#### Input descriptors:
+Qua benodigde credentials kennen wij 2 verschillende credentials, een X509Credential en een DiscoveryRegistrationCredential.
+
+##### X509Cerdential
+Dit betreft een X509Credential conform [Nuts RFC023](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023), ondertekend met een UZI-servercertificaat.
+
+Aanmaken kan bijv. met de [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) of de [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/). Als uitgever is besloten om hier de chain op te nemen het dichtst bij de leaf-certificaat.
+
+Gezocht kan worden op de naam van de DID, organisatienaam, plaats & URA.
+
+##### DiscoveryRegistrationCredential
+Dit betreft een DiscoveryRegistrationCredential conform de uitleg op de [Nuts Wiki pagina over Service Discovery](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration).
+
+Hierbij is een veld toegevoegd aan de credentialSubject genaamd fhirBaseURL. Deze kan gebruikt worden door gebruikers van de Discovery Service om te weten waar de daadwerkelijke FHIR data opgehaald kan worden.
 
 ## Authenticatie
 Om veilig gegevens te kunnen delen tussen verschillende zorgaanbieders, is zorgaanbieder-overstijgende authenticatie van zorgorganisaties en zorgverleners essentieel. Vanuit de NEN wordt gewerkt aan een norm met betrekking tot identificatie en authenticatie. Op het moment dat deze norm gepubliceerd wordt zullen we de landelijke ontwikelingen mbt tot deze norm volgen. Om op korte termijn informatie uitwisseling mogelijk te maken, zal de authenticatie geborgd worden op de volgende manier:
+
+### Server & Client authenticatie
+Voor server & client authenticatie is besloten om de volgende uitgangspunten te hanteren:
+- Testomgevingen maken gebruik van Test UZI-servercertificaten voor de X509Credentials & geldige certificaten voor TLS (publiekelijk vertrouwde & PKIOverheid) op de FHIR endpoints en als clientAuthenticatie
+- Acceptatieomgevingen maken gebruik van of test of productie UZI-servercertificaten voor de X509Credentials & PKIOverheid voor TLS op de FHIR endpoints en als clientAuthenticatie
+- Productieomgevingen maken enkel gebruik van productie UZI-servercertificaten voor de X509Credentials & PKIOverheid voor TLS op de FHIR endpoints en als clientAuthenticatie
 
 ## Identificatie
 Om de raadplegende organisatie te identificeren wordt gebruik gemaakt van het UZI abonnenumummer ook wel bekend als het URA nummer. Als middel voor de authenticatie van dit nummer gebruiken we een verifiable credential en de OpenID Foundation standaarden voor authenticatie.
 
 Omdat het UZI register als authentieke bron zelf nog geen URA Credentials uitgeeft wordt dit credential afgeleid van een UZI Servercertificaat van de betreffende organisatie. We gebruiken hiervoor een nieuw credential NutsX509Credential waarvan de ontwikkeling hier te volgen is: https://github.com/nuts-foundation/nuts-node/issues/3582
 
-### Presentation Definition
-Kaartje 10
+### Policy Definition
+
+#### Input descriptors:
+Qua benodigde credentials kennen wij 2 verschillende credentials, een X509Credential en een NutsEmployeeCredential.
+
+##### X509Credential
+Zie de X509Credential onder Discovery Definition, deze is exact het zelfde.
+
+##### NutsEmployeeCredential
+Zie de [Nuts Wiki pagina over Requesting Access](https://wiki.nuts.nl/books/implementing-a-nuts-use-case-Ssg/page/requesting-access) voor context.
 
 ## Autorisatie
 Voor fase 1 van de Huisartsinzage gaan wij uit van autorisatie op 5 niveaus:
