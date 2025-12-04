@@ -28,13 +28,10 @@ User -> req  : request information for Patient at Custodian Y
         rn --> req --: Found Organization Y (authz_url, fhir_url)
     |||
 
-    req -> rn: Get access token \nPOST /internal/auth/v2/{subjectID}/request-service-access-token
-    activate rn
+    req -> rn++: Get access token \nPOST /internal/auth/v2/{subjectID}/request-service-access-token
         rn <--> rn : nuts-nodes handle access token request
         note right of rn : uses X509Credential and NutsEmployeeCredential
-        rn --> req : Access token
-    deactivate rn
-
+        rn --> req-- : Access token
     |||
 
     note right of req: Search based on BSN in body of request
