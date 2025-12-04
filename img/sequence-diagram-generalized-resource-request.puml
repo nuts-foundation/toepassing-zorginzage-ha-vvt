@@ -20,7 +20,7 @@ req -> req : Create User session, \nUser info needed for NutsEmployeeCredential 
 
 == Later in User session ==
 
-User -> req  : request information for Patient at Custodian Y
+User -> req: request information for Patient at Custodian Y
     req -> req: Resolve Patient BSN, and Custodian_URA for patient if it is known
 
     req -> rn++: Search for custodian in discovery \nGet /internal/discovery/v1/{serviceID}
@@ -29,7 +29,7 @@ User -> req  : request information for Patient at Custodian Y
     |||
 
     req -> rn++: Get access token \nPOST /internal/auth/v2/{subjectID}/request-service-access-token
-        rn <--> rn : nuts-nodes handle access token request
+        rn <--> cn : nuts-nodes handle access token request
         note right of rn : uses X509Credential and NutsEmployeeCredential
         rn --> req-- : Access token
     |||
