@@ -23,8 +23,9 @@ De huisarts wil informatie inzien in het bronsysteem (VVT). In het huisartsensys
 - Klopt het Verifiable Credential van de aanvrager (geldig en gelijk aan hetgeen is vastgelegd bij de patiënt)?
 
 Als middel wordt hiervoor wordt het URA nummer van de opvragende organisatie gebruikt. Deze informatie is door de (wijk)verpleging vastgelegd in het bronsysteem bij de patiënt.
-Indien er informatie beschikbaar is en deze vrijgegeven mag worden wordt het interne PatientID terugekoppeld aan het opvragende systeem. Hierin is ook de informatie opgenomen rondom de contactinformatie van de zorgverlener. Hiermee kan de vraag beantwoord worden ‘wie moet ik bellen voor deze patiënt'.
-Op basis van dit PatientID kan verdere (medisch inhoudelijke) informatie opgevraagd worden. Er is een lijst beschikbaar van informatie die opgevraagd kan worden indien het bronsysteem deze informatie beschikbaar heeft. Deze bestaat uit rapportages en meetwaarden volgens een afgesproken stramien (in aantal / tijd). Zie hiervoor de paragraaf ‘zorginhoudelijke informatie’.
+Indien er informatie beschikbaar is en deze vrijgegeven mag worden wordt het interne PatientID terugekoppeld aan het opvragende systeem. Openstaande vraag hierin is de informatie rondom de contactinformatie van de zorgverlener waarbij de patient in behandeling is. Dit kan verschillende verschijningsvormen hebben zoals de afdelingstelefoon of het hoofd van het behandelteam. Hiermee kan de vraag beantwoord worden ‘wie moet ik bellen voor deze patiënt?'. Deze vraag staat nog open, het huidige ontwerp voorziet hier nog niet in. In de komende tijd wordt een addendum op het ontwerp gemaakt waarin hiervoor een oplossing wordt geschetst.
+
+Op basis van het PatientID kan verdere (medisch inhoudelijke) informatie opgevraagd worden. Er is een lijst beschikbaar van informatie die opgevraagd kan worden indien het bronsysteem deze informatie beschikbaar heeft. Deze bestaat uit rapportages en meetwaarden volgens een afgesproken stramien (in aantal / tijd). Zie hiervoor de paragraaf ‘zorginhoudelijke informatie’.
 
 De verdere medisch inhoudelijke informatie wordt opgehaald op basis van FHIR (ZIB’s waar mogelijk). De informatie wordt in het doelsysteem getoond. Het doelsysteem is er verantwoordelijk voor de informatie in de juiste context te tonen (denk aan verschillen met eigen informatie). Logging vindt in de gehele keten plaats.
 
@@ -165,7 +166,7 @@ aan te tonen hoeveel resultaten er geretourneerd worden en op welke manier deze 
 controle die de systemen doen op de verifiable credentials. Die controle wordt op die manier gedaan om te voorkomen dat
 met een parameter zoals een include extra gegevens meekomen.
 
-Bechikbare informatie voor de huisarts in het VVT Dossier
+**Bechikbare informatie voor de huisarts in het VVT Dossier**
 
 | ZIB                 | Method | Sort      | Count | Endpoint                                                                                                                            | Profiel                                                                                                                                                              |
 |:--------------------|--------|-----------|-------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -186,23 +187,39 @@ POST /fhir/Patient/_search
 - Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
 - Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
 
-Bechikbare informatie voor de (wijk)verpleegkundinge in het Huiarts Dossier
 
-| ZIB                 | Method | Sort      | Count | Endpoint                                                                                                                            | Profiel                                                                                                                                                              |
-|:--------------------|--------|-----------|-------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ????              | GET    |           |       | /fhir/Flag?patient={patientId}}&_profile=http://nictiz.nl/fhir/StructureDefinition/zib-Alert                                        | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954733](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954733) |
-| ????            | GET    |           |       | /fhir/AllergyIntolerance?patient={patientId}&_profile=http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance              | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.18/files/2317138](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.18/files/2317138) |
+**Bechikbare informatie voor de (wijk)verpleegkundinge in het Huiarts Dossier**
+
+| Onderdelen uit het Huisarts-EPD | Beschrijving | ZIB |
+|---------------------------------|-------------|-----------------------------------|
+| 1 Huisarts/ huisartsenpraktijk | De huisarts en/of de huisartsenpraktijk waarvan de gegevens afkomstig zijn. |https://zibs.nl/wiki/HealthProfessional-v3.1(2017EN) https://zibs.nl/wiki/HealthcareProvider-v3.1(2017EN)|
+| 2 Patiënt | De patiëntgegevens van de patiënt van wie de gegevens zijn. |https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638 |
+| 3 Episodes | Een gezondheidsprobleem zoals een klacht of een aandoening, waarvan de aard in de loop van de tijd kan veranderen door voortschrijdend inzicht of door het verloop van de aandoening. | GET [base]/EpisodeOfCare|
+| 4 Episodes met een attentievlag | Episodes kunnen een attentievlag hebben om extra aandacht voor de episode te vragen. De attentievlag kan aanwezig blijven als een episode is afgesloten wordt/is, wanneer de gebruiker het belangrijk vindt dit probleem in beeld te houden. |GET [base]/EpisodeOfCare |
+| 5 Open en gesloten episodes | Episodes kunnen open (actueel) of gesloten (niet langer actueel) zijn. | GET [base]/EpisodeOfCare|
+| 8 Actuele medicatie | **Medicatie-afspraak**<br>Het voorstel van een voorschrift tot gebruik van medicatie waarmee de patiënt akkoord gaat. De afspraak kan zowel starten, herhalen, wijzigen als stoppen van medicatie betreffen. | https://zibs.nl/wiki/MedicationAgreement-v1.0(2017EN)|
+| 9 Medicatie-overgevoeligheid | Een medicatie-overgevoeligheid beschrijft een overgevoeligheid van een patiënt voor een geneesmiddel, een stof of een geneesmiddelengroep, waarmee rekening gehouden moet worden bij het voorschrijven van medicatie. | https://zibs.nl/wiki/AllergyIntolerance-v3.1(2017EN)|
+| 11 Resultaten van bepalingen – laatste veertien maanden | Een bepaling is een objectiveerbare diagnostische verrichting. Het resultaat is de (uitkomst) van een bepaling. |https://zibs.nl/wiki/LaboratoryTestResult-v4.0(2017EN) https://zibs.nl/wiki/BloodPressure-v3.1(2017EN) https://zibs.nl/wiki/BodyHeight-v3.1(2017EN) https://zibs.nl/wiki/BodyTemperature-v3.1(2017EN) https://zibs.nl/wiki/BodyWeight-v3.1(2017EN) https://zibs.nl/wiki/GeneralMeasurement-v3.0(2017EN) https://zibs.nl/wiki/HeartRate-v3.1(2017EN) https://zibs.nl/wiki/O2Saturation-v3.1(2017EN) https://zibs.nl/wiki/PulseRate-v3.1(2017EN)|
+| 12 E- en P-regels van de SOEP-structuur – vastgelegd na invoering van online inzage | Informatie uit een deelcontact dat in vrije tekst wordt geregistreerd volgens de SOEP-structuur. |GET [base]/Composition?type=http://loinc.org|67781-5|
+| 13 Encounter | Informatie uit een deelcontact dat in vrije tekst wordt geregistreerd volgens de SOEP-structuur. |https://zibs.nl/wiki/Encounter-v3.1(2017EN)|
+
+
+Functioneel missen nog: Behandelgrenzen, andere zorgverleners, wilsonbekwaamheid. Specifieke afspraken rond PZP volgen we vanuit de PZP coalitie.
+Voor medicatie geldt dat er gewerkt wordt met wat er nu is. Toekomstbestendige communicatie omtrent Medicatie volgt uit het MP9 traject.
+
 
 Voor het ophalen van de Patiënt geldt:
 POST /fhir/Patient/_search
 - Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
 - Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+- "Include General pratictioner" dient opgenomen te worden in de search query
+
 
 ## Foutafhandeling
 In deze fase concentreren we ons op beveiliging – juist in de pilot zal bekeken moeten worden of dit ook leidt tot voldoende gebruiksgemak. In de basis wordt dus alleen getoond DAT er een fout is en geen specifiekere informatie zoals 'patient niet gevonden'. Informatie die publiekelijk beschikbaar is (bv inhoud van de usecase als zijnde 'deze resource valt buiten de usecase') zou toegevoegd mogen worden om nieuwe ontwikkelaars makkelijker te maken bij het testen
 
 ## Versiebeheer
-Wordt momenteel uitgewerkt in usecase ANW. Resultaat wordt hier opgenomen.
+Wordt momenteel uitgewerkt in usecase ANW. Resultaat wordt hier opgenomen. In de toekomst wordt dit ontwerp omschreven naar een Implementation Guide (IG). Hiermee komen handvatten zoals een capability statement beschikbaar om in het ontwerp op te nemen.
 
 ## Omgevingen
 De volgende omgevingen zijn beschikbaar in de OTAP omgeving:
