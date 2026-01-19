@@ -61,6 +61,10 @@ De Nuts community biedt op dit moment 2 tools aan om een X509Credential te gener
 
 Beide tools geven instructies om stappen 9-10 uit te kunnen voeren.
 
+### Versies van ZIBs en FHIR:
+Een bronhouder kan kiezen voor twee varianten qua versies. FHIR R4 en ZIBs 2020 of FHIR STU3 en ZIBs 2017. De bevrager achterhaalt de FHIR versie door het meta endpoint van de bronhouder aan te roepen. 
+Zie https://hl7.org/fhir/STU3/http.html#capabilities voor meer informatie. Sommige FHIR clients hebben standaard functionaliteit om het metadata endpoint te bevragen. 
+
 ### Data ophalen bij de VVT
 <!-- ![sequence diagram ophalen data bij VVT](img/sequence-diagram-resource-request.svg) -->
 <img src="img/sequence-diagram-resource-request.svg" width="1500">
