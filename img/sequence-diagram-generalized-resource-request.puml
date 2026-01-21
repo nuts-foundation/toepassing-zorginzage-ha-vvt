@@ -46,7 +46,10 @@ User -> req: request information for Patient at Custodian Y
     |||
    == Retrieve other resources ==
 
-    note right of req: Other resources are gathered \nbased on internal patient id of custodian
+    note right of req
+     - Other resources are gathered based on internal patient id of custodian
+     - access token from step 7 can be reused in loop below
+    end note
     loop For each resource except Patient
         req -> PEP++: GET /fhir/{resource}?patient={id}
             PEP -> cn++ : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
