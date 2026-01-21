@@ -1,8 +1,8 @@
 # Scope
 ## Doel
-Het doel van deze toepassing is tweeledig: het verbeteren van de informatievoorziening van de huisarts die behoefte heeft aan informatie over wat er in het VVT domein met de patient gebeurt en het optimaliseren van het werkproces van een verleegkundige die belast is met de taak om de huisarts waar nodig op de hoogte te houden.
+Het doel van deze toepassing is tweeledig: het verbeteren van de informatievoorziening van de huisarts die behoefte heeft aan informatie over wat er in het VVT domein met de patient gebeurt en het optimaliseren van het werkproces van een verpleegkundige die belast is met de taak om de huisarts waar nodig op de hoogte te houden.
   
-In de huidige situatie wordt de huisarts daarover vaak geinformeerd doordat de VVT-medewerker een dubbele administratie bijhoudt in het eigen systeem (ECD) en dat de huisarts (HIS of samenwerkingsplatform). Deze toepassing beschrijft de techniek waarmee het mogelijk wordt voor de huisarts om rechtstreeks de informatie uit het ECD te raadplegen vanuit het eigen systeem. Andersom kan de verpleegkundige de informatie die bij de huisarts is vastgelegd inzien.
+In de huidige situatie wordt de huisarts daarover vaak geïnformeerd doordat de VVT-medewerker een dubbele administratie bijhoudt in het eigen systeem (ECD) en dat de huisarts (HIS of samenwerkingsplatform). Deze toepassing beschrijft de techniek waarmee het mogelijk wordt voor de huisarts om rechtstreeks de informatie uit het ECD te raadplegen vanuit het eigen systeem. Andersom kan de verpleegkundige de informatie die bij de huisarts is vastgelegd inzien.
 
 ## Scope:
 Inzage is een eerste stap van een veel bredere en rijkere integratie. Hierbij gaat het bv om het uitzetten van taken. Deze functionaliteiten worden in latere versies van deze usecase toegevoegd. De usecase is iteratief ontwikkeld (eerst de ene kant op, de huisarts inzage geven en daarna de andere kant op) maar het ontwerp is generiek opgezet. 
@@ -36,16 +36,16 @@ Voor usecase 2 geldt hetzelfde proces, alleen is de informatieflow omgekeerd. De
 - De patiënt is reeds bekend/in zorg bij zowel de huisarts als bij de VVT instelling
 - De patiënt heeft consent afgegeven om data te delen met de huisarts of de VVT instelling
 - Informatie kan opgehaald worden bij het bronsysteem en getoond in het doelsysteem
- In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via de koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Deze lijst is vastgesteld in overleg met de koepels (ACTIZ, InEEN). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die functioneel passend is bij hoe de informatie is bedoeld in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Het doel is om de context van de informatie zoveel mogelijk te bheouden tussen bron en doel. Wanneer er bijvoorbeeld discrepatenties zijn, dan kan het doelsysteem deze tonen. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
+ In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via de koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Deze lijst is vastgesteld in overleg met de koepels (ACTIZ, InEEN). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die functioneel passend is bij hoe de informatie is bedoeld in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Het doel is om de context van de informatie zoveel mogelijk te behouden tussen bron en doel. Wanneer er bijvoorbeeld discrepanties zijn, dan kan het doelsysteem deze tonen. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
 - De medewerkers blijven in hun eigen systeem werken. De leveranciers zijn zelf verantwoordelijk hoe zij de medewerker het beste willen/kunnen ondersteunen.
-- Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie STU3 gebruikt en daarbij gekoppeld de ZIBS 2017.
+- Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie STU3 gebruikt en daarbij gekoppeld de ZIB'S 2017 of versie R4 met ZIB'S 2020. 
 - Het afhandelen van de consent vraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt
 - Authenticatie vindt plaats op basis van een Verifiable Credential: het URA nummer van de organisatie waar de opvrager werkt en zoals vastgelegd in een UZI Servercertificaat.
 - Het bronsysteem moet vastleggen en checken welke organisatie bij de informatie mag. Er kan niet op medewerker niveau of rol worden gecontroleerd. Verdere uitwerking in hoofdstuk autorisatie. 
 -Logging vindt in de gehele keten plaats
 
 Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch is. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
-- We eisen geen aansluiting op Mitz (maar accepteren ook consent lokaal). Als de applicatie het consent opslaat in Mitz moet dit ook ontsloten kunen worden
+- We eisen geen aansluiting op Mitz (maar accepteren ook consent lokaal). Als de applicatie het consent opslaat in Mitz moet dit ook ontsloten kunnen worden
 - Er is nog geen goed authenticatiemiddel voor de gebruiker beschikbaar (DEZI) dus werken we met een VC waarbij de organisatie obv een UZI certificaat wordt geauthenticeerd
 - We implementeren niet alle mogelijke ZIB’s want die zijn niet beschikbaar in de bronsystemen, maar hanteren een subset
 - dPOP wordt pas in een later stadium toegevoegd, voor nu maakt dit geen onderdeel uit van de usecase
@@ -55,7 +55,7 @@ Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment n
 
 ## Architectuur beschrijving
 ### Gebruik van Nuts
-Voor deze usecase wordt gebruikt gemaakt van de Nuts infrastructuur. Specifiek wordt gebruik gemaakt van de mogelijkheden die de V6.1 versie van Nuts biedt en daarmee dus ook van did:web. Voor de informatie specifiek over de Nuts-laag wordt verwezen naar de officiele documentatie: https://nuts-node.readthedocs.io/en/stable/   
+Voor deze usecase wordt gebruikt gemaakt van de Nuts infrastructuur. Specifiek wordt gebruik gemaakt van de mogelijkheden die de V6.1 versie van Nuts biedt en daarmee dus ook van did:web. Voor de informatie specifiek over de Nuts-laag wordt verwezen naar de officiële documentatie: https://nuts-node.readthedocs.io/en/stable/   
 
 ### Registreren voor de use-case
 <!-- ![sequence diagram for care organization management](img/sequence-diagram-use-case-registration.svg) -->
@@ -76,8 +76,6 @@ Zie https://hl7.org/fhir/STU3/http.html#capabilities voor meer informatie. Sommi
 <!-- ![sequence diagram ophalen data bij VVT](img/sequence-diagram-resource-request.svg) -->
 <img src="img/sequence-diagram-resource-request.svg" width="1500">
 
-TODO: write out actions for each (group of) steps
-
 ## Lokalisatie
 Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen. Of in geval van inzicht in het huisartsendossier door de betreffende huisarts vast te leggen in het ECD bij het dossier.
 
@@ -97,7 +95,7 @@ Algemene uitleg over wat is een Service Discovery is te vinden op de [Nuts Wiki 
 #### Input descriptors:
 Qua benodigde credentials kennen wij 2 verschillende credentials, een X509Credential en een DiscoveryRegistrationCredential.
 
-##### X509Cerdential
+##### X509Credential
 Dit betreft een X509Credential conform [Nuts RFC023](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023), ondertekend met een UZI-servercertificaat.
 
 Aanmaken kan bijv. met de [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) of de [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/). Als uitgever is besloten om hier de chain op te nemen het dichtst bij de leaf-certificaat.
@@ -109,6 +107,8 @@ Dit betreft een DiscoveryRegistrationCredential conform de uitleg op de [Nuts Wi
 
 Hierbij is een veld toegevoegd aan de credentialSubject genaamd fhirBaseURL. Deze kan gebruikt worden door gebruikers van de Discovery Service om te weten waar de daadwerkelijke FHIR data opgehaald kan worden.
 
+Het is van belang het organisatie type mee te geven bij de registratie op de Discovery Service, zodat onderscheid gemaakt kan worden tussen een VVT-instelling en een huisarts. Hiervoor wordt het HL7 organisation typte gebruikt. Note: dit is een uitbreiding op een eerdere versie van deze specificatie en vereist een aanpassing op de reeds bestaande fase 1 koppeling. 
+
 ## Authenticatie
 Om veilig gegevens te kunnen delen tussen verschillende zorgaanbieders, is zorgaanbieder-overstijgende authenticatie van zorgorganisaties en zorgverleners essentieel. Vanuit de NEN wordt gewerkt aan een norm met betrekking tot identificatie en authenticatie. Op het moment dat deze norm gepubliceerd wordt zullen we de landelijke ontwikelingen mbt tot deze norm volgen. Om op korte termijn informatie uitwisseling mogelijk te maken, zal de authenticatie geborgd worden op de volgende manier:
 
@@ -119,7 +119,7 @@ Voor server & client authenticatie is besloten om de volgende uitgangspunten te 
 - Productieomgevingen maken enkel gebruik van productie UZI-servercertificaten voor de X509Credentials & PKIOverheid voor TLS op de FHIR endpoints en als clientAuthenticatie
 
 ## Identificatie
-Om de raadplegende organisatie te identificeren wordt gebruik gemaakt van het UZI abonnenumummer ook wel bekend als het URA nummer. Als middel voor de authenticatie van dit nummer gebruiken we een verifiable credential en de OpenID Foundation standaarden voor authenticatie.
+Om de raadplegende organisatie te identificeren wordt gebruik gemaakt van het UZI abonnee numummer ook wel bekend als het URA nummer. Als middel voor de authenticatie van dit nummer gebruiken we een verifiable credential en de OpenID Foundation standaarden voor authenticatie.
 
 Omdat het UZI register als authentieke bron zelf nog geen URA Credentials uitgeeft wordt dit credential afgeleid van een UZI Servercertificaat van de betreffende organisatie. We gebruiken hiervoor een nieuw credential NutsX509Credential waarvan de ontwikkeling hier te volgen is: https://github.com/nuts-foundation/nuts-node/issues/3582
 
@@ -143,11 +143,11 @@ Voor deze usecase gaan wij uit van autorisatie op 5 niveaus:
 - Fhir query parameters
 
 #### Discovery service
-Om data bij een bronhouder op te halen, wordt de discovery service gebruikt om het adres te vinden. Hoewel het technisch mogelijk is om data op te halen bij een partij die niet (meer) aangemeld is bij de discovery service, is dit functioneel en qua beveiliging niet wenselijk. Daarom moet de bronhouder ook controleren of de partij waarvoor de aanvraag ingedient wordt nog steeds aangemeld is voor de toepassing op de discovery service.
+Om data bij een bronhouder op te halen, wordt de discovery service gebruikt om het adres te vinden. Hoewel het technisch mogelijk is om data op te halen bij een partij die niet (meer) aangemeld is bij de discovery service, is dit functioneel en qua beveiliging niet wenselijk. Daarom moet de bronhouder ook controleren of de partij waarvoor de aanvraag ingediend wordt nog steeds aangemeld is voor de toepassing op de discovery service.
 
 #### Behandelrelatie
 De standaard gaat er vanuit dat de juridische grondslag voor de uitwisseling de toestemming voor uitwisseling is die de patient gegeven heeft.
-Voor de route waarin de huisarts informatie ophaalt bij de VVT geldt dat optioneel ook de behandelrelatie als juridische grondslag toegepast kan worden. Dit betekent dat om toegang te krijgen tot gegevens van een patient het in dat geval vereist is dat huisarts vastgelegd en bekend is bij de patient in het bronsysteem. Er wordt een controle gedaan op basis van het URA-nummer waarmee een resource wordt opgehaald. Dit nummer is terug te vinden in het `organization_ura` veld van een token introspect op de Nuts node. Zie ook stap 11 in "Request data at VVT" onder de architectuurbeschrijving.
+Voor de route waarin de huisarts informatie ophaalt bij de VVT geldt dat optioneel ook de behandelrelatie als juridische grondslag toegepast kan worden. Dit betekent dat om toegang te krijgen tot gegevens van een patient het in dat geval vereist is dat huisarts vastgelegd en bekend is bij de patient in het bronsysteem. Er wordt een controle gedaan op basis van het URA-nummer waarmee een resource wordt opgehaald. Dit nummer is terug te vinden in het `organization_ura` veld van een token introspect op de Nuts node. Zie ook stap 11 in "Request data at VVT" onder de architectuurbeschrijving. Voor de route waarin de VVT instelling informatie op haalt bij de huisarts accepteren we dat er een generieke toestemming is voor VVT-instelling en dat bij de huisarts dus niet iets vastlegt is om te ‘borgen’ dat alleen VVT instelling X bij de informatie mag. Dat is inherent aan hoe de grondslag obv toestemming geregeld is.
 
 #### Consent
 Om een resource van een patient op te kunnen halen moet het bronsysteem toestemming van de patient geregistreerd hebben of op kunnen halen. Een algemene toestemming volstaat hier, waarbij de patient toestemming geeft om zijn of haar gegevens te delen.
@@ -171,7 +171,7 @@ Hieronder staan de endpoints die beschikbaar gesteld moeten worden door de parti
 ### Algemeen 
 De koppeling werkt twee kanten op, vandaar dat er hieronder twee tabellen worden getoond. 
 
-Voor de route waarin de informatie voor de (wijk)verpleegkundinge uit het Huiarts Dossier opgehaald wordt geldt dat in de basis hiervoor de MedMij specificaties zijn gebruikt. Deze zijn te vinden op: https://informatiestandaarden.nictiz.nl/wiki/MedMij:V2020.01/FHIR_GP_Data. Note: er zijn afwijkingen gedaan op de MedMij specificatie om het passend te maken op de usecase. Hoewel de basis van MedMij gebruikt is, kan die specificatie niet 1-op-1 toegepast worden. De verschillen zitten op het gebied van de zoekpaden (specifieke profiles opvragen ipv alles) en beperking van de informatie (maximaal aantallen ipv alles, gesorteerd op nieuwste eerst). 
+Voor de route waarin de informatie voor de (wijk)verpleegkundinge uit het Huisarts Dossier opgehaald wordt geldt dat in de basis hiervoor de MedMij specificaties zijn gebruikt. Deze zijn te vinden op: https://informatiestandaarden.nictiz.nl/wiki/MedMij:V2020.01/FHIR_GP_Data. Note: er zijn afwijkingen gedaan op de MedMij specificatie om het passend te maken op de usecase. Hoewel de basis van MedMij gebruikt is, kan die specificatie niet 1-op-1 toegepast worden. De verschillen zitten op het gebied van de zoekpaden (specifieke profiles opvragen ipv alles) en beperking van de informatie (maximaal aantallen ipv alles, gesorteerd op nieuwste eerst). 
 Daarnaast geldt dat de HISsen naast de STU3 versie uit de MedMij specificatie ook de R4 versie kunnen ondersteunen. Note: er zitten technische en inhoudelijke verschillen tussen deze 2 FHIR versies. Deze komen in de tabel tot uitting.
 
 Voor het ophalen van de Patiënt geldt:
@@ -182,7 +182,7 @@ POST /fhir/Patient/_search
 
 
 
-**Bechikbare informatie voor de huisarts in het VVT Dossier**
+**Beschikbare informatie voor de huisarts in het VVT Dossier**
 
 
 
@@ -205,7 +205,7 @@ POST /fhir/Patient/_search
 
 
 
-**Bechikbare informatie voor de (wijk)verpleegkundinge in het Huiarts Dossier**
+**Beschikbare informatie voor de (wijk)verpleegkundige in het Huiarts Dossier**
 
 
 
@@ -217,7 +217,7 @@ POST /fhir/Patient/_search
 |3 Patiënt|De patiëntgegevens van de patiënt van wie de gegevens zijn.|||<https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638>|Zie kopje Algemeen|<https://zibs.nl/wiki/Patient-v3.2(2020NL)>|Zie kopje Algemeen|<http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient>|
 |4 Episodes|Een gezondheidsprobleem zoals een klacht of een aandoening, waarvan de aard in de loop van de tijd kan veranderen door voortschrijdend inzicht of door het verloop van de aandoening.|5|DESC|Zie specs MedMij mbt episodes in STU3|GET \[base\]/fhir/stu3/EpisodeOfCare|<https://zibs.nl/wiki/ZorgEpisode-v1.0(2020NL)>|GET \[base\]/fhir/r4/EpisodeOfCare?patient=\{id\}&\_include=condition:diagnosis|<http://nictiz.nl/fhir/StructureDefinition/nl-core-EpisodeOfCare>|
 |5 Episodes met een attentievlag|Episodes kunnen een attentievlag hebben om extra aandacht voor de episode te vragen. De attentievlag kan aanwezig blijven als een episode is afgesloten wordt/is, wanneer de gebruiker het belangrijk vindt dit probleem in beeld te houden.|5|DESC|Zie specs MedMij mbt episodes in STU3 \+ <https://zibs.nl/wiki/Alert-v3.2(2017EN)>|GET \[base\]/fhir/stu3/Flag|<https://zibs.nl/wiki/Alert-v4.1(2020NL)>|GET \[base\]/fhir/r4/Flag?patient=\{id\}|<http://nictiz.nl/fhir/StructureDefinition/nl-core-Alert>|
-|6 Open en gesloten episodes|Episodes kunnen open (actueel) of gesloten (niet langer actueel) zijn.|5|DESC|Zie specs MedMij mbt episodes in STU3|GET \[base\]/EpisodeOfCare|<https://zibs.nl/wiki/ZorgEpisode-v1.0(2020NL)>|GET \[base\]/fhir/r4/EpisodeOfCare?patient=\{id\}|<http://nictiz.nl/fhir/StructureDefinition/nl-core-EpisodeOfCare>|
+|6 Open en gesloten episodes|Episodes kunnen open (actueel) of gesloten (niet langer actueel) zijn. Gesloten episodes met een attentievlag zijn functioneel interessant, overige gesloten episodes niet.|5|DESC|Zie specs MedMij mbt episodes in STU3|GET \[base\]/EpisodeOfCare|<https://zibs.nl/wiki/ZorgEpisode-v1.0(2020NL)>|GET \[base\]/fhir/r4/EpisodeOfCare?patient=\{id\}|<http://nictiz.nl/fhir/StructureDefinition/nl-core-EpisodeOfCare>|
 |7 Actuele medicatie|**Medicatie-afspraak**<br>Het voorstel van een voorschrift tot gebruik van medicatie waarmee de patiënt akkoord gaat. De afspraak kan zowel starten, herhalen, wijzigen als stoppen van medicatie betreffen.|5|DESC|<https://zibs.nl/wiki/MedicationAgreement-v1.0(2017EN)>|GET \[base\]/fhir/stu3/MedicationRequest?patient=\{id\}|<https://zibs.nl/wiki/Medicatieafspraak-v1.2(2020NL)>|GET \[base\]/fhir/r4/MedicationRequest?patient=\{id\}&category=[http://snomed.info/sct\|16076005&\_include=MedicationRequest:medication](http://snomed.info/sct%7C16076005&_include=MedicationRequest:medication)|<http://nictiz.nl/fhir/StructureDefinition/mp-MedicationAgreement>|
 |8 Medicatie-overgevoeligheid|Een medicatie-overgevoeligheid beschrijft een overgevoeligheid van een patiënt voor een geneesmiddel, een stof of een geneesmiddelengroep, waarmee rekening gehouden moet worden bij het voorschrijven van medicatie.|5|DESC|<https://zibs.nl/wiki/AllergyIntolerance-v3.1(2017EN)>|GET \[base\]/fhir/stu3/AllergyIntolerance?patient=\{id\}|<https://zibs.nl/wiki/AllergieIntolerantie-v3.3(2020NL)>|GET \[base\]/fhir/r4/AllergyIntolerance?patient=\{id\}&category=medication|<http://nictiz.nl/fhir/StructureDefinition/nl-core-AllergyIntolerance>|
 |9 Resultaten van bepalingen – laatste veertien maanden|Een bepaling is een objectiveerbare diagnostische verrichting. Het resultaat is de (uitkomst) van een bepaling.|5 (per profile)|DESC||Note: zoekvraag per profile . beschikbaar zijn: <https://zibs.nl/wiki/LaboratoryTestResult-v4.0(2017EN)> <https://zibs.nl/wiki/BloodPressure-v3.1(2017EN)> <https://zibs.nl/wiki/BodyHeight-v3.1(2017EN)> <https://zibs.nl/wiki/BodyTemperature-v3.1(2017EN)> <https://zibs.nl/wiki/BodyWeight-v3.1(2017EN)> <https://zibs.nl/wiki/GeneralMeasurement-v3.0(2017EN)> <https://zibs.nl/wiki/HeartRate-v3.1(2017EN)> <https://zibs.nl/wiki/O2Saturation-v3.1(2017EN)> <https://zibs.nl/wiki/PulseRate-v3.1(2017EN)>|GET \[base\]/fhir/stu3/Observation?patient=\{id\}|Note: zoekvraag per profile . beschikbaar zijn:<https://zibs.nl/wiki/LaboratoriumUitslag-v4.6(2020NL)> <https://zibs.nl/wiki/Bloeddruk-v3.2.1(2020NL)> <https://zibs.nl/wiki/Lichaamsgewicht-v3.2(2020NL)> <https://zibs.nl/wiki/Lichaamslengte-v3.1.1(2020NL)> <https://zibs.nl/wiki/Lichaamstemperatuur-v3.1.2(2020NL)> <https://zibs.nl/wiki/Polsfrequentie-v3.3(2020NL)>|GET \[base\]/fhir/r4/Observation?patient=\{id\}&category=[http://hl7.org/fhir/observation-category\|vital-signs,laboratory](http://hl7.org/fhir/observation-category%7Cvital-signs,laboratory)|<http://hl7.org/fhir/StructureDefinition/Observation>|
