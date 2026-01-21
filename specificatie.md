@@ -36,7 +36,7 @@ Voor usecase 2 geldt hetzelfde proces, alleen is de informatieflow omgekeerd. De
 - De patiënt is reeds bekend/in zorg bij zowel de huisarts als bij de VVT instelling
 - De patiënt heeft consent afgegeven om data te delen met de huisarts of de VVT instelling
 - Informatie kan opgehaald worden bij het bronsysteem en getoond in het doelsysteem
- In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via de koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die passend is in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Passend kan zijn als er bijvoorbeeld discrepatenties zijn deze tonen. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
+ In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via de koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Deze lijst is vastgesteld in overleg met de koepels (ACTIZ, InEEN). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die functioneel passend is bij hoe de informatie is bedoeld in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Het doel is om de context van de informatie zoveel mogelijk te bheouden tussen bron en doel. Wanneer er bijvoorbeeld discrepatenties zijn, dan kan het doelsysteem deze tonen. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
 - De medewerkers blijven in hun eigen systeem werken. De leveranciers zijn zelf verantwoordelijk hoe zij de medewerker het beste willen/kunnen ondersteunen.
 - Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie STU3 gebruikt en daarbij gekoppeld de ZIBS 2017.
 - Het afhandelen van de consent vraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt
@@ -146,7 +146,8 @@ Voor deze usecase gaan wij uit van autorisatie op 5 niveaus:
 Om data bij een bronhouder op te halen, wordt de discovery service gebruikt om het adres te vinden. Hoewel het technisch mogelijk is om data op te halen bij een partij die niet (meer) aangemeld is bij de discovery service, is dit functioneel en qua beveiliging niet wenselijk. Daarom moet de bronhouder ook controleren of de partij waarvoor de aanvraag ingedient wordt nog steeds aangemeld is voor de toepassing op de discovery service.
 
 #### Behandelrelatie
-Om toegang te krijgen tot gegevens van een patient is het vereist dat er een behandelrelatie tussen de huisartspraktijk en de patient bekend is bij het bronsysteem. Deze controle wordt gedaan op basis van het URA-nummer waarmee een resource wordt opgehaald. Dit nummer is terug te vinden in het `organization_ura` veld van een token introspect op de Nuts node. Zie ook stap 11 in "Request data at VVT" onder de architectuurbeschrijving.
+De standaard gaat er vanuit dat de juridische grondslag voor de uitwisseling de toestemming voor uitwisseling is die de patient gegeven heeft.
+Voor de route waarin de huisarts informatie ophaalt bij de VVT geldt dat optioneel ook de behandelrelatie als juridische grondslag toegepast kan worden. Dit betekent dat om toegang te krijgen tot gegevens van een patient het in dat geval vereist is dat huisarts vastgelegd en bekend is bij de patient in het bronsysteem. Er wordt een controle gedaan op basis van het URA-nummer waarmee een resource wordt opgehaald. Dit nummer is terug te vinden in het `organization_ura` veld van een token introspect op de Nuts node. Zie ook stap 11 in "Request data at VVT" onder de architectuurbeschrijving.
 
 #### Consent
 Om een resource van een patient op te kunnen halen moet het bronsysteem toestemming van de patient geregistreerd hebben of op kunnen halen. Een algemene toestemming volstaat hier, waarbij de patient toestemming geeft om zijn of haar gegevens te delen.
@@ -164,13 +165,27 @@ Uitgangspunt: Identificatie van de medewerker op basis van een (intern) Medewerk
 ## Informatie
 ### Lijst van ZIBs
 
-### Tabel met FHIR resources en queries
-Hieronder staan de endpoints die beschikbaar gesteld moeten worden door de partijen die toegang tot het ophalen van de informatie in het VVT domein verlenen. Ter verheldering zijn de kolommen Sort en Count toegevoegd om
-aan te tonen hoeveel resultaten er geretourneerd worden en op welke manier deze worden gesorteerd. Het is van belang dat bij een aanroep alle parameters gebruikt worden die in de tabel staan en ook geen extra. Dit heeft te maken met de
-controle die de systemen doen op de verifiable credentials. Die controle wordt op die manier gedaan om te voorkomen dat
-met een parameter zoals een include extra gegevens meekomen.
+### Tabellen met FHIR resources en queries
+Hieronder staan de endpoints die beschikbaar gesteld moeten worden door de partijen die toegang tot het ophalen van de informatie. Ter verheldering zijn de kolommen Sort en Count toegevoegd om aan te tonen hoeveel resultaten er geretourneerd worden en op welke manier deze worden gesorteerd. Het is van belang dat bij een aanroep alle parameters gebruikt worden die in de tabel staan en ook geen extra. Dit heeft te maken met de controle die de systemen doen op de verifiable credentials. Die controle wordt op die manier gedaan om te voorkomen dat met een parameter zoals een include extra gegevens meekomen.
+
+### Algemeen 
+De koppeling werkt twee kanten op, vandaar dat er hieronder twee tabellen worden getoond. 
+
+Voor de route waarin de informatie voor de (wijk)verpleegkundinge uit het Huiarts Dossier opgehaald wordt geldt dat in de basis hiervoor de MedMij specificaties zijn gebruikt. Deze zijn te vinden op: https://informatiestandaarden.nictiz.nl/wiki/MedMij:V2020.01/FHIR_GP_Data. Note: er zijn afwijkingen gedaan op de MedMij specificatie om het passend te maken op de usecase. Hoewel de basis van MedMij gebruikt is, kan die specificatie niet 1-op-1 toegepast worden. De verschillen zitten op het gebied van de zoekpaden (specifieke profiles opvragen ipv alles) en beperking van de informatie (maximaal aantallen ipv alles, gesorteerd op nieuwste eerst). 
+Daarnaast geldt dat de HISsen naast de STU3 versie uit de MedMij specificatie ook de R4 versie kunnen ondersteunen. Note: er zitten technische en inhoudelijke verschillen tussen deze 2 FHIR versies. Deze komen in de tabel tot uitting.
+
+Voor het ophalen van de Patiënt geldt:
+POST /fhir/Patient/_search
+- Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
+- Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+- include=Patient:general-practitioner en include:iterate=PractitionerRole:organization dienen opgenomen te worden in de search query
+
+
 
 **Bechikbare informatie voor de huisarts in het VVT Dossier**
+
+
+
 
 | ZIB                 | Method | Sort      | Count | Endpoint                                                                                                                            | Profiel                                                                                                                                                              |
 |:--------------------|--------|-----------|-------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -186,38 +201,35 @@ met een parameter zoals een include extra gegevens meekomen.
 | Wilsverklaring      | GET    |           |       | /fhir/Consent?patient={patientId}&_profile=http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective                           | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954726](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954726) |
 | Woonsituatie        | GET    |           |       | /fhir/Observation?patient={patientId}&_profile=http://nictiz.nl/fhir/StructureDefinition/zib-LivingSituation                        | [https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954848](https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954848) |
 
-Voor het ophalen van de Patiënt geldt:
-POST /fhir/Patient/_search
-- Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
-- Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+
+
 
 
 **Bechikbare informatie voor de (wijk)verpleegkundinge in het Huiarts Dossier**
 
-| Onderdelen uit het Huisarts-EPD | Beschrijving | ZIB **STU3** | Endpoint **STU3** | ZIB **R4** | Endpoint **R4** | Profile |
-|-----------------------------------|-------------|-----------------------------------|-------------|-------------|-------------|-------------|
-| 1 Huisarts | De huisarts waarvan de gegevens afkomstig zijn. |https://zibs.nl/wiki/HealthProfessional-v3.1(2017EN) | GET [base]/fhir/stu3/Practitioner/{id} | https://zibs.nl/wiki/Zorgverlener-v3.5(2020NL) | GET [base]/fhir/r4/Practitioner/{id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner |
-| 2 huisartsenpraktijk | De huisartsenpraktijk waarvan de gegevens afkomstig zijn. | https://zibs.nl/wiki/HealthcareProvider-v3.1(2017EN) | GET [base]/fhir/stu3/Organization/{id} | https://zibs.nl/wiki/Zorgaanbieder-v3.4(2020NL) | GET [base]/fhir/r4/Organization/{id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider |
-| 3 Patiënt | De patiëntgegevens van de patiënt van wie de gegevens zijn. |https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638 | GET [base]/fhir/stu3/Patient/{id} | https://zibs.nl/wiki/Patient-v3.2(2020NL) | GET [base]/fhir/r4/Patient/{id} <br> of POST [base]/fhir/r4/Patient/$match | http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient |
-| 4 Episodes | Een gezondheidsprobleem zoals een klacht of een aandoening, waarvan de aard in de loop van de tijd kan veranderen door voortschrijdend inzicht of door het verloop van de aandoening. | - | GET [base]/fhir/stu3/EpisodeOfCare | https://zibs.nl/wiki/ZorgEpisode-v1.0(2020NL) | GET [base]/fhir/r4/EpisodeOfCare?patient={id}&_include=condition:diagnosis | http://nictiz.nl/fhir/StructureDefinition/nl-core-EpisodeOfCare |
-| 5 Episodes met een attentievlag | Episodes kunnen een attentievlag hebben om extra aandacht voor de episode te vragen. De attentievlag kan aanwezig blijven als een episode is afgesloten wordt/is, wanneer de gebruiker het belangrijk vindt dit probleem in beeld te houden. | https://zibs.nl/wiki/Alert-v3.2(2017EN) | GET [base]/fhir/stu3/Flag | https://zibs.nl/wiki/Alert-v4.1(2020NL) | GET [base]/fhir/r4/Flag?patient={id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-Alert |
-| 6 Open en gesloten episodes | Episodes kunnen open (actueel) of gesloten (niet langer actueel) zijn. | - | GET [base]/EpisodeOfCare | https://zibs.nl/wiki/ZorgEpisode-v1.0(2020NL) | GET [base]/fhir/r4/EpisodeOfCare?patient={id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-EpisodeOfCare |
-| 7 Actuele medicatie | **Medicatie-afspraak**<br>Het voorstel van een voorschrift tot gebruik van medicatie waarmee de patiënt akkoord gaat. De afspraak kan zowel starten, herhalen, wijzigen als stoppen van medicatie betreffen. | https://zibs.nl/wiki/MedicationAgreement-v1.0(2017EN) | GET [base]/fhir/stu3/MedicationRequest?patient={id} | https://zibs.nl/wiki/Medicatieafspraak-v1.2(2020NL) | GET [base]/fhir/r4/MedicationRequest?patient={id}&category=http://snomed.info/sct\|16076005&_include=MedicationRequest:medication  | http://nictiz.nl/fhir/StructureDefinition/mp-MedicationAgreement |
-| 8 Medicatie-overgevoeligheid | Een medicatie-overgevoeligheid beschrijft een overgevoeligheid van een patiënt voor een geneesmiddel, een stof of een geneesmiddelengroep, waarmee rekening gehouden moet worden bij het voorschrijven van medicatie. | https://zibs.nl/wiki/AllergyIntolerance-v3.1(2017EN) | GET [base]/fhir/stu3/AllergyIntolerance?patient={id} | https://zibs.nl/wiki/AllergieIntolerantie-v3.3(2020NL) | GET [base]/fhir/r4/AllergyIntolerance?patient={id}&category=medication | http://nictiz.nl/fhir/StructureDefinition/nl-core-AllergyIntolerance |
-| 9 Resultaten van bepalingen – laatste veertien maanden | Een bepaling is een objectiveerbare diagnostische verrichting. Het resultaat is de (uitkomst) van een bepaling. |https://zibs.nl/wiki/LaboratoryTestResult-v4.0(2017EN) https://zibs.nl/wiki/BloodPressure-v3.1(2017EN) https://zibs.nl/wiki/BodyHeight-v3.1(2017EN) https://zibs.nl/wiki/BodyTemperature-v3.1(2017EN) https://zibs.nl/wiki/BodyWeight-v3.1(2017EN) https://zibs.nl/wiki/GeneralMeasurement-v3.0(2017EN) https://zibs.nl/wiki/HeartRate-v3.1(2017EN) https://zibs.nl/wiki/O2Saturation-v3.1(2017EN) https://zibs.nl/wiki/PulseRate-v3.1(2017EN) | GET [base]/fhir/stu3/Observation?patient={id} | https://zibs.nl/wiki/LaboratoriumUitslag-v4.6(2020NL) https://zibs.nl/wiki/Bloeddruk-v3.2.1(2020NL) https://zibs.nl/wiki/Lichaamsgewicht-v3.2(2020NL) https://zibs.nl/wiki/Lichaamslengte-v3.1.1(2020NL) https://zibs.nl/wiki/Lichaamstemperatuur-v3.1.2(2020NL) https://zibs.nl/wiki/Polsfrequentie-v3.3(2020NL) | GET [base]/fhir/r4/Observation?patient={id}&category=http://hl7.org/fhir/observation-category\|vital-signs,laboratory | http://hl7.org/fhir/StructureDefinition/Observation |
-| 10 E- en P-regels van de SOEP-structuur – vastgelegd na invoering van online inzage | Informatie uit een deelcontact dat in vrije tekst wordt geregistreerd volgens de SOEP-structuur. | - | GET [base]/fhir/stu3/Composition?type=http://loinc.org\|67781-5&patient={id} | https://zibs.nl/wiki/SOEPVerslag-v1.0(2020NL) | GET [base]/fhir/r4/Composition?patient={id}&type=http://loinc.org\|67781-5 | - |
-| 11 Encounter (Contact) | Informatie uit een deelcontact dat in vrije tekst wordt geregistreerd volgens de SOEP-structuur. | https://zibs.nl/wiki/Encounter-v3.1(2017EN) | GET [base]/fhir/stu3/Encounter?patient={id} | https://zibs.nl/wiki/Contact-v4.0.1(2020NL) | GET [base]/fhir/r4/Encounter?patient={id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-Encounter |
+
+
+
+|Onderdelen uit het Huisarts-EPD|Beschrijving|Count|Sort|ZIB **STU3**|Endpoint **STU3**|ZIB **R4**|Endpoint **R4**|Profile|
+|:---|:---|:---|:---|:---|:---|:---|:---|:---|
+|1 Huisarts|De huisarts waarvan de gegevens afkomstig zijn.|||<https://zibs.nl/wiki/HealthProfessional-v3.1(2017EN)>|GET \[base\]/fhir/stu3/Practitioner/\{id\}|<https://zibs.nl/wiki/Zorgverlener-v3.5(2020NL)>|GET \[base\]/fhir/r4/Practitioner/\{id\}|<http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner>|
+|2 huisartsenpraktijk|De huisartsenpraktijk waarvan de gegevens afkomstig zijn.|||<https://zibs.nl/wiki/HealthcareProvider-v3.1(2017EN)>|GET \[base\]/fhir/stu3/Organization/\{id\}|<https://zibs.nl/wiki/Zorgaanbieder-v3.4(2020NL)>|GET \[base\]/fhir/r4/Organization/\{id\}|<http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider>|
+|3 Patiënt|De patiëntgegevens van de patiënt van wie de gegevens zijn.|||<https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638>|Zie kopje Algemeen|<https://zibs.nl/wiki/Patient-v3.2(2020NL)>|Zie kopje Algemeen|<http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient>|
+|4 Episodes|Een gezondheidsprobleem zoals een klacht of een aandoening, waarvan de aard in de loop van de tijd kan veranderen door voortschrijdend inzicht of door het verloop van de aandoening.|5|DESC|Zie specs MedMij mbt episodes in STU3|GET \[base\]/fhir/stu3/EpisodeOfCare|<https://zibs.nl/wiki/ZorgEpisode-v1.0(2020NL)>|GET \[base\]/fhir/r4/EpisodeOfCare?patient=\{id\}&\_include=condition:diagnosis|<http://nictiz.nl/fhir/StructureDefinition/nl-core-EpisodeOfCare>|
+|5 Episodes met een attentievlag|Episodes kunnen een attentievlag hebben om extra aandacht voor de episode te vragen. De attentievlag kan aanwezig blijven als een episode is afgesloten wordt/is, wanneer de gebruiker het belangrijk vindt dit probleem in beeld te houden.|5|DESC|Zie specs MedMij mbt episodes in STU3 \+ <https://zibs.nl/wiki/Alert-v3.2(2017EN)>|GET \[base\]/fhir/stu3/Flag|<https://zibs.nl/wiki/Alert-v4.1(2020NL)>|GET \[base\]/fhir/r4/Flag?patient=\{id\}|<http://nictiz.nl/fhir/StructureDefinition/nl-core-Alert>|
+|6 Open en gesloten episodes|Episodes kunnen open (actueel) of gesloten (niet langer actueel) zijn.|5|DESC|Zie specs MedMij mbt episodes in STU3|GET \[base\]/EpisodeOfCare|<https://zibs.nl/wiki/ZorgEpisode-v1.0(2020NL)>|GET \[base\]/fhir/r4/EpisodeOfCare?patient=\{id\}|<http://nictiz.nl/fhir/StructureDefinition/nl-core-EpisodeOfCare>|
+|7 Actuele medicatie|**Medicatie-afspraak**<br>Het voorstel van een voorschrift tot gebruik van medicatie waarmee de patiënt akkoord gaat. De afspraak kan zowel starten, herhalen, wijzigen als stoppen van medicatie betreffen.|5|DESC|<https://zibs.nl/wiki/MedicationAgreement-v1.0(2017EN)>|GET \[base\]/fhir/stu3/MedicationRequest?patient=\{id\}|<https://zibs.nl/wiki/Medicatieafspraak-v1.2(2020NL)>|GET \[base\]/fhir/r4/MedicationRequest?patient=\{id\}&category=[http://snomed.info/sct\|16076005&\_include=MedicationRequest:medication](http://snomed.info/sct%7C16076005&_include=MedicationRequest:medication)|<http://nictiz.nl/fhir/StructureDefinition/mp-MedicationAgreement>|
+|8 Medicatie-overgevoeligheid|Een medicatie-overgevoeligheid beschrijft een overgevoeligheid van een patiënt voor een geneesmiddel, een stof of een geneesmiddelengroep, waarmee rekening gehouden moet worden bij het voorschrijven van medicatie.|5|DESC|<https://zibs.nl/wiki/AllergyIntolerance-v3.1(2017EN)>|GET \[base\]/fhir/stu3/AllergyIntolerance?patient=\{id\}|<https://zibs.nl/wiki/AllergieIntolerantie-v3.3(2020NL)>|GET \[base\]/fhir/r4/AllergyIntolerance?patient=\{id\}&category=medication|<http://nictiz.nl/fhir/StructureDefinition/nl-core-AllergyIntolerance>|
+|9 Resultaten van bepalingen – laatste veertien maanden|Een bepaling is een objectiveerbare diagnostische verrichting. Het resultaat is de (uitkomst) van een bepaling.|5 (per profile)|DESC||Note: zoekvraag per profile . beschikbaar zijn: <https://zibs.nl/wiki/LaboratoryTestResult-v4.0(2017EN)> <https://zibs.nl/wiki/BloodPressure-v3.1(2017EN)> <https://zibs.nl/wiki/BodyHeight-v3.1(2017EN)> <https://zibs.nl/wiki/BodyTemperature-v3.1(2017EN)> <https://zibs.nl/wiki/BodyWeight-v3.1(2017EN)> <https://zibs.nl/wiki/GeneralMeasurement-v3.0(2017EN)> <https://zibs.nl/wiki/HeartRate-v3.1(2017EN)> <https://zibs.nl/wiki/O2Saturation-v3.1(2017EN)> <https://zibs.nl/wiki/PulseRate-v3.1(2017EN)>|GET \[base\]/fhir/stu3/Observation?patient=\{id\}|Note: zoekvraag per profile . beschikbaar zijn:<https://zibs.nl/wiki/LaboratoriumUitslag-v4.6(2020NL)> <https://zibs.nl/wiki/Bloeddruk-v3.2.1(2020NL)> <https://zibs.nl/wiki/Lichaamsgewicht-v3.2(2020NL)> <https://zibs.nl/wiki/Lichaamslengte-v3.1.1(2020NL)> <https://zibs.nl/wiki/Lichaamstemperatuur-v3.1.2(2020NL)> <https://zibs.nl/wiki/Polsfrequentie-v3.3(2020NL)>|GET \[base\]/fhir/r4/Observation?patient=\{id\}&category=[http://hl7.org/fhir/observation-category\|vital-signs,laboratory](http://hl7.org/fhir/observation-category%7Cvital-signs,laboratory)|<http://hl7.org/fhir/StructureDefinition/Observation>|
+|10 E- en P-regels van de SOEP-structuur – vastgelegd na invoering van online inzage|Informatie beschikbaar in het bronsysteem ten aanzien van de E- en P-regels van de SOEP-structuur|5|DESC|Note: voor STU3 geldt dat Informatie uit een deelcontact dat in vrije tekst wordt geregistreerd volgens de SOEP-structuur. Zie MedMij specificatie|GET \[base\]/fhir/stu3/Composition?type=[http://loinc.org\|67781-5](http://loinc.org%7C67781-5)&patient=\{id\}|<https://zibs.nl/wiki/SOEPVerslag-v1.0(2020NL)>|GET \[base\]/fhir/r4/Composition?patient=\{id\}&type=[http://loinc.org\|67781-5](http://loinc.org%7C67781-5)|-|
+|11 Encounter (Contact)|Informatie uit een deelcontact dat in vrije tekst wordt geregistreerd volgens de SOEP-structuur.|5|DESC|<https://zibs.nl/wiki/Encounter-v3.1(2017EN)>|GET \[base\]/fhir/stu3/Encounter?patient=\{id\}|<https://zibs.nl/wiki/Contact-v4.0.1(2020NL)>|GET \[base\]/fhir/r4/Encounter?patient=\{id\}|<http://nictiz.nl/fhir/StructureDefinition/nl-core-Encounter>|
+
+
+
 
 
 Functioneel missen nog: Behandelgrenzen, andere zorgverleners, wilsonbekwaamheid. Specifieke afspraken rond PZP volgen we vanuit de PZP coalitie.
 Voor medicatie geldt dat er gewerkt wordt met wat er nu is. Toekomstbestendige communicatie omtrent Medicatie volgt uit het MP9 traject.
-
-
-Voor het ophalen van de Patiënt geldt:
-POST /fhir/Patient/_search
-- Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
-- Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
-- "Include General pratictioner" dient opgenomen te worden in de search query
 
 
 ## Foutafhandeling
