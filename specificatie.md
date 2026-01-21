@@ -2,16 +2,20 @@
 ## Doel
 Het doel van deze toepassing is tweeledig: het verbeteren van de informatievoorziening van de huisarts die behoefte heeft aan informatie over wat er in het VVT domein met de patient gebeurt en het optimaliseren van het werkproces van een verleegkundige die belast is met de taak om de huisarts waar nodig op de hoogte te houden.
   
-In de huidige situatie wordt de huisarts daarover vaak geinformeerd doordat de VVT-medewerker een dubbele administratie bijhoudt in het eigen systeem (ECD) en dat de huisarts (HIS of samenwerkingsplatform). Deze toepassing beschrijft de techniek waarmee het mogelijkl wordt voor de huisarts om rechtstreeks de informatie uit het ECD te raadplegen vanuit het eigen systeem.
+In de huidige situatie wordt de huisarts daarover vaak geinformeerd doordat de VVT-medewerker een dubbele administratie bijhoudt in het eigen systeem (ECD) en dat de huisarts (HIS of samenwerkingsplatform). Deze toepassing beschrijft de techniek waarmee het mogelijk wordt voor de huisarts om rechtstreeks de informatie uit het ECD te raadplegen vanuit het eigen systeem. Andersom kan de verpleegkundige de informatie die bij de huisarts is vastgelegd inzien.
 
 ## Scope:
-Inzage door de huisarts is fase 1 van een veel bredere en rijkere integratie. Hierbij gaat het om informatie 'de andere kant op' en het uitzetten van taken. Deze functionaliteiten worden in latere versies van deze usecase toegevoegd.
+Inzage is een eerste stap van een veel bredere en rijkere integratie. Hierbij gaat het bv om het uitzetten van taken. Deze functionaliteiten worden in latere versies van deze usecase toegevoegd. De usecase is iteratief ontwikkeld (eerst de ene kant op, de huisarts inzage geven en daarna de andere kant op) maar het ontwerp is generiek opgezet. 
 
 # Governance
-De Governance en besluitvorming rondom deelname is belegd bij de projectgroep Huisarts inzage.
+De Governance en besluitvorming rondom deelname is belegd bij de projectgroep VVT-Huisarts inzage.
 
 # Functioneel Ontwerp
-Deze usecase ondersteunt het ophalen van informatie zoals vastgelegd door de (wijk)verpleging in de VVT om deze informatie beschikbaar te stellen aan de huisarts. Het proces werkt als volgt:
+Deze usecase ondersteunt het ophalen van informatie twee kanten op:
+Usecase 1. informatie zoals vastgelegd door de (wijk)verpleging in de VVT om deze informatie beschikbaar te stellen aan de huisarts.
+Usecase 2. Informatie zoals vastgelegd door de huisarts beschikbaar te stellen aan de (wijk)verpleegkundige
+
+Het proces werkt als volgt:
 
 De huisarts wil informatie inzien in het bronsysteem (VVT). In het huisartsensysteem start de gebruiker de zoekopdracht. Gezocht wordt op een individuele patiënt. Gebaseerd op de informatie die door de VVT instellingen in de discoveryservice is vastgelegd in combinatie met het BSN van de patiënt wordt in het opvragende systeem een lijst getoond van instellingen waar potentieel informatie op te halen is voor de betreffende patiënt. De huisarts selecteert de juiste instelling. Op basis daarvan vindt een FHIR-request ‘Patient’ plaats naar het bronsysteem. Het bronsysteem beoordeelt deze op een aantal parameters:
 - Ken ik deze patiënt?
@@ -19,31 +23,34 @@ De huisarts wil informatie inzien in het bronsysteem (VVT). In het huisartsensys
 - Klopt het Verifiable Credential van de aanvrager (geldig en gelijk aan hetgeen is vastgelegd bij de patiënt)?
 
 Als middel wordt hiervoor wordt het URA nummer van de opvragende organisatie gebruikt. Deze informatie is door de (wijk)verpleging vastgelegd in het bronsysteem bij de patiënt.
-Indien er informatie beschikbaar is en deze vrijgegeven mag worden wordt het interne PatientID terugekoppeld aan het opvragende systeem. Hierin is ook de informatie opgenomen rondom de contactinformatie van de zorgverlener. Hiermee kan de vraag beantwoord worden ‘wie moet ik bellen voor deze patiënt'.
-Op basis van dit PatientID kan verdere (medisch inhoudelijke) informatie opgevraagd worden. Er is een lijst beschikbaar van informatie die opgevraagd kan worden indien het bronsysteem deze informatie beschikbaar heeft. Deze bestaat uit rapportages en meetwaarden volgens een afgesproken stramien (in aantal / tijd). Zie hiervoor de paragraaf ‘zorginhoudelijke informatie’.
+Indien er informatie beschikbaar is en deze vrijgegeven mag worden wordt het interne PatientID terugekoppeld aan het opvragende systeem. Openstaande vraag hierin is de informatie rondom de contactinformatie van de zorgverlener waarbij de patient in behandeling is. Dit kan verschillende verschijningsvormen hebben zoals de afdelingstelefoon of het hoofd van het behandelteam. Hiermee kan de vraag beantwoord worden ‘wie moet ik bellen voor deze patiënt?'. Deze vraag staat nog open, het huidige ontwerp voorziet hier nog niet in. In de komende tijd wordt een addendum op het ontwerp gemaakt waarin hiervoor een oplossing wordt geschetst.
+
+Op basis van het PatientID kan verdere (medisch inhoudelijke) informatie opgevraagd worden. Er is een lijst beschikbaar van informatie die opgevraagd kan worden indien het bronsysteem deze informatie beschikbaar heeft. Deze bestaat uit rapportages en meetwaarden volgens een afgesproken stramien (in aantal / tijd). Zie hiervoor de paragraaf ‘zorginhoudelijke informatie’.
 
 De verdere medisch inhoudelijke informatie wordt opgehaald op basis van FHIR (ZIB’s waar mogelijk). De informatie wordt in het doelsysteem getoond. Het doelsysteem is er verantwoordelijk voor de informatie in de juiste context te tonen (denk aan verschillen met eigen informatie). Logging vindt in de gehele keten plaats.
+
+Voor usecase 2 geldt hetzelfde proces, alleen is de informatieflow omgekeerd. De informatie die beschikbaar gesteld wordt is wel verschillend tussen de 2 stromen, zie hiervoor de ZIB-specificatie verderop in dit ontwerp.
 
 
 # Uitgangspunten
 - De patiënt is reeds bekend/in zorg bij zowel de huisarts als bij de VVT instelling
-- De patiënt heeft consent afgegeven om data te delen met de huisarts
+- De patiënt heeft consent afgegeven om data te delen met de huisarts of de VVT instelling
 - Informatie kan opgehaald worden bij het bronsysteem en getoond in het doelsysteem
- In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via deze koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die passend is in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Passend kan zijn als er bijvoorbeeld discrepatenties zijn deze tonen. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
+ In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via de koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die passend is in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Passend kan zijn als er bijvoorbeeld discrepatenties zijn deze tonen. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
 - De medewerkers blijven in hun eigen systeem werken. De leveranciers zijn zelf verantwoordelijk hoe zij de medewerker het beste willen/kunnen ondersteunen.
-- Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie STU3 gebruikt.
+- Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie STU3 gebruikt en daarbij gekoppeld de ZIBS 2017.
 - Het afhandelen van de consent vraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt
 - Authenticatie vindt plaats op basis van een Verifiable Credential: het URA nummer van de organisatie waar de opvrager werkt en zoals vastgelegd in een UZI Servercertificaat.
 - Het bronsysteem moet vastleggen en checken welke organisatie bij de informatie mag. Er kan niet op medewerker niveau of rol worden gecontroleerd. Verdere uitwerking in hoofdstuk autorisatie. 
 -Logging vindt in de gehele keten plaats
 
 Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch is. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
-- We sluiten niet aan op Mitz (maar gaan consent lokaal oplossen)
-- Er is geen goed authenticatiemiddel voor de gebruiker beschikbaar (DEZI) dus werken we met een VC waarbij de organisatie obv een UZI certificaat wordt geauthenticeerd
-- We implementeren niet alle mogelijke ZIB’s want die zijn niet beschikbaar in bronsystemen, maar hanteren een subset
+- We eisen geen aansluiting op Mitz (maar accepteren ook consent lokaal). Als de applicatie het consent opslaat in Mitz moet dit ook ontsloten kunen worden
+- Er is nog geen goed authenticatiemiddel voor de gebruiker beschikbaar (DEZI) dus werken we met een VC waarbij de organisatie obv een UZI certificaat wordt geauthenticeerd
+- We implementeren niet alle mogelijke ZIB’s want die zijn niet beschikbaar in de bronsystemen, maar hanteren een subset
 - dPOP wordt pas in een later stadium toegevoegd, voor nu maakt dit geen onderdeel uit van de usecase
 - We verrijken / corrigeren de informatie uit de UZI credentials niet (human readable namen), dit moet bij de bron opgelost worden
-- Bij gebrek aan een generieke lokalisatiedienst wordt er een workaround toegepast waarbij handmatig wordt vastgelegd waar de patiënt in zorg is en waar dus informatie opgehaald kan worden
+- Bij gebrek aan een generieke lokalisatiedienst wordt er een workaround toegepast waarbij handmatig wordt vastgelegd waar de patiënt in zorg is en waar dus informatie opgehaald kan worden.
 
 
 ## Architectuur beschrijving
@@ -72,10 +79,10 @@ Zie https://hl7.org/fhir/STU3/http.html#capabilities voor meer informatie. Sommi
 TODO: write out actions for each (group of) steps
 
 ## Lokalisatie
-Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen. 
+Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen. Of in geval van inzicht in het huisartsendossier door de betreffende huisarts vast te leggen in het ECD bij het dossier.
 
 ## Grondslag
-Voor de behandelrelatie wordt ervan uitgegaan dat als de huisarts is vastgelegd bij de patient in het VVT dossier, er sprake is van een behandelrelatie.
+De grondslag voor uitwisseling is de toestemming (consent) die vastgelegd is bij de patient. 
 
 ### Consent specificatie
 Consent: de verantwoordelijkheid voor het vastleggen en checken van consent wordt ingevuld door het bronsysteem zelf.
@@ -128,7 +135,7 @@ Zie de X509Credential onder Discovery Definition, deze is exact het zelfde.
 Zie de [Nuts Wiki pagina over Requesting Access](https://wiki.nuts.nl/books/implementing-a-nuts-use-case-Ssg/page/requesting-access) voor context.
 
 ## Autorisatie
-Voor fase 1 van de Huisartsinzage gaan wij uit van autorisatie op 5 niveaus:
+Voor deze usecase gaan wij uit van autorisatie op 5 niveaus:
 - Aanwezig op Discovery service
 - Behandelrelatie
 - Consent
@@ -142,10 +149,10 @@ Om data bij een bronhouder op te halen, wordt de discovery service gebruikt om h
 Om toegang te krijgen tot gegevens van een patient is het vereist dat er een behandelrelatie tussen de huisartspraktijk en de patient bekend is bij het bronsysteem. Deze controle wordt gedaan op basis van het URA-nummer waarmee een resource wordt opgehaald. Dit nummer is terug te vinden in het `organization_ura` veld van een token introspect op de Nuts node. Zie ook stap 11 in "Request data at VVT" onder de architectuurbeschrijving.
 
 #### Consent
-Om een resource van een patient op te kunnen halen moet het bronsysteem toestemming van de patient geregistreerd hebben of op kunnen halen. Een algemene toestemming volstaat hier, waarbij de patient toestemming geeft om zijn of haar gegevens te delen met huisartsen.
+Om een resource van een patient op te kunnen halen moet het bronsysteem toestemming van de patient geregistreerd hebben of op kunnen halen. Een algemene toestemming volstaat hier, waarbij de patient toestemming geeft om zijn of haar gegevens te delen.
 
 #### Zib
-Voor de Huisartsinzage is een beperkte set aan Zibs beschikbaar. Deze zijn uitgewerkt in de lijst van ZIBs. Alleen deze Zibs kunnen opgehaald worden binnen de scope van de Huisartsinzage.
+Voor de inzage is een beperkte set aan Zibs beschikbaar. Deze zijn uitgewerkt in de lijst van ZIBs. Alleen deze Zibs kunnen opgehaald worden binnen de scope van deze usecase.
 
 #### Fhir query parameters
 Om te voorkomen dat er teveel informatie opgehaald kan worden (bijvoorbeeld middels het gebruik van `_include` parameters) wordt er ook autorisatie uitgevoerd op basis van de gebruikte query parameters. Hier wordt onderscheid gemaakt tussen verplichte parameters en toegestane parameters. Alle query parameters die gedefinieerd zijn in de set aan gebruikte Zibs (zie hieronder) zijn verplicht. Het gebruik van andere query parameters is niet toegestaan.
@@ -162,6 +169,8 @@ Hieronder staan de endpoints die beschikbaar gesteld moeten worden door de parti
 aan te tonen hoeveel resultaten er geretourneerd worden en op welke manier deze worden gesorteerd. Het is van belang dat bij een aanroep alle parameters gebruikt worden die in de tabel staan en ook geen extra. Dit heeft te maken met de
 controle die de systemen doen op de verifiable credentials. Die controle wordt op die manier gedaan om te voorkomen dat
 met een parameter zoals een include extra gegevens meekomen.
+
+**Bechikbare informatie voor de huisarts in het VVT Dossier**
 
 | ZIB                 | Method | Sort      | Count | Endpoint                                                                                                                            | Profiel                                                                                                                                                              |
 |:--------------------|--------|-----------|-------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -182,11 +191,40 @@ POST /fhir/Patient/_search
 - Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
 - Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
 
+
+**Bechikbare informatie voor de (wijk)verpleegkundinge in het Huiarts Dossier**
+
+| Onderdelen uit het Huisarts-EPD | Beschrijving | ZIB **STU3** | Endpoint **STU3** | ZIB **R4** | Endpoint **R4** | Profile |
+|-----------------------------------|-------------|-----------------------------------|-------------|-------------|-------------|-------------|
+| 1 Huisarts | De huisarts waarvan de gegevens afkomstig zijn. |https://zibs.nl/wiki/HealthProfessional-v3.1(2017EN) | GET [base]/fhir/stu3/Practitioner/{id} | https://zibs.nl/wiki/Zorgverlener-v3.5(2020NL) | GET [base]/fhir/r4/Practitioner/{id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner |
+| 2 huisartsenpraktijk | De huisartsenpraktijk waarvan de gegevens afkomstig zijn. | https://zibs.nl/wiki/HealthcareProvider-v3.1(2017EN) | GET [base]/fhir/stu3/Organization/{id} | https://zibs.nl/wiki/Zorgaanbieder-v3.4(2020NL) | GET [base]/fhir/r4/Organization/{id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider |
+| 3 Patiënt | De patiëntgegevens van de patiënt van wie de gegevens zijn. |https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638 | GET [base]/fhir/stu3/Patient/{id} | https://zibs.nl/wiki/Patient-v3.2(2020NL) | GET [base]/fhir/r4/Patient/{id} <br> of POST [base]/fhir/r4/Patient/$match | http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient |
+| 4 Episodes | Een gezondheidsprobleem zoals een klacht of een aandoening, waarvan de aard in de loop van de tijd kan veranderen door voortschrijdend inzicht of door het verloop van de aandoening. | - | GET [base]/fhir/stu3/EpisodeOfCare | https://zibs.nl/wiki/ZorgEpisode-v1.0(2020NL) | GET [base]/fhir/r4/EpisodeOfCare?patient={id}&_include=condition:diagnosis | http://nictiz.nl/fhir/StructureDefinition/nl-core-EpisodeOfCare |
+| 5 Episodes met een attentievlag | Episodes kunnen een attentievlag hebben om extra aandacht voor de episode te vragen. De attentievlag kan aanwezig blijven als een episode is afgesloten wordt/is, wanneer de gebruiker het belangrijk vindt dit probleem in beeld te houden. | https://zibs.nl/wiki/Alert-v3.2(2017EN) | GET [base]/fhir/stu3/Flag | https://zibs.nl/wiki/Alert-v4.1(2020NL) | GET [base]/fhir/r4/Flag?patient={id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-Alert |
+| 6 Open en gesloten episodes | Episodes kunnen open (actueel) of gesloten (niet langer actueel) zijn. | - | GET [base]/EpisodeOfCare | https://zibs.nl/wiki/ZorgEpisode-v1.0(2020NL) | GET [base]/fhir/r4/EpisodeOfCare?patient={id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-EpisodeOfCare |
+| 7 Actuele medicatie | **Medicatie-afspraak**<br>Het voorstel van een voorschrift tot gebruik van medicatie waarmee de patiënt akkoord gaat. De afspraak kan zowel starten, herhalen, wijzigen als stoppen van medicatie betreffen. | https://zibs.nl/wiki/MedicationAgreement-v1.0(2017EN) | GET [base]/fhir/stu3/MedicationRequest?patient={id} | https://zibs.nl/wiki/Medicatieafspraak-v1.2(2020NL) | GET [base]/fhir/r4/MedicationRequest?patient={id}&category=http://snomed.info/sct\|16076005&_include=MedicationRequest:medication  | http://nictiz.nl/fhir/StructureDefinition/mp-MedicationAgreement |
+| 8 Medicatie-overgevoeligheid | Een medicatie-overgevoeligheid beschrijft een overgevoeligheid van een patiënt voor een geneesmiddel, een stof of een geneesmiddelengroep, waarmee rekening gehouden moet worden bij het voorschrijven van medicatie. | https://zibs.nl/wiki/AllergyIntolerance-v3.1(2017EN) | GET [base]/fhir/stu3/AllergyIntolerance?patient={id} | https://zibs.nl/wiki/AllergieIntolerantie-v3.3(2020NL) | GET [base]/fhir/r4/AllergyIntolerance?patient={id}&category=medication | http://nictiz.nl/fhir/StructureDefinition/nl-core-AllergyIntolerance |
+| 9 Resultaten van bepalingen – laatste veertien maanden | Een bepaling is een objectiveerbare diagnostische verrichting. Het resultaat is de (uitkomst) van een bepaling. |https://zibs.nl/wiki/LaboratoryTestResult-v4.0(2017EN) https://zibs.nl/wiki/BloodPressure-v3.1(2017EN) https://zibs.nl/wiki/BodyHeight-v3.1(2017EN) https://zibs.nl/wiki/BodyTemperature-v3.1(2017EN) https://zibs.nl/wiki/BodyWeight-v3.1(2017EN) https://zibs.nl/wiki/GeneralMeasurement-v3.0(2017EN) https://zibs.nl/wiki/HeartRate-v3.1(2017EN) https://zibs.nl/wiki/O2Saturation-v3.1(2017EN) https://zibs.nl/wiki/PulseRate-v3.1(2017EN) | GET [base]/fhir/stu3/Observation?patient={id} | https://zibs.nl/wiki/LaboratoriumUitslag-v4.6(2020NL) https://zibs.nl/wiki/Bloeddruk-v3.2.1(2020NL) https://zibs.nl/wiki/Lichaamsgewicht-v3.2(2020NL) https://zibs.nl/wiki/Lichaamslengte-v3.1.1(2020NL) https://zibs.nl/wiki/Lichaamstemperatuur-v3.1.2(2020NL) https://zibs.nl/wiki/Polsfrequentie-v3.3(2020NL) | GET [base]/fhir/r4/Observation?patient={id}&category=http://hl7.org/fhir/observation-category\|vital-signs,laboratory | http://hl7.org/fhir/StructureDefinition/Observation |
+| 10 E- en P-regels van de SOEP-structuur – vastgelegd na invoering van online inzage | Informatie uit een deelcontact dat in vrije tekst wordt geregistreerd volgens de SOEP-structuur. | - | GET [base]/fhir/stu3/Composition?type=http://loinc.org\|67781-5&patient={id} | https://zibs.nl/wiki/SOEPVerslag-v1.0(2020NL) | GET [base]/fhir/r4/Composition?patient={id}&type=http://loinc.org\|67781-5 | - |
+| 11 Encounter (Contact) | Informatie uit een deelcontact dat in vrije tekst wordt geregistreerd volgens de SOEP-structuur. | https://zibs.nl/wiki/Encounter-v3.1(2017EN) | GET [base]/fhir/stu3/Encounter?patient={id} | https://zibs.nl/wiki/Contact-v4.0.1(2020NL) | GET [base]/fhir/r4/Encounter?patient={id} | http://nictiz.nl/fhir/StructureDefinition/nl-core-Encounter |
+
+
+Functioneel missen nog: Behandelgrenzen, andere zorgverleners, wilsonbekwaamheid. Specifieke afspraken rond PZP volgen we vanuit de PZP coalitie.
+Voor medicatie geldt dat er gewerkt wordt met wat er nu is. Toekomstbestendige communicatie omtrent Medicatie volgt uit het MP9 traject.
+
+
+Voor het ophalen van de Patiënt geldt:
+POST /fhir/Patient/_search
+- Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
+- Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+- "Include General pratictioner" dient opgenomen te worden in de search query
+
+
 ## Foutafhandeling
 In deze fase concentreren we ons op beveiliging – juist in de pilot zal bekeken moeten worden of dit ook leidt tot voldoende gebruiksgemak. In de basis wordt dus alleen getoond DAT er een fout is en geen specifiekere informatie zoals 'patient niet gevonden'. Informatie die publiekelijk beschikbaar is (bv inhoud van de usecase als zijnde 'deze resource valt buiten de usecase') zou toegevoegd mogen worden om nieuwe ontwikkelaars makkelijker te maken bij het testen
 
 ## Versiebeheer
-Wordt momenteel uitgewerkt in usecase ANW. Resultaat wordt hier opgenomen
+Wordt momenteel uitgewerkt in usecase ANW. Resultaat wordt hier opgenomen. In de toekomst wordt dit ontwerp omschreven naar een Implementation Guide (IG). Hiermee komen handvatten zoals een capability statement beschikbaar om in het ontwerp op te nemen.
 
 ## Omgevingen
 De volgende omgevingen zijn beschikbaar in de OTAP omgeving:
