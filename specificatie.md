@@ -1,6 +1,6 @@
 # Scope
 ## Doel
-Het doel van deze toepassing is tweeledig: het verbeteren van de informatievoorziening van de huisarts die behoefte heeft aan informatie over wat er in het VVT domein met de patient gebeurt en het optimaliseren van het werkproces van een verpleegkundige die belast is met de taak om de huisarts waar nodig op de hoogte te houden.
+Het doel van deze toepassing is tweeledig: het verbeteren van de informatievoorziening van de huisarts die behoefte heeft aan informatie over wat er in het VVT domein met de patient gebeurt (en het gelijktijdig optimaliseren van het werkproces van een verpleegkundige die belast is met de taak om de huisarts waar nodig op de hoogte te houden). Als ook het het regelen van inzicht van de informatie die beschikbaar is in het huisartsendossier voor de verpleegkundige in de VVT instelling.
   
 In de huidige situatie wordt de huisarts daarover vaak geïnformeerd doordat de VVT-medewerker een dubbele administratie bijhoudt in het eigen systeem (ECD) en dat de huisarts (HIS of samenwerkingsplatform). Deze toepassing beschrijft de techniek waarmee het mogelijk wordt voor de huisarts om rechtstreeks de informatie uit het ECD te raadplegen vanuit het eigen systeem. Andersom kan de verpleegkundige de informatie die bij de huisarts is vastgelegd inzien.
 
@@ -8,7 +8,7 @@ In de huidige situatie wordt de huisarts daarover vaak geïnformeerd doordat de 
 Inzage is een eerste stap van een veel bredere en rijkere integratie. Hierbij gaat het bv om het uitzetten van taken. Deze functionaliteiten worden in latere versies van deze usecase toegevoegd. De usecase is iteratief ontwikkeld (eerst de ene kant op, de huisarts inzage geven en daarna de andere kant op) maar het ontwerp is generiek opgezet. 
 
 # Governance
-De Governance en besluitvorming rondom deelname is belegd bij de projectgroep VVT-Huisarts inzage.
+De Governance en besluitvorming rondom deelname is belegd bij de projectgroep VVT-Huisarts inzage van Nuts.
 
 # Functioneel Ontwerp
 Deze usecase ondersteunt het ophalen van informatie twee kanten op:
@@ -29,20 +29,20 @@ Op basis van het PatientID kan verdere (medisch inhoudelijke) informatie opgevra
 
 De verdere medisch inhoudelijke informatie wordt opgehaald op basis van FHIR (ZIB’s waar mogelijk). De informatie wordt in het doelsysteem getoond. Het doelsysteem is er verantwoordelijk voor de informatie in de juiste context te tonen (denk aan verschillen met eigen informatie). Logging vindt in de gehele keten plaats.
 
-Voor usecase 2 geldt hetzelfde proces, alleen is de informatieflow omgekeerd. De informatie die beschikbaar gesteld wordt is wel verschillend tussen de 2 stromen, zie hiervoor de ZIB-specificatie verderop in dit ontwerp.
+Voor usecase 2 geldt hetzelfde proces, alleen is de informatieflow omgekeerd. De informatie die beschikbaar gesteld wordt is wel verschillend tussen de 2 stromen, zie hiervoor de ZIB-specificatie verderop in dit ontwerp. Daarnaast wordt de autorisatie bepaald op basis van de toestemming voor gegevensuitwisseling die de patient heeft afgegeven aan de huisarts. Waarmee in de basis alle VVT instellingen de benodigde informatie op kunnen vragen.
 
 
 # Uitgangspunten
 - De patiënt is reeds bekend/in zorg bij zowel de huisarts als bij de VVT instelling
-- De patiënt heeft consent afgegeven om data te delen met de huisarts of de VVT instelling
+- De patiënt heeft consent afgegeven om data te delen met de huisarts en/of de VVT instelling
 - Informatie kan opgehaald worden bij het bronsysteem en getoond in het doelsysteem
- In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via de koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Deze lijst is vastgesteld in overleg met de koepels (ACTIZ, InEEN). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die functioneel passend is bij hoe de informatie is bedoeld in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Het doel is om de context van de informatie zoveel mogelijk te behouden tussen bron en doel. Wanneer er bijvoorbeeld discrepanties zijn, dan kan het doelsysteem deze tonen. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
+ In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via de koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Deze lijst is vastgesteld in overleg met de koepels (ACTIZ, InEEN). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die functioneel passend is bij hoe de informatie is bedoeld in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Het doel is om de context van de informatie zoveel mogelijk te behouden tussen bron en doel. Wanneer er bijvoorbeeld discrepanties zijn, dan kan het doelsysteem deze discrepanties naast elkaar tonen aan de gebruiker. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
 - De medewerkers blijven in hun eigen systeem werken. De leveranciers zijn zelf verantwoordelijk hoe zij de medewerker het beste willen/kunnen ondersteunen.
 - Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie STU3 gebruikt en daarbij gekoppeld de ZIB'S 2017 of versie R4 met ZIB'S 2020. 
-- Het afhandelen van de consent vraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt
+- Het afhandelen van de consent vraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt (en dus eventueel gedelegeerd aan Mitz).
 - Authenticatie vindt plaats op basis van een Verifiable Credential: het URA nummer van de organisatie waar de opvrager werkt en zoals vastgelegd in een UZI Servercertificaat.
 - Het bronsysteem moet vastleggen en checken welke organisatie bij de informatie mag. Er kan niet op medewerker niveau of rol worden gecontroleerd. Verdere uitwerking in hoofdstuk autorisatie. 
--Logging vindt in de gehele keten plaats
+-Logging vindt in de gehele keten plaats.
 
 Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch is. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
 - We eisen geen aansluiting op Mitz (maar accepteren ook consent lokaal). Als de applicatie het consent opslaat in Mitz moet dit ook ontsloten kunnen worden
@@ -77,7 +77,7 @@ Zie https://hl7.org/fhir/STU3/http.html#capabilities voor meer informatie. Sommi
 <img src="img/sequence-diagram-resource-request.svg" width="1500">
 
 ## Lokalisatie
-Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen. Of in geval van inzicht in het huisartsendossier door de betreffende huisarts vast te leggen in het ECD bij het dossier.
+Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen in het HIS. Of in geval van inzicht in het huisartsendossier door de betreffende huisarts vast te leggen in het ECD bij het dossier.
 
 ## Grondslag
 De grondslag voor uitwisseling is de toestemming (consent) die vastgelegd is bij de patient. 
@@ -100,14 +100,14 @@ Dit betreft een X509Credential conform [Nuts RFC023](https://wiki.nuts.nl/books/
 
 Aanmaken kan bijv. met de [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) of de [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/). Als uitgever is besloten om hier de chain op te nemen het dichtst bij de leaf-certificaat.
 
-Gezocht kan worden op de naam van de DID, organisatienaam, plaats & URA.
+Gezocht kan worden op de naam van de DID, organisatienaam, organisatie type, plaats & URA.
 
 ##### DiscoveryRegistrationCredential
 Dit betreft een DiscoveryRegistrationCredential conform de uitleg op de [Nuts Wiki pagina over Service Discovery](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration).
 
 Hierbij is een veld toegevoegd aan de credentialSubject genaamd fhirBaseURL. Deze kan gebruikt worden door gebruikers van de Discovery Service om te weten waar de daadwerkelijke FHIR data opgehaald kan worden.
 
-Het is van belang het organisatie type mee te geven bij de registratie op de Discovery Service, zodat onderscheid gemaakt kan worden tussen een VVT-instelling en een huisarts. Hiervoor wordt het HL7 organisation typte gebruikt. Note: dit is een uitbreiding op een eerdere versie van deze specificatie en vereist een aanpassing op de reeds bestaande fase 1 koppeling. 
+Het is van belang het organisatie type mee te geven bij de registratie op de Discovery Service, zodat onderscheid gemaakt kan worden tussen een VVT-instelling en een huisarts. Hiervoor wordt het HL7 organisation type gebruikt. Note: dit is een uitbreiding op een eerdere versie van deze specificatie en vereist een aanpassing op de reeds bestaande fase 1 koppeling. 
 
 ## Authenticatie
 Om veilig gegevens te kunnen delen tussen verschillende zorgaanbieders, is zorgaanbieder-overstijgende authenticatie van zorgorganisaties en zorgverleners essentieel. Vanuit de NEN wordt gewerkt aan een norm met betrekking tot identificatie en authenticatie. Op het moment dat deze norm gepubliceerd wordt zullen we de landelijke ontwikelingen mbt tot deze norm volgen. Om op korte termijn informatie uitwisseling mogelijk te maken, zal de authenticatie geborgd worden op de volgende manier:
@@ -171,10 +171,10 @@ Hieronder staan de endpoints die beschikbaar gesteld moeten worden door de parti
 ### Algemeen 
 De koppeling werkt twee kanten op, vandaar dat er hieronder twee tabellen worden getoond. 
 
-Voor de route waarin de informatie voor de (wijk)verpleegkundinge uit het Huisarts Dossier opgehaald wordt geldt dat in de basis hiervoor de MedMij specificaties zijn gebruikt. Deze zijn te vinden op: https://informatiestandaarden.nictiz.nl/wiki/MedMij:V2020.01/FHIR_GP_Data. Note: er zijn afwijkingen gedaan op de MedMij specificatie om het passend te maken op de usecase. Hoewel de basis van MedMij gebruikt is, kan die specificatie niet 1-op-1 toegepast worden. De verschillen zitten op het gebied van de zoekpaden (specifieke profiles opvragen ipv alles) en beperking van de informatie (maximaal aantallen ipv alles, gesorteerd op nieuwste eerst). 
-Daarnaast geldt dat de HISsen naast de STU3 versie uit de MedMij specificatie ook de R4 versie kunnen ondersteunen. Note: er zitten technische en inhoudelijke verschillen tussen deze 2 FHIR versies. Deze komen in de tabel tot uitting.
+Voor de route waarin de informatie voor de (wijk)verpleegkundinge uit het Huisarts Dossier opgehaald wordt geldt dat in de basis hiervoor de MedMij specificaties zijn gebruikt. Deze zijn te vinden op: https://informatiestandaarden.nictiz.nl/wiki/MedMij:V2020.01/FHIR_GP_Data. Note: er zijn afwijkingen gedaan op de MedMij specificatie om het passend te maken op de usecase. Hoewel de basis van MedMij gebruikt is, kan die specificatie niet 1-op-1 toegepast worden. De verschillen zitten op het gebied van de zoekpaden (specifieke profiles opvragen ipv alles) en beperking van de informatie (maximaal aantallen ipv alles, gesorteerd op nieuwste eerst,profiles expliciteit opvragen ipv de hele set in 1 keer terug te krijgen). 
+Daarnaast geldt dat de HISsen naast de STU3 versie uit de MedMij specificatie ook de R4 versie kunnen ondersteunen. Note: er zitten technische en inhoudelijke verschillen tussen deze 2 FHIR versies. Deze komen in de tabel tot uiting.
 
-Voor het ophalen van de Patiënt geldt:
+Voor het ophalen van de Patiënt geldt een standaard methodiek:
 POST /fhir/Patient/_search
 - Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
 - Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
@@ -236,7 +236,7 @@ Voor medicatie geldt dat er gewerkt wordt met wat er nu is. Toekomstbestendige c
 In deze fase concentreren we ons op beveiliging – juist in de pilot zal bekeken moeten worden of dit ook leidt tot voldoende gebruiksgemak. In de basis wordt dus alleen getoond DAT er een fout is en geen specifiekere informatie zoals 'patient niet gevonden'. Informatie die publiekelijk beschikbaar is (bv inhoud van de usecase als zijnde 'deze resource valt buiten de usecase') zou toegevoegd mogen worden om nieuwe ontwikkelaars makkelijker te maken bij het testen
 
 ## Versiebeheer
-Wordt momenteel uitgewerkt in usecase ANW. Resultaat wordt hier opgenomen. In de toekomst wordt dit ontwerp omschreven naar een Implementation Guide (IG). Hiermee komen handvatten zoals een capability statement beschikbaar om in het ontwerp op te nemen.
+Het versiebeheer wordt momenteel uitgewerkt in usecase ANW. Het resultaat daarvan wordt hier opgenomen. In de toekomst wordt dit ontwerp omgeschreven naar een Implementation Guide (IG). Hiermee komen handvatten zoals een capability statement beschikbaar om in het ontwerp op te nemen.
 
 ## Omgevingen
 De volgende omgevingen zijn beschikbaar in de OTAP omgeving:
