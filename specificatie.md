@@ -107,7 +107,15 @@ Dit betreft een DiscoveryRegistrationCredential conform de uitleg op de [Nuts Wi
 
 Hierbij is een veld toegevoegd aan de credentialSubject genaamd fhirBaseURL. Deze kan gebruikt worden door gebruikers van de Discovery Service om te weten waar de daadwerkelijke FHIR data opgehaald kan worden.
 
-Het is van belang het organisatie type mee te geven bij de registratie op de Discovery Service, zodat onderscheid gemaakt kan worden tussen een VVT-instelling en een huisarts. Hiervoor wordt het HL7 organisation type gebruikt. Note: dit is een uitbreiding op een eerdere versie van deze specificatie en vereist een aanpassing op de reeds bestaande fase 1 koppeling. 
+Het is van belang het organisatie type mee te geven bij de registratie op de Discovery Service, zodat onderscheid gemaakt kan worden tussen een VVT-instelling en een huisarts. Hiervoor wordt het HL7 organisation type Codelijst gebruikt: https://zibs.nl/wiki/Zorgaanbieder-v3.4(2020NL)#OrganisatieTypeCodelijst 
+
+Voor deze usecase gelden er 2 types die gebruikt kunnen worden: 
+1. Huisartsinstelling:	**H1**
+2. Verplegings- of verzorgingsinstelling	**X3**	
+
+
+Note: dit is een uitbreiding op een eerdere versie van deze specificatie en vereist een aanpassing op de reeds bestaande fase 1 koppeling. 
+
 
 ## Authenticatie
 Om veilig gegevens te kunnen delen tussen verschillende zorgaanbieders, is zorgaanbieder-overstijgende authenticatie van zorgorganisaties en zorgverleners essentieel. Vanuit de NEN wordt gewerkt aan een norm met betrekking tot identificatie en authenticatie. Op het moment dat deze norm gepubliceerd wordt zullen we de landelijke ontwikelingen mbt tot deze norm volgen. Om op korte termijn informatie uitwisseling mogelijk te maken, zal de authenticatie geborgd worden op de volgende manier:
