@@ -113,7 +113,7 @@ Voor deze usecase gelden er 2 types die gebruikt kunnen worden:
 1. Huisartsinstelling:	**H1**
 2. Verplegings- of verzorgingsinstelling	**X3**	
 
-Voor de technische uitwerking van het registeren maken we gebruik van de in het generieke functies traject gedefinieerde ZorgaanbiederType-credential. Die wordt straks uitgegeven door Vzvz maar zolang dat nog niet zo ver is wordt dat self-issued toegepast. Voor nu verwijzen we naar de tijdelijke documentatie op https://github.com/nuts-foundation/nuts-knooppunt/issues/297 en https://github.com/nuts-foundation/hackathon-resources/blob/main/gf-test-2026/test/pzp-policy.json. Zodra deze documentatie gepubliceerd is zal de verwijzing aangepast worden.
+Voor de technische uitwerking van het registeren maken we gebruik van de in het generieke functies traject gedefinieerde ZorgaanbiederType-credential. Die wordt straks uitgegeven door Vzvz maar zolang dat nog niet zo ver is wordt dat self-issued toegepast. HealthcareProviderRoleTypeCredential wordt geformaliseerd in de Generieke Functies IG, de definitie is daar te vinden: https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-catalog.html
 
 Note: dit is een uitbreiding op een eerdere versie van deze specificatie en vereist een aanpassing op de reeds bestaande fase 1 koppeling. 
 
