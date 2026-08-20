@@ -1,19 +1,29 @@
 # Scope
 ## Doel
-Het doel van deze toepassing is tweeledig: het verbeteren van de informatievoorziening van de huisarts die behoefte heeft aan informatie over wat er in het VVT domein met de patient gebeurt (en het gelijktijdig optimaliseren van het werkproces van een verpleegkundige die belast is met de taak om de huisarts waar nodig op de hoogte te houden). Als ook het het regelen van inzicht van de informatie die beschikbaar is in het huisartsendossier voor de verpleegkundige in de VVT instelling.
+Het doel van deze toepassing is **tweeledig**: 
+1. het verbeteren van de informatievoorziening van de huisarts die behoefte heeft aan informatie over wat er in het VVT domein met de patient gebeurt (en het gelijktijdig optimaliseren van het werkproces van een verpleegkundige die belast is met de taak om de huisarts waar nodig op de hoogte te houden). 
+2. Als ook het het regelen van inzicht van de informatie die beschikbaar is in het huisartsendossier voor de verpleegkundige in de VVT instelling.
   
 In de huidige situatie wordt de huisarts daarover vaak geïnformeerd doordat de VVT-medewerker een dubbele administratie bijhoudt in het eigen systeem (ECD) en dat de huisarts (HIS of samenwerkingsplatform). Deze toepassing beschrijft de techniek waarmee het mogelijk wordt voor de huisarts om rechtstreeks de informatie uit het ECD te raadplegen vanuit het eigen systeem. Andersom kan de verpleegkundige de informatie die bij de huisarts is vastgelegd inzien.
 
 ## Scope:
 Inzage is een eerste stap van een veel bredere en rijkere integratie. Hierbij gaat het bv om het uitzetten van taken. Deze functionaliteiten worden in latere versies van deze usecase toegevoegd. De usecase is iteratief ontwikkeld (eerst de ene kant op, de huisarts inzage geven en daarna de andere kant op) maar het ontwerp is generiek opgezet. 
 
+## Positionering ten opzichte van de GIS Architectuur:
+In het Zorgveld is grote behoefte aan de informatie-uitwisseling die door deze toepassing wordt gefaciliteerd. Idealiter zou het ontwerp direct in lijn zijn met de GIS architectuur en aansluiten bij landelijke afspraken en de generieke functies. Op het moment van ontwerpen van deze toepassng zijn echter nog niet alle onderdelen van de GIS architectuur uitgewerkt en in place. 
+
+Vandaar dat er gekozen is voor een groeipad: pragmatische keuzes (zie paragraag Shortcuts en Toekomstige ontwikkelingen") om op de korte termijn iets werkends op te leveren waar meerwaarde voor de zorg in zit. En voor de langere termijn wordt aangesloten bij het groeipad van de toepassing Zorginzage (https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/vol1.html) 
+
+Hierbij adopteert de toepassing incrementeel en iteratief de door het Ministerie van VWS beheerde landelijke afspraken en specificaties voor generieke functies en de andere elementen van de doelarchitectuur voor het GIS. Deze landelijke afspraken en specificaties vervangen incrementeel en iteratief alle Zorginzage-specifieke afspraken en specificaties zodra de eigenaar en de deelnemers van de Zorginzage-specificatie beoordelen dat deze implementatieklaar zijn.
+
+
 # Governance
 De Governance en besluitvorming rondom deelname is belegd bij de projectgroep VVT-Huisarts inzage van Nuts.
 
 # Functioneel Ontwerp
 Deze usecase ondersteunt het ophalen van informatie twee kanten op:
-Usecase 1. informatie zoals vastgelegd door de (wijk)verpleging in de VVT om deze informatie beschikbaar te stellen aan de huisarts.
-Usecase 2. Informatie zoals vastgelegd door de huisarts beschikbaar te stellen aan de (wijk)verpleegkundige
+**Usecase 1**. informatie zoals vastgelegd door de (wijk)verpleging in de VVT om deze informatie beschikbaar te stellen aan de huisarts.
+**Usecase 2**. Informatie zoals vastgelegd door de huisarts beschikbaar te stellen aan de (wijk)verpleegkundige
 
 Het proces werkt als volgt:
 
@@ -39,18 +49,18 @@ Voor usecase 2 geldt hetzelfde proces, alleen is de informatieflow omgekeerd. De
  In de documentatie is vastgelegd welke informatie (ZIB's) er beschikbaar gemaakt kan worden via de koppeling (Zie hoofdstuk ‘Lijst met ZIB’s’). Deze lijst is vastgesteld in overleg met de koepels (ACTIZ, InEEN). Indien informatie opgehaald wordt, zal deze ook getoond worden in een vorm die functioneel passend is bij hoe de informatie is bedoeld in het doelsysteem. Dit geldt ook voor gegevens uit bijvoorbeeld de Patient ZIB. Het doel is om de context van de informatie zoveel mogelijk te behouden tussen bron en doel. Wanneer er bijvoorbeeld discrepanties zijn, dan kan het doelsysteem deze discrepanties naast elkaar tonen aan de gebruiker. Er is een lijst beschikbaar van informatie die opgehaald kan worden.
 - De medewerkers blijven in hun eigen systeem werken. De leveranciers zijn zelf verantwoordelijk hoe zij de medewerker het beste willen/kunnen ondersteunen.
 - Er wordt gebruik gemaakt van bestaande zorginformatiebouwstenen die voor de leveranciers al bekend zijn. Hierbij wordt FHIR versie STU3 gebruikt en daarbij gekoppeld de ZIB'S 2017 of versie R4 met ZIB'S 2020. 
-- Het afhandelen van de consent vraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt (en dus eventueel gedelegeerd aan Mitz).
+- Het afhandelen van de consent vraag vindt plaats in het bronsysteem. Het systeem bepaalt zelf hoe dit vastgelegd wordt en hoe het gecheckt wordt (en dus eventueel gedelegeerd aan Mitz). Op termijn kan geheel overgestapt worden op de generieke voorziening Toestemming.
 - Authenticatie vindt plaats op basis van een Verifiable Credential: het URA nummer van de organisatie waar de opvrager werkt en zoals vastgelegd in een UZI Servercertificaat.
 - Het bronsysteem moet vastleggen en checken welke organisatie bij de informatie mag. Er kan niet op medewerker niveau of rol worden gecontroleerd. Verdere uitwerking in hoofdstuk autorisatie. 
 -Logging vindt in de gehele keten plaats.
 
-Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch is. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
-- We eisen geen aansluiting op Mitz (maar accepteren ook consent lokaal). Als de applicatie het consent opslaat in Mitz moet dit ook ontsloten kunnen worden
-- Er is nog geen goed authenticatiemiddel voor de gebruiker beschikbaar (DEZI) dus werken we met een VC waarbij de organisatie obv een UZI certificaat wordt geauthenticeerd
-- We implementeren niet alle mogelijke ZIB’s want die zijn niet beschikbaar in de bronsystemen, maar hanteren een subset
+**Shortcuts en Toekomstige ontwikkelingen**: Sommige zaken kunnen we op dit moment niet invullen zoals we willen omdat dit (om verschillende redenen) nog niet realistisch is. Deze zaken plaatsen we in deze usecase buiten scope en worden later eventueel toegevoegd. Het gaat om:
+- We eisen geen aansluiting op Mitz (maar accepteren ook consent lokaal). Als de applicatie het consent opslaat in Mitz moet dit ook ontsloten kunnen worden. Op termijn kan geheel overgestapt worden op de generieke voorziening Toestemming. 
+- Er is nog geen goed authenticatiemiddel voor de gebruiker beschikbaar (DEZI) dus werken we met een VC waarbij de organisatie obv een UZI certificaat wordt geauthenticeerd. Zodra DEZI beschikbaar is kan overgestapt worden op de generieke voorziening voor Authenticatie
+- We implementeren niet alle mogelijke ZIB’s aangezien deze nog niet beschikbaar zijn in de bronsystemen, maar hanteren de subset die wel beschikbaar is. Hierbij wordt pragmatisch gebruik gemaakt van hetgeen de leveranciers reeds gebouwd hebben. Wanneer extra bouwblokken beschikbaar komen vanuit de de landelijke initiatieven zullen deze toegevoegd worden.
 - dPOP wordt pas in een later stadium toegevoegd, voor nu maakt dit geen onderdeel uit van de usecase
 - We verrijken / corrigeren de informatie uit de UZI credentials niet (human readable namen), dit moet bij de bron opgelost worden
-- Bij gebrek aan een generieke lokalisatiedienst wordt er een workaround toegepast waarbij handmatig wordt vastgelegd waar de patiënt in zorg is en waar dus informatie opgehaald kan worden.
+- Bij gebrek aan een generieke lokalisatiedienst wordt er een workaround toegepast waarbij handmatig wordt vastgelegd waar de patiënt in zorg is en waar dus informatie opgehaald kan worden. Zodra de generieke voorziening Lokalisatie beschikbaar komt zal deze toepassing hier op aansluiten
 
 
 ## Architectuur beschrijving
@@ -58,8 +68,9 @@ Shortcuts en Toekomstige ontwikkelingen: Sommige zaken kunnen we op dit moment n
 Voor deze usecase wordt gebruikt gemaakt van de Nuts infrastructuur. Specifiek wordt gebruik gemaakt van de mogelijkheden die de V6.1 versie van Nuts biedt en daarmee dus ook van did:web. Voor de informatie specifiek over de Nuts-laag wordt verwezen naar de officiële documentatie: https://nuts-node.readthedocs.io/en/stable/   
 
 ### Registreren voor de use-case
-<!-- ![sequence diagram for care organization management](img/sequence-diagram-use-case-registration.svg) -->
-<img src="img/sequence-diagram-use-case-registration.svg" width="700">
+
+
+[![](https://wiki.nuts.nl/uploads/images/gallery/2026-02/scaled-1680-/image-1770021690246.png)](https://wiki.nuts.nl/uploads/images/gallery/2026-02/image-1770021690246.png)
 
 **X509CredentialTool**: 
 De Nuts community biedt op dit moment 2 tools aan om een X509Credential te genereren:
@@ -72,9 +83,10 @@ Beide tools geven instructies om stappen 9-10 uit te kunnen voeren.
 Een bronhouder kan kiezen voor twee varianten qua versies. FHIR R4 en ZIBs 2020 of FHIR STU3 en ZIBs 2017. De bevrager achterhaalt de FHIR versie door het meta endpoint van de bronhouder aan te roepen. 
 Zie https://hl7.org/fhir/STU3/http.html#capabilities voor meer informatie. Sommige FHIR clients hebben standaard functionaliteit om het metadata endpoint te bevragen. 
 
-### Data ophalen bij de VVT
-<!-- ![sequence diagram ophalen data bij VVT](img/sequence-diagram-resource-request.svg) -->
-<img src="img/sequence-diagram-resource-request.svg" width="1500">
+### Data ophalen
+De volgende flow wordt gevolgd:
+
+[![](https://wiki.nuts.nl/uploads/images/gallery/2026-02/scaled-1680-/image-1770021781878.png)](https://wiki.nuts.nl/uploads/images/gallery/2026-02/image-1770021781878.png)
 
 ## Lokalisatie
 Bij gebrek aan een generieke lokalisatiedienst wordt lokalisatie lokaal ingevuld. Dit houdt in dat er in de systemen zelf bijgehouden wordt waar data opgehaald kan worden. Bijvoorbeeld door de VVT instelling waar de patient bij in behandeling is expliciet vast te leggen in het HIS. Of in geval van inzicht in het huisartsendossier door de betreffende huisarts vast te leggen in het ECD bij het dossier.
@@ -193,7 +205,7 @@ Specifiek voor usecase 2: 'VVT haalt data op uit HIS' geldt dat de volgende incl
 
 
 
-**Beschikbare informatie voor de huisarts in het VVT Dossier**
+**Usecase 1: Beschikbare informatie voor de huisarts in het VVT Dossier**
 
 
 
@@ -216,7 +228,7 @@ Specifiek voor usecase 2: 'VVT haalt data op uit HIS' geldt dat de volgende incl
 <br/><br/> 
 
 
-**Beschikbare informatie voor de (wijk)verpleegkundige in het Huiarts Dossier**
+**Usecase2: Beschikbare informatie voor de (wijk)verpleegkundige in het Huisarts Dossier**
 
 
 
@@ -263,4 +275,3 @@ De volgende omgevingen zijn beschikbaar in de OTAP omgeving:
 -Test: Testomgeving waar met UZI testcertificaten gewerkt wordt
 -Acceptatie: acceptatieomgeving waar met zowel test als productie UZI certificaten gewerkt kan worden (Dit omdat de leveranciers verschillend om gaan met acceptatie en staging).
 -Productie: productie omgeving waar met productie UZI servercertificaten gewerkt wordt.
-
