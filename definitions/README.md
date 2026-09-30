@@ -22,6 +22,13 @@ openssl dgst -sha256 -binary UZIServerG4PKIoPrivGTLSSYS2025.cer | base64 | tr '+
 
 De G4-CA `... SYS - 2024` is op 29-10-2025 ingetrokken en wordt niet vertrouwd.
 
+## Truststore
+
+De truststores (PEM-bundels met de G1- en G4-CA's) staan op:
+
+- productie: https://nuts.nl/certs/production/truststore.pem
+- test / acceptatie: https://nuts.nl/certs/test/truststore.pem
+
 ## Overgang G1 → G4
 
 Alle deelnemers en de Discovery Server moeten de bijgewerkte bestanden in gebruik hebben vóórdat een deelnemer een credential van een G4-certificaat gaat gebruiken. Na 12-11-2028 kan de G1-fingerprint vervallen.
