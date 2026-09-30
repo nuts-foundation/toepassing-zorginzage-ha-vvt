@@ -24,7 +24,7 @@ De G4-CA `... SYS - 2024` is op 29-10-2025 ingetrokken en wordt niet vertrouwd.
 
 ## Truststore
 
-Truststores en instructies: https://nuts.nl/certs
+De truststores (PEM-bundels met de G1- en G4-CA's) en instructies staan op https://nuts.nl/certs.
 
 ## Overgang G1 → G4
 
