@@ -20,8 +20,6 @@ curl -sO http://cert.pkioverheid.nl/UZIServerG4PKIoPrivGTLSSYS2025.cer
 openssl dgst -sha256 -binary UZIServerG4PKIoPrivGTLSSYS2025.cer | base64 | tr '+/' '-_' | tr -d '='
 ```
 
-De G4-CA `... SYS - 2024` is op 29-10-2025 ingetrokken en wordt niet vertrouwd.
-
 ## Truststore
 
 De truststores (PEM-bundels met de G1- en G4-CA's) en instructies staan op [nuts.nl/certs](https://nuts.nl/certs).
