@@ -10,8 +10,10 @@ De `$.issuer` van een `X509Credential` is een `did:x509` die de SHA-256 (base64u
 |---|---|---|
 | productie | `UZI-register Private Server CA G1` (tot 12-11-2028) | `vdhg746H4rLH67NN1unhdxo6PF3shQunCA4-KQTb2Jc` |
 | productie | `UZI Server - G4 PKIo Priv G-TLS SYS - 2025` (vanaf 12-11-2026) | `sDTL__yv54TtrvSf7601TtvHgj2NZSLT2m-Okf8oqkI` |
-| test / acceptatie | `TEST UZI-register Private Server CA G1` (tot 12-11-2028) | `GwlhBZuEFlSHXSRUXQuTs3_YpQxAahColwJJj35US1A` |
-| test / acceptatie | `ACCEPTATIE UZI Server - G4 Priv G-TLS SYS - 2025` (vanaf 12-11-2026) | `svKzNxhS07V1dKkekWOZV0d6Ao7_qvjqXegWB32YjZE` |
+| test / ontwikkel | `TEST UZI-register Private Server CA G1` (tot 12-11-2028) | `GwlhBZuEFlSHXSRUXQuTs3_YpQxAahColwJJj35US1A` |
+| test / ontwikkel | `ACCEPTATIE UZI Server - G4 Priv G-TLS SYS - 2025` (vanaf 12-11-2026) | `svKzNxhS07V1dKkekWOZV0d6Ao7_qvjqXegWB32YjZE` |
+
+Acceptatie staat zowel de test- als de productie-CA's toe.
 
 Controleren:
 
@@ -22,7 +24,7 @@ openssl dgst -sha256 -binary UZIServerG4PKIoPrivGTLSSYS2025.cer | base64 | tr '+
 
 ## Truststore
 
-De truststores (PEM-bundels met de G1- en G4-CA's) en instructies staan op [nuts.nl/certs](https://nuts.nl/certs).
+De truststore (PEM-bundel met de G1- en G4-CA's) en instructies staan op [nuts.nl/certs](https://nuts.nl/certs).
 
 ## Overgang G1 → G4
 
