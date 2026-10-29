@@ -189,9 +189,22 @@ POST /fhir/Patient/_search
 - Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
 
 Specifiek voor usecase 2: 'VVT haalt data op uit HIS' geldt dat de volgende includes meegegeven dienen te worden in de search query:
-- include=Patient:general-practitioner en include:iterate=PractitionerRole:organization
+- _include=Patient:general-practitioner voor `nl-core-HealthProfessional-PractitionerRole`
+- _include:iterate=PractitionerRole:practitioner voor `nl-core-HealthProfessional-Practitioner`
+- _include:iterate=PractitionerRole:organization voor `nl-core-HealthcareProvider-Organization`
+- _include:iterate=PractitionerRole:location voor `nl-core-HealthcareProvider`
 
+Voor een volledige `Patient` query van:
+```
+POST [base]/fhir/Patient/_search
+  &_include=Patient:general-practitioner
+  &_include:iterate=PractitionerRole:practitioner
+  &_include:iterate=PractitionerRole:organization
+  &_include:iterate=PractitionerRole:location
 
+- Header: Content-Type = x-www-form-urlencoded
+- Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+```
 
 **Beschikbare informatie voor de huisarts in het VVT Dossier**
 
