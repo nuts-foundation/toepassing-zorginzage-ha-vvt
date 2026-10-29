@@ -83,8 +83,13 @@ Beide tools geven instructies om stappen 9-10 uit te kunnen voeren.
 
 ### Versies van ZIBs en FHIR:
 
-Afhankelijk van de usecase zijn er twee varianten qua versies. FHIR R4 en ZIBs 2020 of FHIR STU3 en ZIBs 2017. De bevrager achterhaalt de FHIR versie door het meta endpoint van de bronhouder aan te roepen.
-Zie <https://hl7.org/fhir/STU3/http.html#capabilities> voor meer informatie. Sommige FHIR clients hebben standaard functionaliteit om het metadata endpoint te bevragen.
+Afhankelijk van de usecase zijn er twee varianten qua versies. FHIR R4 en ZIBs 2020 of FHIR STU3 en ZIBs 2017. De bevrager achterhaalt de FHIR versie door het metadata endpoint van de bronhouder aan te roepen, zie [Metadata endpoint](#metadata-endpoint).
+
+### Metadata endpoint
+
+Het metadata endpoint (`GET [base]/metadata`) is verplicht en publiek toegankelijk zonder authenticatie. Iedere FHIR server moet de capabilities interactie ondersteunen (zie [FHIR R4](https://hl7.org/fhir/R4/http.html#capabilities) en [FHIR STU3](https://hl7.org/fhir/STU3/http.html#capabilities)). Binnen deze toepassing moet de bronhouder dit endpoint zonder access token beschikbaar stellen. Alle overige FHIR endpoints vereisen wel authenticatie zoals beschreven onder [Authenticatie](#authenticatie).
+
+De bevrager leest de FHIR versie uit `CapabilityStatement.fhirVersion`, conform de [Nictiz FHIR R4 Implementation Guide](https://informatiestandaarden.nictiz.nl/wiki/FHIR:V1.0_FHIR_IG_R4#Multiple_FHIR_versions_on_the_same_server_endpoint). Sommige FHIR clients hebben standaard functionaliteit om het metadata endpoint te bevragen.
 
 ### Data ophalen bij de VVT
 
